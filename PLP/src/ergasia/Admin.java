@@ -23,13 +23,13 @@ public class Admin extends User {
 		Teachers=teachers;
 	}
 
-	public void Create_Teacher(String username, String password, String Onomateponimo){
-		Teachers=deserializing();													//deserializing
-		Teacher Teach= new Teacher(username,password, null);						//dimiourgia ka8igiti
-		Teachers.add(Teach);														//apo8ikeusi sti lista
-		serializing();																//kai sirialazable
+	public void Create_Teacher(String username, String password, String Onomateponimo, Language teacherLanguage){
+		Teachers=deserializing();									//deserializing
+		Teacher Teach= new Teacher(Onomateponimo,username,password, null, teacherLanguage);		//dimiourgia ka8igiti
+		Teachers.add(Teach);										//apo8ikeusi sti lista
+		serializing();												//kai sirialazable
 
-		String filename="Kathigites.xls" ;										//apo8ikeusi se excel
+		String filename="Kathigites.xls" ;							//apo8ikeusi se excel
 		try{
 			FileInputStream file = new FileInputStream(new File(filename));
 			HSSFWorkbook workbook = new HSSFWorkbook(file);
@@ -83,10 +83,7 @@ public class Admin extends User {
 	        }
 			catch ( Exception ex ) {
 	            System.out.println(ex);
-
-	        }
-																//apo8ikeusi se excel
-		
+	        }													//apo8ikeusi se excel
 	}
 	
 	public void serializing() {
@@ -133,4 +130,8 @@ public class Admin extends User {
 		}
 	}
 
+	public void create_Language(String name, ArrayList<Level> levels){
+		new Language(name,null,levels);
+		//serializing
+	}
 }

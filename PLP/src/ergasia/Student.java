@@ -2,8 +2,10 @@ package ergasia;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -15,15 +17,21 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Student extends User {
 
-	private String level;
-	private Teacher teacher;			// 8a xriazete mia lista gia Language
+	private String Onomateponimo;
+	private Teacher teacher;
+	private Level studentLevel;
 	
-	public Student(String username, String password, String level1, Teacher teacher1) {
+	public Student(String Onomateponimo, String username, String password, Teacher teacher1, Level studentLevel) {
 		super(username, password);
-		level=level1;
 		teacher=teacher1;
+		this.Onomateponimo=Onomateponimo;
+		this.studentLevel= studentLevel;
 	}
 //set levels kalei tis language get level
+
+	public String getOnomateponimo() {
+		return Onomateponimo;
+	}
 	
 	public ArrayList<Student> deserializing() {									//deserializing method
 		ArrayList<Student> students = teacher.getStudents();
@@ -45,7 +53,7 @@ public class Student extends User {
 	}
 	
 	public void log_In(String username, String password) {
-		ArrayList<Student> StudentsFromFile = deserializing();						//deserializing students.ser
+		ArrayList<Student> StudentsFromFile = deserializing();					//deserializing students.ser
 		for(Student st: StudentsFromFile) {
 			if(st.getUsername().equals(username) && st.getPassword().equals(password)){	//mporei na sinde8ei o Student
 				
@@ -105,8 +113,28 @@ public class Student extends User {
 	public void Change(){
 		
 	}
+	
 	public void Delete(){
-		
+		ArrayList<Student> StudentsFromFile = deserializing();		//deserializing students.ser
+		for(Student st: StudentsFromFile){
+			if(st.getUsername().equals(this.getUsername()) && st.getOnomateponimo().equals(this.getOnomateponimo())){
+				StudentsFromFile.remove(st);
+			}
+		}
+		serializing(StudentsFromFile);		//serializing students.ser
 	}
-					//edit student
+	
+	public void serializing(ArrayList<Student> StudentsFromFile) {			//serializing method
+		try {
+			FileOutputStream fileOut = new FileOutputStream("students.ser");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(StudentsFromFile);
+			out.close();
+			fileOut.close();
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+	}
+	
 }

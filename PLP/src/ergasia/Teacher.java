@@ -21,20 +21,24 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Teacher extends User{
 
 	private ArrayList<Student> Students =new ArrayList<Student>();
-	private Admin admin;			//лещел
+	private Admin admin;
+	private Language teachersLanguage;
+	private String Onomateponimo;
 	
-	public Teacher(String username, String password, ArrayList<Student> students) {
+	public Teacher(String Onomateponimo, String username, String password, ArrayList<Student> students, Language teachersLanguage) {
 		super(username, password);
 		Students=students;
+		this.teachersLanguage=teachersLanguage;
+		this.Onomateponimo=Onomateponimo;
 	}
 	
-	public void Create_Student(String user,String password, String level, String Onomateponimo){
-		Students=deserializing();												//deserializing
-		Student Stu = new Student(user,password,level,this);							//dimiourgia ma8iti
-		Students.add(Stu);														//apo8ikeusi sti lista
-		serializing();															//serializing
+	public void Create_Student(String user,String password, String level, String Onomateponimo, Level studentLevel){
+		Students=deserializing();								//deserializing
+		Student Stu = new Student(Onomateponimo,user,password,this, studentLevel);		//dimiourgia ma8iti
+		Students.add(Stu);										//apo8ikeusi sti lista
+		serializing();											//serializing
 		
-		String filename="Ma8itess.xls" ;										//apo8ikeusi se excel
+		String filename="Ma8itess.xls" ;						//apo8ikeusi se excel
 		try{
 			FileInputStream file = new FileInputStream(new File(filename));
 			HSSFWorkbook workbook = new HSSFWorkbook(file);
@@ -87,10 +91,8 @@ public class Teacher extends User{
 				}
 	        }
 			catch ( Exception ex ) {
-	            System.out.println(ex);
-
+	            System.out.println(ex);								//apo8ikeusi se excel
 	        }
-																//apo8ikeusi se excel
 	}
 	
 	public void serializing() {

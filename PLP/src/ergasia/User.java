@@ -19,8 +19,4 @@ public abstract class User {
 	public String getPassword() {
 		return Password;
 	}
-
-	//sirialazable
-	//desirialazable
-	
 }
