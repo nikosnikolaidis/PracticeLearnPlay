@@ -12,8 +12,10 @@ public Vocabulary(Language language, Level level){
 	super(language,level);
 	
 	
+	
 	}
 
+	
 
 	//dhmiourgia askhseologiou
 	//dhmiourgeitai ena plh8os diadoxikwn erwthsewn typou Vocabulary, stis opoies 8a e3etastei o student
@@ -39,14 +41,13 @@ public Vocabulary(Language language, Level level){
 			testList.add(listOfAllVocabularyQuestionsWithTheSameLevel.get(mynum));
 		}
 		
-		
+		this.currentTest=testList;
 		return testList;
 	}
 
 
-	@Override
 	public int answerEvaluation() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 

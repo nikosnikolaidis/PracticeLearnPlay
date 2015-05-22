@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public class Listening extends Exercise {
 	
-	//private ArrayList<AudioFile> audioFileListWithTheSameLevel;
+	private final int numberOfQuestionsToBeExamined = 30;
+	private ArrayList<ListeningQuestion> listeningQuestionsList;
+	
 	
 	public Listening(Language language, Level level) {
 		super(language,level);

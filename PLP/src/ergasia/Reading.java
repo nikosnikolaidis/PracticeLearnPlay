@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class Reading extends Exercise {
 
+	private final int numberOfQuestionsToBeExamined = 30;
+	private ArrayList<ReadingQuestion> readingQuestionsList;
+	
+	
 	public Reading(Language language, Level level) {
 		super(language,level);
 	}
