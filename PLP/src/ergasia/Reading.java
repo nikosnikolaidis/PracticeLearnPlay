@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Reading extends Exercise {
 
-	public Reading(Language language, String level) {
+	public Reading(Language language, Level level) {
 		super(language,level);
 	}
 	

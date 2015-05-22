@@ -8,7 +8,7 @@ public class Vocabulary extends Exercise{
 	private final int numberOfQuestionsToBeExamined = 30;
 	private ArrayList<Question> listOfAllVocabularyQuestionsWithTheSameLevel;
 	
-public Vocabulary(Language language, String level){
+public Vocabulary(Language language, Level level){
 	super(language,level);
 	
 	

@@ -6,7 +6,7 @@ public class Grammar extends Exercise {
 	
 	private ArrayList<Question> listOfAllGrammarQuestionsWithTheSameLevel;
 	
-	public Grammar(Language language, String level) {
+	public Grammar(Language language, Level level) {
 		super(language,level);
 	
 	

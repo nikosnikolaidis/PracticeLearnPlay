@@ -6,7 +6,7 @@ public class Listening extends Exercise {
 	
 	//private ArrayList<AudioFile> audioFileListWithTheSameLevel;
 	
-	public Listening(Language language, String level) {
+	public Listening(Language language, Level level) {
 		super(language,level);
 	}
 
