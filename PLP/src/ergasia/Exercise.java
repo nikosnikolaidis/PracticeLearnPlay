@@ -53,7 +53,7 @@ public abstract class Exercise {
 	//dhmiourgeitai ena plh8os diadoxikwn erwthsewn stis opoies 8a e3etastei o student
 	public abstract ArrayList<Question> createTest();
 	
-	public abstract int answerEvaluation();
+	
 }
 
 
