@@ -1,7 +1,32 @@
 package ergasia;
 
-public class Question {
+import java.util.ArrayList;
 
+public abstract class Question {
+
+	private Language language;
+	private Level level;
+
+	public Question(Language language, Level level){
+		this.language = language;
+		this.level = level;
+	}
 	
-	public abstract int answerEvaluation();
+	public Language getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
+	}
+
+	public Level getLevel() {
+		return level;
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
+	}	
+	
+	
 }
