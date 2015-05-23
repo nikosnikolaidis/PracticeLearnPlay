@@ -48,9 +48,6 @@ public Vocabulary(Language language, Level level){
 	}
 
 
-	public int answerEvaluation() {
-		
-		return 0;
-	}
+	
 
 }

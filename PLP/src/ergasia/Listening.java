@@ -23,9 +23,4 @@ public class Listening extends Exercise {
 }
 
 
-	@Override
-	public int answerEvaluation() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

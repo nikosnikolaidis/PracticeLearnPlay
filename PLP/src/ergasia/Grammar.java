@@ -44,9 +44,5 @@ public class Grammar extends Exercise {
 		return testList;
 	}
 
-	@Override
-	public int answerEvaluation() {
-		
-		return 0;
-	}
+	
 }
