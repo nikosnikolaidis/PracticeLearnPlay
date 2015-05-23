@@ -19,6 +19,8 @@ public Vocabulary(Language language, Level level){
 
 	//dhmiourgia askhseologiou
 	//dhmiourgeitai ena plh8os diadoxikwn erwthsewn typou Vocabulary, stis opoies 8a e3etastei o student
+	//enhmerwnetai h idiothta currentTest
+	//epistrefetai h lista me to askhseologiou
 	public ArrayList<Question> createTest() {
 		
 		ArrayList<Integer> numbersAlreadyChosen = new ArrayList<Integer>();
