@@ -27,13 +27,12 @@ public class Student extends User {
 		this.Onomateponimo=Onomateponimo;
 		this.studentLevel= studentLevel;
 	}
-//set levels kalei tis language get level
 
 	public String getOnomateponimo() {
 		return Onomateponimo;
 	}
 	
-	public ArrayList<Student> deserializing() {									//deserializing method
+	public ArrayList<Student> deserializing() {							//deserializing method
 		ArrayList<Student> students = teacher.getStudents();
 		try {
 			FileInputStream fileIn = new FileInputStream("students.ser");
@@ -53,7 +52,7 @@ public class Student extends User {
 	}
 	
 	public void log_In(String username, String password) {
-		ArrayList<Student> StudentsFromFile = deserializing();					//deserializing students.ser
+		ArrayList<Student> StudentsFromFile = deserializing();		//deserializing students.ser
 		for(Student st: StudentsFromFile) {
 			if(st.getUsername().equals(username) && st.getPassword().equals(password)){	//mporei na sinde8ei o Student
 				
@@ -110,8 +109,17 @@ public class Student extends User {
 		
 	}
 	
-	public void Change(){
-		
+	public void ChangeNamePassword(String newUName, String newPassword){	//Changes the UName/Pass
+		ArrayList<Student> StudentsFromFile = deserializing();		//deserializing students.ser
+		for(Student st: StudentsFromFile){
+			if(st.getUsername().equals(this.getUsername()) && st.getOnomateponimo().equals(this.getOnomateponimo())){
+				StudentsFromFile.remove(st);
+				st.setUsername(newUName);
+				st.setPassword(newPassword);
+				StudentsFromFile.add(st);
+			}
+		}
+		serializing(StudentsFromFile);		//serializing students.ser
 	}
 	
 	public void Delete(){

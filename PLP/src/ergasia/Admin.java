@@ -17,6 +17,7 @@ public class Admin extends User {
 	private String Admin_password="1234";
 	private String Admin_username="Admin";
 	private ArrayList<Teacher> Teachers=new ArrayList<Teacher>();
+	private ArrayList<Language> Languages=new ArrayList<Language>();
 	
 	public Admin(String username, String password, ArrayList<Teacher> teachers) {
 		super(username, password);
@@ -131,7 +132,8 @@ public class Admin extends User {
 	}
 
 	public void create_Language(String name, ArrayList<Level> levels){
-		new Language(name,null,levels);
+		Language L=new Language(name,null,levels);
+		Languages.add(L);
 		//serializing
 	}
 }

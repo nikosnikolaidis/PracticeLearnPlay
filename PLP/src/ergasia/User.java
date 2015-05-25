@@ -10,7 +10,7 @@ public abstract class User {
 		Password = password;
 	}
 	
-	public abstract void log_In(String username,String password);	//gia na kanei elegxo sto excel gia egkirotita
+	public abstract void log_In(String username,String password);	//gia na kanei elegxo gia egkirotita
 
 	public String getUsername() {
 		return Username;
@@ -18,5 +18,13 @@ public abstract class User {
 
 	public String getPassword() {
 		return Password;
+	}
+
+	public void setUsername(String username) {
+		Username = username;
+	}
+
+	public void setPassword(String password) {
+		Password = password;
 	}
 }
