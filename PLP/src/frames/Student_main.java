@@ -31,7 +31,7 @@ public class Student_main extends JFrame {
 		buttonGrade.addActionListener(listener);
 		
 		this.setVisible(true);
-		this.setSize(400,400);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setTitle("Event Example");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
