@@ -14,15 +14,17 @@ import javax.swing.JTextField;
 public class Sign_in extends JFrame{
 	private JLabel usernameLabel, passwordLabel;
 	private JTextField username, password;
-	private JButton buttonOk;
+	private JButton buttonOk, enxiridio;
 	
 	public Sign_in(){
+		
 		
 		passwordLabel=new JLabel("Password");
 		usernameLabel=new JLabel("Username");
 		username=new JTextField("                                    ");
 		password=new JTextField("                                    ");
 		buttonOk =new JButton("Log In");
+		enxiridio=new JButton("Help");
 		
 		JPanel panel=new JPanel();
 		
@@ -45,6 +47,7 @@ public class Sign_in extends JFrame{
 		panel.setLayout(flow);
 		panel.add(stpanel);
 		panel.add(buttonOk);
+		panel.add(enxiridio);
 		
 		
 		this.setContentPane(panel);
@@ -54,7 +57,7 @@ public class Sign_in extends JFrame{
 		
 		this.pack();
 		this.setVisible(true);
-		this.setSize(250,180);
+		this.setSize(300,220);
 		this.setTitle("PLP");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,7 +77,7 @@ class ButtonListener implements ActionListener {
 				
 				setVisible(false);
 				dispose();
-				new Student_main();
+				new Admin_main();
 			}
 		}
 	}

@@ -32,7 +32,7 @@ public class Student_main extends JFrame {
 		
 		this.setVisible(true);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setTitle("Event Example");
+		this.setTitle("PLP");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 class ButtonListener implements ActionListener {
@@ -42,11 +42,11 @@ class ButtonListener implements ActionListener {
 				setVisible(false);
 				dispose();
 			}else if(e.getSource()==buttonTest){
-				new Student_testChoose1();
+				
 			}else if(e.getSource()==buttonGame){
-				new Student_gameSelect();
+				
 			}else if(e.getSource()==buttonGrade){
-				new Student_grades();
+
 			}
 		}
 	}
