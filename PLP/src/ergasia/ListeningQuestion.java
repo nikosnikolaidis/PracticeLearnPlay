@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ListeningQuestion extends Question{
 	private String AudioFileName;
-	private ArrayList<MultipleChoice> questions;
+	private ArrayList<MultipleChoice> questions = new ArrayList<MultipleChoice>();
 	
 	public ListeningQuestion(Language language, Level level, String ReadingText, ArrayList<MultipleChoice> questions){
 		super(language, level);
