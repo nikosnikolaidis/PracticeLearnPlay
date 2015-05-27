@@ -112,9 +112,9 @@ public class Admin_main extends JFrame{
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image buttonExitImage = dbuttonExit.getScaledInstance(270, 200, Image.SCALE_SMOOTH);
+		Image buttonExitImage = dbuttonExit.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
 		buttonExit.setIcon(new javax.swing.ImageIcon(buttonExitImage));
-		buttonExit.setPreferredSize(new Dimension(150, 150));
+		buttonExit.setPreferredSize(new Dimension(190, 190));
 		
 		
 		
