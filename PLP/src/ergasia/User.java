@@ -10,7 +10,7 @@ public abstract class User {
 		Password = password;
 	}
 	
-	public abstract void log_In(String username,String password);	//gia na kanei elegxo gia egkirotita
+	public abstract boolean log_In(String username,String password);	//gia na kanei elegxo gia egkirotita
 
 	public String getUsername() {
 		return Username;

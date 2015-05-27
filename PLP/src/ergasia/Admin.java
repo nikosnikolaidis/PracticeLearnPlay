@@ -14,14 +14,18 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class Admin extends User {
-	private String Admin_password="1234";
-	private String Admin_username="Admin";
+	private String Admin_password="admin";
+	private String Admin_username="admin";
 	private ArrayList<Teacher> Teachers=new ArrayList<Teacher>();
 	private ArrayList<Language> Languages=new ArrayList<Language>();
 	
 	public Admin(String username, String password, ArrayList<Teacher> teachers) {
 		super(username, password);
 		Teachers=teachers;
+	}
+
+	public void setAdmin_password(String admin_password) {
+		Admin_password = admin_password;
 	}
 
 	public void Create_Teacher(String username, String password, String Onomateponimo, Language teacherLanguage){
@@ -125,10 +129,12 @@ public class Admin extends User {
 		return Teachers;
 	}
 
-	public void log_In(String username, String password) {
-		if(username==Admin_username && password==Admin_password){		//tote mporei na sinde8ei o Admin
-			
+	public boolean log_In(String username, String password) {
+		if(username==Admin_username && password==Admin_password){	//tote mporei na sinde8ei o Admin
+			return true;
 		}
+		else
+			return false;
 	}
 
 	public void create_Language(String name, ArrayList<Level> levels){
