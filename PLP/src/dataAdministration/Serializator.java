@@ -12,9 +12,55 @@ import ergasia.*;
 
 public class Serializator {
 
-	private DataHolder DH =new DataHolder();
+	private DataHolder DH;
 	
-	public ArrayList<Teacher> TeachersDeserializing(){						//Teachers Deserializing
+	public Serializator() {
+		DH =new DataHolder();
+		DH.setPasswordAdmin(this.AdminDeserializing());
+		DH.setLanguages(this.LanguageDeserializing());
+		DH.setLevels(this.LevelDeserializing());
+		DH.setTeachers(this.TeachersDeserializing());
+		DH.setStudents(this.StudentDeserializing());
+	}
+
+	public DataHolder getDataHolder() {		//arki mono ston constructor i arxikopiiseis :/
+		return DH;
+	}
+	
+	public void AdminSerializing(String password){			//Admin Pass Serializing
+		try {
+			DH.setPasswordAdmin(password);
+			FileOutputStream fileOut = new FileOutputStream("adminPassword.ser");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(password);
+			out.close();
+			fileOut.close();
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+	}
+	public String AdminDeserializing(){						//Admin Pass Deserializing
+		String emp=DH.getPasswordAdmin();
+		try {
+			FileInputStream fileIn = new FileInputStream("adminPassword.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (String) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+		catch(ClassNotFoundException c) {
+			c.printStackTrace();
+		}
+		finally {
+			return emp;
+		}
+	}
+	
+	public ArrayList<Teacher> TeachersDeserializing(){			//Teachers Deserializing
 		ArrayList<Teacher> emp=DH.getTeachers();
 		try {
 			FileInputStream fileIn = new FileInputStream("teachers.ser");
@@ -35,6 +81,7 @@ public class Serializator {
 	}
 	public void TeachersSerializing(ArrayList<Teacher> Teachers){			//Teachers Serializing
 		try {
+			DH.setTeachers(Teachers);
 			FileOutputStream fileOut = new FileOutputStream("teachers.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(Teachers);
@@ -65,8 +112,9 @@ public class Serializator {
 			return emp;
 		}
 	}
-	public void StudentSerializing(ArrayList<Teacher> Students) {				//Student Serializing
+	public void StudentSerializing(ArrayList<Student> Students) {				//Student Serializing
 		try {
+			DH.setStudents(Students);
 			FileOutputStream fileOut = new FileOutputStream("students.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(Students);
@@ -99,6 +147,7 @@ public class Serializator {
 	}
 	public void LanguageSerializing(ArrayList<Language> Languages) {			//Language Serializing
 		try {
+			DH.setLanguages(Languages);
 			FileOutputStream fileOut = new FileOutputStream("languages.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(Languages);
@@ -131,6 +180,7 @@ public class Serializator {
 	}
 	public void LevelSerializing(ArrayList<Level> Levels) {			//Level Serializing
 		try {
+			DH.setLevels(Levels);
 			FileOutputStream fileOut = new FileOutputStream("level.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(Levels);
@@ -163,6 +213,7 @@ public class Serializator {
 	}
 	public void GrammarQuestionsSerializing(HashMap<Question,Level> grammarQuestions) {	//grammarQuestions Serializing
 		try {
+			DH.getListOfAllGrammarQuestions();
 			FileOutputStream fileOut = new FileOutputStream("grammarQuestions.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(grammarQuestions);
@@ -195,6 +246,7 @@ public class Serializator {
 	}
 	public void VocabularyQuestionsSerializing(HashMap<Question,Level> VocabularyQuestions) {	//VocabularyQuestions Serializing
 		try {
+			DH.setListOfAllVocabularyQuestions(VocabularyQuestions);
 			FileOutputStream fileOut = new FileOutputStream("vocabularyQuestions.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(VocabularyQuestions);
@@ -227,6 +279,7 @@ public class Serializator {
 	}
 	public void ListeningQuestionsSerializing(HashMap<Question,Level> ListeningQuestions) {	//ListeningQuestions Serializing
 		try {
+			DH.setListOfAllListeningQuestions(ListeningQuestions);
 			FileOutputStream fileOut = new FileOutputStream("listeningQuestions.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(ListeningQuestions);
@@ -259,6 +312,7 @@ public class Serializator {
 	}
 	public void ReadingQuestionsSerializing(HashMap<Question,Level> ReadingQuestions) {	//ReadingQuestions Serializing
 		try {
+			DH.setListOfAllReadingQuestions(ReadingQuestions);
 			FileOutputStream fileOut = new FileOutputStream("readingQuestions.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(ReadingQuestions);

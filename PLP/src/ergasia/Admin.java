@@ -22,6 +22,7 @@ public class Admin extends User {
 	public Admin(String username, String password, ArrayList<Teacher> teachers) {
 		super(username, password);
 		Teachers=teachers;
+		Main.ser.AdminSerializing(Admin_password);		//Admin Serializing
 	}
 
 	public void setAdmin_password(String admin_password) {
@@ -29,10 +30,10 @@ public class Admin extends User {
 	}
 
 	public void Create_Teacher(String username, String password, String Onomateponimo, Language teacherLanguage){
-		Teachers=deserializing();									//deserializing
+		Teachers=Main.ser.getDataHolder().getTeachers();			//anaktisi teachers
 		Teacher Teach= new Teacher(Onomateponimo,username,password, null, teacherLanguage);		//dimiourgia ka8igiti
-		Teachers.add(Teach);										//apo8ikeusi sti lista
-		serializing();												//kai sirialazable
+		Teachers.add(Teach);								//apo8ikeusi sti lista
+		Main.ser.TeachersSerializing(Teachers);				//serialazation										
 
 		String filename="Kathigites.xls" ;							//apo8ikeusi se excel
 		try{
@@ -90,47 +91,14 @@ public class Admin extends User {
 	            System.out.println(ex);
 	        }													//apo8ikeusi se excel
 	}
-	
-	public void serializing() {
-		try {
-			FileOutputStream fileOut = new FileOutputStream("teachers.ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(Teachers);
-			out.close();
-			fileOut.close();
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-	}
-	
-	public ArrayList<Teacher> deserializing() {
-		ArrayList<Teacher> emp=Teachers;
-		try {
-			FileInputStream fileIn = new FileInputStream("teachers.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (ArrayList<Teacher>) in.readObject();
-			in.close();
-			fileIn.close();
-			//return employees;
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-		catch(ClassNotFoundException c) {
-			c.printStackTrace();
-		}
-		finally {
-			return emp;
-		}
-	}
 
 	public ArrayList<Teacher> getTeachers() {
 		return Teachers;
 	}
 
 	public boolean log_In(String username, String password) {
-		if(username==Admin_username && password==Admin_password){	//tote mporei na sinde8ei o Admin
+		String passDH=Main.ser.getDataHolder().getPasswordAdmin();	//Pernei ta dedomena apo Data Holder
+		if(username==Admin_username && password==passDH){	//tote mporei na sinde8ei o Admin
 			return true;
 		}
 		else
@@ -140,6 +108,6 @@ public class Admin extends User {
 	public void create_Language(String name, ArrayList<Level> levels){
 		Language L=new Language(name,null,levels);
 		Languages.add(L);
-		//serializing
+		Main.ser.LanguageSerializing(Languages);
 	}
 }

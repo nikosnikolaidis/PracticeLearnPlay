@@ -32,85 +32,18 @@ public class Student extends User {
 		return Onomateponimo;
 	}
 	
-	public ArrayList<Student> deserializing() {							//deserializing method
-		ArrayList<Student> students = teacher.getStudents();
-		try {
-			FileInputStream fileIn = new FileInputStream("students.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			students = (ArrayList<Student>) in.readObject();
-			in.close();
-			fileIn.close();
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-		catch(ClassNotFoundException c) {
-			c.printStackTrace();
-		}finally {
-			return students;
-		}
-	}
-	
-	public void log_In(String username, String password) {
-		ArrayList<Student> StudentsFromFile = deserializing();		//deserializing students.ser
+	public boolean log_In(String username, String password) {
+		ArrayList<Student> StudentsFromFile = Main.ser.getDataHolder().getStudents();	//anaktis students
 		for(Student st: StudentsFromFile) {
 			if(st.getUsername().equals(username) && st.getPassword().equals(password)){	//mporei na sinde8ei o Student
-				
+				return true;
 			}
 		}
-		
-		/*int found_Username=0; 		//arxikopiisi flag=0 -> den vre8ike
-		int found_Pass=0;
-		int correct_Row =0;
-		try	
-        {																//psaxnei sto excel gia na vrei ton ma8iti
-            FileInputStream file = new FileInputStream(new File("Ma8ites.xlsx"));
-            XSSFWorkbook workbook = new XSSFWorkbook(file);
-            //Get first/desired sheet from the workbook
-            XSSFSheet sheet = workbook.getSheetAt(0);
-            //Iterate through each rows one by one
-            Iterator<Row> rowIterator = sheet.iterator();
-            while (rowIterator.hasNext())
-            {
-                Row row = rowIterator.next();
-                //For each row, iterate through all the columns
-                Iterator<Cell> cellIterator = row.cellIterator();
-                while (cellIterator.hasNext())
-                {
-                    Cell cell = cellIterator.next();
-                    //Check the cell type and format accordingly
-                    switch (cell.getCellType())
-                    {
-                        case Cell.CELL_TYPE_NUMERIC:
-                        		//int i = (int)cell.getNumericCellValue();
-                            break;
-                        case Cell.CELL_TYPE_STRING:
-                        	if(row.getRowNum() !=0){
-                        		if(cell.getColumnIndex()==1){
-                        			if(cell.getStringCellValue()==username){
-                        				found_Username=1;
-                        				correct_Row=row.getRowNum();
-                        			}
-                        		}if(cell.getColumnIndex()==2 && correct_Row!=0){
-                        			found_Pass=1;
-                        		}
-                        	}
-                            break;
-                    }
-                }
-                System.out.println("");
-            }
-            file.close();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }*/
-		
-		
+		return false;
 	}
 	
 	public void ChangeNamePassword(String newUName, String newPassword){	//Changes the UName/Pass
-		ArrayList<Student> StudentsFromFile = deserializing();		//deserializing students.ser
+		ArrayList<Student> StudentsFromFile = Main.ser.getDataHolder().getStudents();	//anaktisi students
 		for(Student st: StudentsFromFile){
 			if(st.getUsername().equals(this.getUsername()) && st.getOnomateponimo().equals(this.getOnomateponimo())){
 				StudentsFromFile.remove(st);
@@ -119,30 +52,17 @@ public class Student extends User {
 				StudentsFromFile.add(st);
 			}
 		}
-		serializing(StudentsFromFile);		//serializing students.ser
+		Main.ser.StudentSerializing(StudentsFromFile);	//serializing students
 	}
 	
 	public void Delete(){
-		ArrayList<Student> StudentsFromFile = deserializing();		//deserializing students.ser
+		ArrayList<Student> StudentsFromFile = Main.ser.getDataHolder().getStudents();	//anaktisi students
 		for(Student st: StudentsFromFile){
 			if(st.getUsername().equals(this.getUsername()) && st.getOnomateponimo().equals(this.getOnomateponimo())){
 				StudentsFromFile.remove(st);
 			}
 		}
-		serializing(StudentsFromFile);		//serializing students.ser
-	}
-	
-	public void serializing(ArrayList<Student> StudentsFromFile) {			//serializing method
-		try {
-			FileOutputStream fileOut = new FileOutputStream("students.ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(StudentsFromFile);
-			out.close();
-			fileOut.close();
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
+		Main.ser.StudentSerializing(StudentsFromFile);		//serializing students
 	}
 	
 }

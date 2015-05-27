@@ -39,10 +39,10 @@ public class Teacher extends User{
 	}
 	
 	public void Create_Student(String Onomateponimo, String user,String password, Level studentLevel){
-		Students=deserializing();								//deserializing
+		Students=Main.ser.getDataHolder().getStudents();		//anaktisi Students
 		Student Stu = new Student(Onomateponimo,user,password,this, studentLevel);		//dimiourgia ma8iti
 		Students.add(Stu);										//apo8ikeusi sti lista
-		serializing();											//serializing
+		Main.ser.StudentSerializing(Students);					//serializing
 		
 		String filename="Ma8itess.xls" ;						//apo8ikeusi se excel
 		try{
@@ -101,71 +101,17 @@ public class Teacher extends User{
 	        }
 	}
 	
-	public void serializing() {
-		try {
-			FileOutputStream fileOut = new FileOutputStream("students.ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(Students);
-			out.close();
-			fileOut.close();
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-	}
-	
-	public ArrayList<Student> deserializing() {
-		ArrayList<Student> emp=Students;
-		try {
-			FileInputStream fileIn = new FileInputStream("students.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (ArrayList<Student>) in.readObject();
-			in.close();
-			fileIn.close();
-			//return employees;
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-		catch(ClassNotFoundException c) {
-			c.printStackTrace();
-		}
-		finally {
-			return emp;
-		}
-	}
-	
-	public ArrayList<Teacher> deserializing_LogIn() {
-		ArrayList<Teacher> emp=admin.getTeachers();
-		try {
-			FileInputStream fileIn = new FileInputStream("teachers.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (ArrayList<Teacher>) in.readObject();
-			in.close();
-			fileIn.close();
-			//return employees;
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-		catch(ClassNotFoundException c) {
-			c.printStackTrace();
-		}
-		finally {
-			return emp;
-		}
-	}
-	
 	public ArrayList<Student> getStudents() {
 		return Students;
 	}
 
-	public void log_In(String username, String password) {
-		ArrayList<Teacher> TeacherFromFile = deserializing_LogIn();			//deserializing teachers.ser
+	public boolean log_In(String username, String password) {
+		ArrayList<Teacher> TeacherFromFile =Main.ser.getDataHolder().getTeachers();	//anaktisi teachers		
 		for(Teacher teach: TeacherFromFile) {
 			if(teach.getUsername().equals(username) && teach.getPassword().equals(password)){//mporei na sinde8ei o Teacher
-				
+				return true;
 			}
 		}
+		return false;
 	}
 }

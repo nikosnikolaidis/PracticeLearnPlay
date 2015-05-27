@@ -8,6 +8,7 @@ public class DataHolder {
 
 	private Language languageNow;	//i glosa pou uparxei gia auti tin isodo
 	
+	private String PasswordAdmin;	//o kodikos tou Admin
 	private ArrayList<Language> Languages;	//lista me oles tis gloses
 	private ArrayList<Level> Levels;		//lista me ola ta levels
 	private ArrayList<Teacher> Teachers;	//lista me olous tous ka8igites
@@ -18,6 +19,12 @@ public class DataHolder {
 	private HashMap<Question,Level> listOfAllListeningQuestions;	//ola ta Listening Questions
 	private HashMap<Question,Level> listOfAllReadingQuestions;		//ola ta Reading Questions
 	
+	public String getPasswordAdmin() {
+		return PasswordAdmin;
+	}
+	public void setPasswordAdmin(String passwordAdmin) {
+		PasswordAdmin = passwordAdmin;
+	}
 	public Language getLanguageNow() {
 		return languageNow;
 	}
