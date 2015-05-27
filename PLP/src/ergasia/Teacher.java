@@ -18,6 +18,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import dataAdministration.DataHolder;
+
 public class Teacher extends User{
 
 	private ArrayList<Student> Students =new ArrayList<Student>();
@@ -30,6 +32,10 @@ public class Teacher extends User{
 		Students=students;
 		this.teachersLanguage=teachersLanguage;
 		this.Onomateponimo=Onomateponimo;
+	}
+	
+	public void Create_Exercise(Question newQuestion, DataHolder aDataHolder){
+		//Dataholder getClass kai meta taktopoihsh
 	}
 	
 	public void Create_Student(String Onomateponimo, String user,String password, Level studentLevel){
