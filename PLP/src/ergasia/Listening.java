@@ -14,8 +14,8 @@ public class Listening extends Exercise {
 	}
 
 
-	//dhmiourgia askhseologiou
-	//dhmiourgeitai ena plh8os diadoxikwn erwthsewn typou Listening, stis opoies 8a eksetastei o student
+	
+	//epistrefetai mia ArrayList<Question> pou periexei monon ena stoixeio. Afto einai ena (tyxaia epilegmeno) antikeimeno ListeningQuestion.
 	public ArrayList<Question> createTest() {
 		
 		Random rnd = new Random();//ena antikeimeno typou Random pou 8a mas voh8hsei na eksagoume enan tyxaio ari8mo apo afto

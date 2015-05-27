@@ -17,7 +17,7 @@ public class Grammar extends Exercise {
 	//dhmiourgia askhseologiou
 	//dhmiourgeitai ena plh8os diadoxikwn erwthsewn typou Grammar, stis opoies 8a e3etastei o student
 	//enhmerwnetai h idiothta currentTest
-		//epistrefetai h lista me to askhseologiou
+	//epistrefetai h lista me to askhseologio
 	public ArrayList<Question> createTest() {
 		
 		ArrayList<Integer> numbersAlreadyChosen = new ArrayList<Integer>();
@@ -44,5 +44,9 @@ public class Grammar extends Exercise {
 		return testList;
 	}
 
+	public void addQuestion(Question newQuestion){
+		
+		listOfAllGrammarQuestionsWithTheSameLevel.add(newQuestion);
+	}
 	
 }
