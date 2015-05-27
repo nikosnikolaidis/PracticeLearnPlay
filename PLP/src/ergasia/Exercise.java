@@ -6,8 +6,8 @@ public abstract class Exercise {
 	
 	protected Language language;//h glwssa sthn opoia einai h askhsh, px english, french etc
 	protected Level level;//the level of the examination given by the teacher
-	protected ArrayList<Question> currentTest;
-	protected ArrayList<Integer> correctAnswer;
+	protected ArrayList<Question> currentTest = new ArrayList<Question>();
+	protected ArrayList<Integer> correctAnswer = new ArrayList<Integer>();
 	
 	//constructor
 	public Exercise(Language language, Level level){

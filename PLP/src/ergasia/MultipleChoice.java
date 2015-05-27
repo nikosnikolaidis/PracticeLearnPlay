@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class MultipleChoice extends Question{
 	private String ekfwnisi;
-	private ArrayList<String> choices;
+	private ArrayList<String> choices = new ArrayList<String>();
 	private int correctAnswer;
 	
 	public MultipleChoice(Language language, Level level,String ekfwnisi, ArrayList<String> choices, int correctAnswer){

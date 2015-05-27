@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ReadingQuestion extends Question{
 	private String ReadingText;
-	private ArrayList<MultipleChoice> questions;
+	private ArrayList<MultipleChoice> questions = new ArrayList<MultipleChoice>();
 	
 	public ReadingQuestion(Language language, Level level, String ReadingText, ArrayList<MultipleChoice> questions){
 		super(language, level);

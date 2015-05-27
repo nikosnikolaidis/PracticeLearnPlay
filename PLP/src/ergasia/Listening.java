@@ -1,11 +1,12 @@
 package ergasia;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Listening extends Exercise {
 	
-	private final int numberOfQuestionsToBeExamined = 30;
-	private ArrayList<ListeningQuestion> listeningQuestionsList;
+
+	private ArrayList<ListeningQuestion> listeningQuestionsList = new ArrayList<ListeningQuestion>();
 	
 	
 	public Listening(Language language, Level level) {
@@ -14,13 +15,28 @@ public class Listening extends Exercise {
 
 
 	//dhmiourgia askhseologiou
-	//dhmiourgeitai ena plh8os diadoxikwn erwthsewn typou Listening, stis opoies 8a e3etastei o student
+	//dhmiourgeitai ena plh8os diadoxikwn erwthsewn typou Listening, stis opoies 8a eksetastei o student
 	public ArrayList<Question> createTest() {
-		ArrayList<Question> testList = new ArrayList<Question>();
 		
-		return testList;
-	
+		Random rnd = new Random();//ena antikeimeno typou Random pou 8a mas voh8hsei na eksagoume enan tyxaio ari8mo apo afto
+		
+		int mynum = 0;
+		
+		//8a epilegetai enas tyxaios ari8mos me evros apo 0 mexri x, opou x einai to plh8os twn diaforetikwn audio files ths kathgorias Listening me to sygkekrimeno lvl kai glwssa
+		mynum = rnd.nextInt(listeningQuestionsList.size());
+
+		
+		ArrayList<Question> temp = new ArrayList<>();
+		temp.add(listeningQuestionsList.get(mynum));
+		
+		return temp;
 }
+	
+	public void addAListeningQuestion(ListeningQuestion newListeningQuestion){
+		
+		listeningQuestionsList.add(newListeningQuestion);
+		
+	}
 
 
 }
