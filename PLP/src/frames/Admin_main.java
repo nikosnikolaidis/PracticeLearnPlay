@@ -47,7 +47,7 @@ public class Admin_main extends JFrame{
 		JLabel createTeacherLabel=new JLabel();
 		BufferedImage dcreateTeacherLabel = null;
 		try {
-			dcreateTeacherLabel = ImageIO.read(new File("createteacherlabel.png"));
+			dcreateTeacherLabel = ImageIO.read(new File("createteacherlabel.jpg"));
 		} 
 		catch (IOException e1) {
 			e1.printStackTrace();
@@ -63,9 +63,9 @@ public class Admin_main extends JFrame{
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image createTeacherButtonImage = dcreateTeacherButton.getScaledInstance(250, 200, Image.SCALE_SMOOTH);
+		Image createTeacherButtonImage = dcreateTeacherButton.getScaledInstance(200, 155, Image.SCALE_SMOOTH);
 		buttonCreateTeacher.setIcon(new javax.swing.ImageIcon(createTeacherButtonImage));
-		buttonCreateTeacher.setPreferredSize(new Dimension(200, 150));
+		buttonCreateTeacher.setPreferredSize(new Dimension(190, 150));
 	    
 		createTeacherPanel.add(createTeacherLabel);
 		createTeacherPanel.add(buttonCreateTeacher);
@@ -79,12 +79,12 @@ public class Admin_main extends JFrame{
 		JLabel createLessonLabel=new JLabel();
 		BufferedImage dcreateLessonLabel = null;
 		try {
-			dcreateLessonLabel = ImageIO.read(new File("createlessonlabel.png"));
+			dcreateLessonLabel = ImageIO.read(new File("createlessonlabel.jpg"));
 		} 
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image createLessonLabelImage = dcreateLessonLabel.getScaledInstance(400, 150, Image.SCALE_SMOOTH);
+		Image createLessonLabelImage = dcreateLessonLabel.getScaledInstance(400, 190, Image.SCALE_SMOOTH);
 		createLessonLabel.setIcon(new javax.swing.ImageIcon(createLessonLabelImage));
 		
 		buttonCreateLesson = new JButton();
@@ -95,9 +95,9 @@ public class Admin_main extends JFrame{
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image createLessonButtonImage = dcreateLessonButton.getScaledInstance(270, 200, Image.SCALE_SMOOTH);
+		Image createLessonButtonImage = dcreateLessonButton.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
 		buttonCreateLesson.setIcon(new javax.swing.ImageIcon(createLessonButtonImage));
-		buttonCreateLesson.setPreferredSize(new Dimension(250, 150));
+		buttonCreateLesson.setPreferredSize(new Dimension(190, 190));
 	    
 		createLessonPanel.add(createLessonLabel);
 		createLessonPanel.add(buttonCreateLesson);
@@ -114,7 +114,7 @@ public class Admin_main extends JFrame{
 		}
 		Image buttonExitImage = dbuttonExit.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
 		buttonExit.setIcon(new javax.swing.ImageIcon(buttonExitImage));
-		buttonExit.setPreferredSize(new Dimension(190, 190));
+		buttonExit.setPreferredSize(new Dimension(170, 170));
 		
 		
 		
