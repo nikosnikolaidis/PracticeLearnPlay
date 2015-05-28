@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ergasia.Main;
+
 public class Sign_in extends JFrame{
 	private JLabel usernameLabel, passwordLabel;
 	private JTextField username, password;
@@ -78,10 +80,14 @@ class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonOk){						
+				String name=(String) username.getText();
+				String pass=(String) password.getText();
 				
+				if(name.equals("Admin") && pass.equals(Main.ser.getDataHolder().getPasswordAdmin())){
 				setVisible(false);
 				dispose();
 				new Admin_main();
+				}
 			}
 			if(e.getSource()==enxiridio){				
 				try {
