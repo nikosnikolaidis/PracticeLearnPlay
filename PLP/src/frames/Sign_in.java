@@ -1,9 +1,11 @@
 package frames;
 
+import java.awt.Desktop;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -82,7 +84,13 @@ class ButtonListener implements ActionListener {
 				new Admin_main();
 			}
 			if(e.getSource()==enxiridio){				
-				
+				try {
+				     if (Desktop.isDesktopSupported()) {
+				       Desktop.getDesktop().open(new File("Enxiridio.docx"));
+				     }
+				   } catch (IOException ioe) {
+				     ioe.printStackTrace();
+				  }
 			}
 		}
 	}
