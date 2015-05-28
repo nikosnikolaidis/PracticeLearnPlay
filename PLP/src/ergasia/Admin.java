@@ -14,8 +14,8 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class Admin extends User {
-	private String Admin_password="admin";
-	private String Admin_username="admin";
+	private String Admin_password="Admin";
+	private String Admin_username="Admin";
 	private ArrayList<Teacher> Teachers=new ArrayList<Teacher>();
 	private ArrayList<Language> Languages=new ArrayList<Language>();
 	

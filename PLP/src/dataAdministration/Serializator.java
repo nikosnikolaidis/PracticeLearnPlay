@@ -16,6 +16,7 @@ public class Serializator {
 	
 	public Serializator() {
 		DH =new DataHolder();
+		
 		DH.setPasswordAdmin(this.AdminDeserializing());
 		DH.setLanguages(this.LanguageDeserializing());
 		DH.setTeachers(this.TeachersDeserializing());
@@ -53,14 +54,29 @@ public class Serializator {
 			fileIn.close();
 		}
 		catch(IOException i) {
+		
+			AdminSerializing("Admin");
+		}
+		catch(ClassNotFoundException c) {
+			AdminSerializing("Admin");
+		}
+		try {
+			FileInputStream fileIn = new FileInputStream("adminPassword.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (String) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
 			i.printStackTrace();
 		}
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
-		finally {
+		
 			return emp;
-		}
+		
+		
 	}
 	
 	public ArrayList<Teacher> TeachersDeserializing(){			//Teachers Deserializing
@@ -73,14 +89,30 @@ public class Serializator {
 			fileIn.close();
 		}
 		catch(IOException i) {
+			
+			TeachersSerializing(emp);
+			
+		}
+		catch(ClassNotFoundException c) {
+			TeachersSerializing(emp);
+		}
+		try {
+			FileInputStream fileIn = new FileInputStream("teachers.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (ArrayList<Teacher>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
 			i.printStackTrace();
+			
+			
 		}
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
-		finally {
 			return emp;
-		}
+		
 	}
 	public void TeachersSerializing(ArrayList<Teacher> Teachers){			//Teachers Serializing
 		try {
@@ -106,14 +138,27 @@ public class Serializator {
 			fileIn.close();
 		}
 		catch(IOException i) {
+			StudentSerializing(emp);
+		}
+		catch(ClassNotFoundException c) {
+			StudentSerializing(emp);
+		}
+		try {
+			FileInputStream fileIn = new FileInputStream("students.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (ArrayList<Student>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
 			i.printStackTrace();
 		}
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
-		finally {
+		
 			return emp;
-		}
+		
 	}
 	public void StudentSerializing(ArrayList<Student> Students) {				//Student Serializing
 		try {
@@ -139,14 +184,27 @@ public class Serializator {
 			fileIn.close();
 		}
 		catch(IOException i) {
+			LanguageSerializing(emp);
+		}
+		catch(ClassNotFoundException c) {
+			LanguageSerializing(emp);
+		}
+		try {
+			FileInputStream fileIn = new FileInputStream("languages.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (ArrayList<Language>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
 			i.printStackTrace();
 		}
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
-		finally {
+		
 			return emp;
-		}
+		
 	}
 	public void LanguageSerializing(ArrayList<Language> Languages) {			//Language Serializing
 		try {
@@ -172,14 +230,27 @@ public class Serializator {
 			fileIn.close();
 		}
 		catch(IOException i) {
+			GrammarQuestionsSerializing(emp);
+		}
+		catch(ClassNotFoundException c) {
+			GrammarQuestionsSerializing(emp);
+		}
+		try {
+			FileInputStream fileIn = new FileInputStream("grammarQuestions.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (HashMap<Question,Level>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
 			i.printStackTrace();
 		}
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
-		finally {
+		
 			return emp;
-		}
+		
 	}
 	public void GrammarQuestionsSerializing(HashMap<Question,Level> grammarQuestions) {	//grammarQuestions Serializing
 		try {
@@ -205,14 +276,27 @@ public class Serializator {
 			fileIn.close();
 		}
 		catch(IOException i) {
+			VocabularyQuestionsSerializing(emp);
+		}
+		catch(ClassNotFoundException c) {
+			VocabularyQuestionsSerializing(emp);
+		}
+		try {
+			FileInputStream fileIn = new FileInputStream("vocabularyQuestions.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (HashMap<Question,Level>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
 			i.printStackTrace();
 		}
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
-		finally {
+		
 			return emp;
-		}
+		
 	}
 	public void VocabularyQuestionsSerializing(HashMap<Question,Level> VocabularyQuestions) {	//VocabularyQuestions Serializing
 		try {
@@ -238,14 +322,27 @@ public class Serializator {
 			fileIn.close();
 		}
 		catch(IOException i) {
+			ListeningQuestionsSerializing(emp);
+		}
+		catch(ClassNotFoundException c) {
+			ListeningQuestionsSerializing(emp);
+		}
+		try {
+			FileInputStream fileIn = new FileInputStream("listeningQuestions.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (HashMap<Question,Level>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
 			i.printStackTrace();
 		}
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
-		finally {
+		
 			return emp;
-		}
+		
 	}
 	public void ListeningQuestionsSerializing(HashMap<Question,Level> ListeningQuestions) {	//ListeningQuestions Serializing
 		try {
@@ -271,14 +368,26 @@ public class Serializator {
 			fileIn.close();
 		}
 		catch(IOException i) {
+			ReadingQuestionsSerializing(emp);
+		}
+		catch(ClassNotFoundException c) {
+			ReadingQuestionsSerializing(emp);
+		}
+		try {
+			FileInputStream fileIn = new FileInputStream("readingQuestions.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (HashMap<Question,Level>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
 			i.printStackTrace();
 		}
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
-		finally {
 			return emp;
-		}
+		
 	}
 	public void ReadingQuestionsSerializing(HashMap<Question,Level> ReadingQuestions) {	//ReadingQuestions Serializing
 		try {
