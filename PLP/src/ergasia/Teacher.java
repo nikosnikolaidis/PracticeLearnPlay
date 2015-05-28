@@ -28,9 +28,8 @@ public class Teacher extends User implements Serializable{
 	private Language teachersLanguage;
 	private String Onomateponimo;
 	
-	public Teacher(String Onomateponimo, String username, String password, ArrayList<Student> students, Language teachersLanguage) {
+	public Teacher(String Onomateponimo, String username, String password, Language teachersLanguage) {
 		super(username, password);
-		Students=students;
 		this.teachersLanguage=teachersLanguage;
 		this.Onomateponimo=Onomateponimo;
 	}

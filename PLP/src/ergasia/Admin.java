@@ -30,7 +30,7 @@ public class Admin extends User {
 
 	public void Create_Teacher(String username, String password, String Onomateponimo, Language teacherLanguage){
 		Teachers=Main.ser.getDataHolder().getTeachers();			//anaktisi teachers
-		Teacher Teach= new Teacher(Onomateponimo,username,password, null, teacherLanguage);		//dimiourgia ka8igiti
+		Teacher Teach= new Teacher(Onomateponimo,username,password, teacherLanguage);		//dimiourgia ka8igiti
 		Teachers.add(Teach);								//apo8ikeusi sti lista
 		Main.ser.TeachersSerializing(Teachers);				//serialazation										
 
