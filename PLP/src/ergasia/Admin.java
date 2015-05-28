@@ -104,8 +104,8 @@ public class Admin extends User {
 			return false;
 	}
 
-	public void create_Language(String name, ArrayList<Level> levels){
-		Language L=new Language(name,null,levels);
+	public void create_Language(String name, File file, ArrayList<Level> levels){
+		Language L=new Language(name,file,levels);
 		Languages.add(L);
 		Main.ser.LanguageSerializing(Languages);
 	}

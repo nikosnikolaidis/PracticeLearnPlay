@@ -14,18 +14,21 @@ public class Language {
 	private String Name;
 	private ArrayList<String> Dictionary = new ArrayList<String>();
 	private ArrayList<Level> Levels = new ArrayList<Level>();
+	private File fileOfDictionary;
 	
-	public Language(String name, ArrayList<String> dictionary, ArrayList<Level> levels) {
+	public Language(String name, File fileofDictionary, ArrayList<Level> levels) {
 		super();
 		Name = name;
-		Dictionary = dictionary;
+		fileOfDictionary = fileofDictionary;
 		Levels = levels;
+		
+		this.Create_Dictionary(fileofDictionary);
 	}
 	
 	public String getName() {
 		return Name;
 	}
-	
+
 	public ArrayList<String> getDictionary() {
 		return Dictionary;
 	}
@@ -57,6 +60,7 @@ public class Language {
 		}catch (FileNotFoundException e) {
 			System.out.println("File not found !");
 		}s.close();
-		//anathesi kai siriophhsh
+		
+		this.Dictionary.addAll(le3eis);
 	}
 }
