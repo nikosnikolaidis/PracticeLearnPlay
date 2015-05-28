@@ -647,7 +647,6 @@ class ButtonListener implements ActionListener {
 			public void actionPerformed(ActionEvent e){
 				if(e.getSource()==yesbutton){
 					Main.ser.LanguageSerializing(null);
-					Main.ser.LevelSerializing(null);
 					Main.ser.ListeningQuestionsSerializing(null);
 					Main.ser.ReadingQuestionsSerializing(null);
 					Main.ser.StudentSerializing(null);
