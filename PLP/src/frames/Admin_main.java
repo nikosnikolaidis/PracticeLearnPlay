@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -352,7 +353,9 @@ class ButtonListener implements ActionListener {
 	
 		class saveButtonListener implements ActionListener {
 			private JFileChooser fc = new JFileChooser();
+			private int lvls;
 			private File file;
+			private JTextField lvltext1 = new JTextField(), lvltext2= new JTextField(), lvltext3= new JTextField(), lvltext4= new JTextField(), lvltext5= new JTextField(), lvltext6= new JTextField(), lvltext7= new JTextField(), lvltext8= new JTextField(), lvltext9= new JTextField(), lvltext10= new JTextField();
 			private String name;
 			private JButton saveframes= new JButton("Save");
 			public void actionPerformed(ActionEvent e) {
@@ -361,15 +364,25 @@ class ButtonListener implements ActionListener {
 				}
 				if(e.getSource()==savebutton2){
 					String lvlnum=(String) lvltext.getText();
-				    int lvls=Integer.valueOf(lvlnum);
+					lvls=Integer.valueOf(lvlnum);
+					
+				    if(lvls>10) lvls=10;
 				    name=(String) nametext.getText();
 				    
 					JFrame lvlframe=new JFrame();
 					lvlframe.setLayout(new GridLayout(lvls+2, 0,0,0));
 					lvlframe.add(new JLabel("Εισαγωγη ονομάτων επιπέδων"));
-					for(int i=1; i<=lvls; i++){
-						lvlframe.add(new JTextField(""));
-					}
+					if(lvls==1){lvlframe.add(lvltext1); }
+					if(lvls==2){lvlframe.add(lvltext1);lvlframe.add(lvltext2); }
+					if(lvls==3){lvlframe.add(lvltext1);lvlframe.add(lvltext2);lvlframe.add(lvltext3); }
+					if(lvls==4){lvlframe.add(lvltext1);lvlframe.add(lvltext2);lvlframe.add(lvltext3);lvlframe.add(lvltext4); }
+					if(lvls==5){lvlframe.add(lvltext1);lvlframe.add(lvltext2);lvlframe.add(lvltext3);lvlframe.add(lvltext4);lvlframe.add(lvltext5); }
+					if(lvls==6){lvlframe.add(lvltext1);lvlframe.add(lvltext2);lvlframe.add(lvltext3);lvlframe.add(lvltext4);lvlframe.add(lvltext5);lvlframe.add(lvltext6); }
+					if(lvls==7){lvlframe.add(lvltext1);lvlframe.add(lvltext2);lvlframe.add(lvltext3);lvlframe.add(lvltext4);lvlframe.add(lvltext5);lvlframe.add(lvltext6);lvlframe.add(lvltext7); }
+					if(lvls==8){lvlframe.add(lvltext1);lvlframe.add(lvltext2);lvlframe.add(lvltext3);lvlframe.add(lvltext4);lvlframe.add(lvltext5);lvlframe.add(lvltext6);lvlframe.add(lvltext7);lvlframe.add(lvltext8); }
+					if(lvls==9){lvlframe.add(lvltext1);lvlframe.add(lvltext2);lvlframe.add(lvltext3);lvlframe.add(lvltext4);lvlframe.add(lvltext5);lvlframe.add(lvltext6);lvlframe.add(lvltext7);lvlframe.add(lvltext8);lvlframe.add(lvltext9); }
+					if(lvls==10){lvlframe.add(lvltext1);lvlframe.add(lvltext2);lvlframe.add(lvltext3);lvlframe.add(lvltext4);lvlframe.add(lvltext5);lvlframe.add(lvltext6);lvlframe.add(lvltext7);lvlframe.add(lvltext8);lvlframe.add(lvltext9);lvlframe.add(lvltext10);}
+					
 					lvlframe.add(saveframes);
 					lvlframe.setVisible(true);
 					lvlListener listener=new lvlListener();
@@ -620,7 +633,8 @@ class ButtonListener implements ActionListener {
 			class lvlListener implements ActionListener {
 				public void actionPerformed(ActionEvent e){
 					if(e.getSource()==saveframes){
-						Main.admin.create_Language(name, levels);
+						
+						
 						
 					}
 				}
