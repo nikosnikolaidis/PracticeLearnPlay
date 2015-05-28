@@ -7,14 +7,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import ergasia.Main;
+import ergasia.User;
 
 public class Sign_in extends JFrame{
 	private JLabel usernameLabel, passwordLabel;
@@ -77,6 +80,7 @@ public class Sign_in extends JFrame{
 
 
 class ButtonListener implements ActionListener {
+		private int i=0;
 		
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonOk){						
@@ -88,6 +92,44 @@ class ButtonListener implements ActionListener {
 				dispose();
 				new Admin_main();
 				}
+				else{
+					boolean found=false;
+					if(Main.ser.getDataHolder().getTeachers()!=null){
+						ArrayList<User> temp=new ArrayList(Main.ser.getDataHolder().getTeachers());
+					
+					for(User user: temp){
+						if(user.log_In(name, pass)){
+							found= true;
+							dispose();
+							new Teacher_main();
+						}
+					}
+					}
+					if(found=false){
+						if(Main.ser.getDataHolder().getStudents()!=null){
+							ArrayList<User> temp2=new ArrayList(Main.ser.getDataHolder().getStudents());
+						
+						for(User user: temp2){
+							if(user.log_In(name, pass)){
+								found= true;
+								dispose();
+								new Student_main();
+							}
+						}
+					}
+					}
+					if(found==false){
+						i++;
+						if(i==1){
+						JFrame frame = (JFrame) SwingUtilities.getRoot(getContentPane());
+						frame.setSize(300,270);
+						frame.add(new JLabel("Λάθος στοιχεία, προσπαθήστε ξανά"));
+						frame.paintAll(getGraphics());
+						}
+					}
+					
+				}
+				
 			}
 			if(e.getSource()==enxiridio){				
 				try {

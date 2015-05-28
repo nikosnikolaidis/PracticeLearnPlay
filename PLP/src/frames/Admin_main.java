@@ -8,12 +8,8 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -24,15 +20,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
-import ergasia.Language;
 import ergasia.Main;
 
 public class Admin_main extends JFrame{
 	
-	private JButton buttonExit, buttonCreateTeacher, buttonCreateLesson;
+	private JButton buttonExit, buttonCreateTeacher, buttonCreateLesson, dataReset;
 	private JPanel panel, createLessonPanel, createTeacherPanel;
 	private JLabel backgroundLabel;
 	
@@ -53,9 +46,8 @@ public class Admin_main extends JFrame{
  		  backgroundLabel.setIcon(new javax.swing.ImageIcon(dbackground));
  		 this.setLayout(new BorderLayout());
  		 this.setContentPane(backgroundLabel);
-	     this.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 150));
-		
-	    
+	     this.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 150));
+		 
 		createTeacherPanel=new JPanel();
 		createTeacherPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		
@@ -131,15 +123,29 @@ public class Admin_main extends JFrame{
 		buttonExit.setIcon(new javax.swing.ImageIcon(buttonExitImage));
 		buttonExit.setPreferredSize(new Dimension(170, 170));
 		
+		dataReset=new JButton();
+		BufferedImage ddataReset = null;
+		try {
+			ddataReset = ImageIO.read(new File("reset.jpg"));
+		} 
+		catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Image dataResetImage = ddataReset.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		dataReset.setIcon(new javax.swing.ImageIcon(dataResetImage));
+		dataReset.setPreferredSize(new Dimension(170, 170));
 		
 		
 		
+		this.add(dataReset);
 		this.add(buttonExit);
+		
 		
 		
 		
 		ButtonListener listener=new ButtonListener();
 		buttonExit.addActionListener(listener);
+		dataReset.addActionListener(listener);
 		buttonCreateTeacher.addActionListener(listener);
 		buttonCreateLesson.addActionListener(listener);
 		
@@ -153,7 +159,7 @@ public class Admin_main extends JFrame{
 	
 	
 class ButtonListener implements ActionListener {
-	private JButton savebutton, savebutton2, backbutton, backbutton2, dictionary;
+	private JButton savebutton, savebutton2, backbutton, backbutton2, dictionary, yesbutton;
 	private JTextField nametext = new JTextField();
 	private JTextField passtext = new JTextField();
 	private JTextField usertext = new JTextField();
@@ -165,13 +171,30 @@ class ButtonListener implements ActionListener {
 			if(e.getSource()==buttonExit){
 				setVisible(false);
 				dispose();
-			}else if(e.getSource()==buttonCreateTeacher){
+			}
+			else if(e.getSource()==dataReset){
+				JFrame dataframe=new JFrame();
+				dataframe.setLayout(new GridLayout(2,0,0,0));
+				dataframe.add(new JLabel("Διαγραφή όλων των αποθυκευμένων δεδομένων. Είσται σίγουρος;"));
+				yesbutton=new JButton("Ναι");
+				
+				dataframe.add(yesbutton);
+				
+				dataframe.setVisible(true);
+				dataframe.setSize(450, 100);
+				dataframe.setLocationRelativeTo(null);
+				resetListener listener=new resetListener();
+				yesbutton.addActionListener(listener);
+				
+			}
+			else if(e.getSource()==buttonCreateTeacher){
 				  
 		    	  JFrame frame = (JFrame) SwingUtilities.getRoot(getContentPane());
 		    	  frame.remove(createLessonPanel);
 		    	  frame.remove(createTeacherPanel);
 		    	  frame.remove(buttonExit);
-		    	 
+		    	  frame.remove(dataReset);
+		    	 frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 150));
 		    	  
 		    	  
 		    	  
@@ -254,8 +277,8 @@ class ButtonListener implements ActionListener {
 		    	  frame.remove(createTeacherPanel);
 		    	  frame.remove(createLessonPanel);
 		    	  frame.remove(buttonExit);
-		    	  	    	  
-		    	  
+		    	  frame.remove(dataReset);	    	  
+		    	  frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 150));
 		    	
 		    	stoixeiaLabel2=new JLabel();
 		  		BufferedImage dstoixeiaLabel = null;
@@ -329,14 +352,17 @@ class ButtonListener implements ActionListener {
 	
 		class saveButtonListener implements ActionListener {
 			private JFileChooser fc = new JFileChooser();
+			private File file;
+			private String name;
 			private JButton saveframes= new JButton("Save");
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==savebutton){
 					//dimiourgia kathigiti 
 				}
 				if(e.getSource()==savebutton2){
-					String lvlnum=(String) lvltext.getText();					
+					String lvlnum=(String) lvltext.getText();
 				    int lvls=Integer.valueOf(lvlnum);
+				    name=(String) nametext.getText();
 				    
 					JFrame lvlframe=new JFrame();
 					lvlframe.setLayout(new GridLayout(lvls+2, 0,0,0));
@@ -346,17 +372,17 @@ class ButtonListener implements ActionListener {
 					}
 					lvlframe.add(saveframes);
 					lvlframe.setVisible(true);
+					lvlListener listener=new lvlListener();
+					saveframes.addActionListener(listener);
 					lvlframe.setSize(400,220);
 					lvlframe.setLocationRelativeTo(null);
-					lvlframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					//dimiourgia mathimatos 
+					
 				}
 				if(e.getSource()==dictionary){
 					int returnVal = fc.showOpenDialog(panel);
 
 					if(returnVal == JFileChooser.OPEN_DIALOG) {
-						File file = fc.getSelectedFile();
-						
+						 file = fc.getSelectedFile();						
 					}
 				}
 				if(e.getSource()==backbutton){
@@ -365,7 +391,7 @@ class ButtonListener implements ActionListener {
 					frame.remove(backbutton);
 					frame.remove(stoixeiaPanel);
 					frame.remove(stoixeiaLabel);
-					
+					frame.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 150));
 					
 					
 					
@@ -444,17 +470,33 @@ class ButtonListener implements ActionListener {
 					buttonExit.setIcon(new javax.swing.ImageIcon(buttonExitImage));
 					buttonExit.setPreferredSize(new Dimension(170, 170));
 					
+					dataReset=new JButton();
+					BufferedImage ddataReset = null;
+					try {
+						ddataReset = ImageIO.read(new File("reset.jpg"));
+					} 
+					catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					Image dataResetImage = ddataReset.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+					dataReset.setIcon(new javax.swing.ImageIcon(dataResetImage));
+					dataReset.setPreferredSize(new Dimension(170, 170));
 					
+					
+					
+				
 					
 					
 					frame.add(createTeacherPanel);
 					frame.add(createLessonPanel);
+					frame.add(dataReset);
 					frame.add(buttonExit);
 					frame.paintAll(getGraphics());
 					
 					
 					ButtonListener listener=new ButtonListener();
 					buttonExit.addActionListener(listener);
+					dataReset.addActionListener(listener);
 					buttonCreateTeacher.addActionListener(listener);
 					buttonCreateLesson.addActionListener(listener);
 				}
@@ -464,7 +506,7 @@ class ButtonListener implements ActionListener {
 					frame.remove(backbutton2);
 					frame.remove(stoixeiaPanel2);
 					frame.remove(stoixeiaLabel2);
-					
+					frame.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 150));
 					
 					
 					
@@ -543,22 +585,67 @@ class ButtonListener implements ActionListener {
 					buttonExit.setIcon(new javax.swing.ImageIcon(buttonExitImage));
 					buttonExit.setPreferredSize(new Dimension(170, 170));
 					
+					dataReset=new JButton();
+					BufferedImage ddataReset = null;
+					try {
+						ddataReset = ImageIO.read(new File("reset.jpg"));
+					} 
+					catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					Image dataResetImage = ddataReset.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+					dataReset.setIcon(new javax.swing.ImageIcon(dataResetImage));
+					dataReset.setPreferredSize(new Dimension(170, 170));
+					
+					
+					
 					
 					
 					
 					frame.add(createTeacherPanel);
 					frame.add(createLessonPanel);
+					frame.add(dataReset);
 					frame.add(buttonExit);
 					frame.paintAll(getGraphics());
 					
 					
 					ButtonListener listener=new ButtonListener();
 					buttonExit.addActionListener(listener);
+					dataReset.addActionListener(listener);
 					buttonCreateTeacher.addActionListener(listener);
 					buttonCreateLesson.addActionListener(listener);
 				}
 				
 			}
+			class lvlListener implements ActionListener {
+				public void actionPerformed(ActionEvent e){
+					if(e.getSource()==saveframes){
+						Main.admin.create_Language(name, levels);
+						
+					}
+				}
+				
+				
+			}
+			
 		}
+		class resetListener implements ActionListener {
+			public void actionPerformed(ActionEvent e){
+				if(e.getSource()==yesbutton){
+					Main.ser.LanguageSerializing(null);
+					Main.ser.LevelSerializing(null);
+					Main.ser.ListeningQuestionsSerializing(null);
+					Main.ser.ReadingQuestionsSerializing(null);
+					Main.ser.StudentSerializing(null);
+					Main.ser.TeachersSerializing(null);
+					Main.ser.VocabularyQuestionsSerializing(null);
+					Main.ser.GrammarQuestionsSerializing(null);
+					
+				}
+			}
+			
+			
+		}
+		
 }
 }
