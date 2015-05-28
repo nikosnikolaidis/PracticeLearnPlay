@@ -47,7 +47,7 @@ public class Admin_main extends JFrame{
  		  backgroundLabel.setIcon(new javax.swing.ImageIcon(dbackground));
  		 this.setLayout(new BorderLayout());
  		 this.setContentPane(backgroundLabel);
-	     this.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 150));
+	     this.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 50));
 		 
 		createTeacherPanel=new JPanel();
 		createTeacherPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
@@ -195,7 +195,7 @@ class ButtonListener implements ActionListener {
 		    	  frame.remove(createTeacherPanel);
 		    	  frame.remove(buttonExit);
 		    	  frame.remove(dataReset);
-		    	 frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 150));
+		    	 frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 50));
 		    	  
 		    	  
 		    	  
@@ -279,7 +279,7 @@ class ButtonListener implements ActionListener {
 		    	  frame.remove(createLessonPanel);
 		    	  frame.remove(buttonExit);
 		    	  frame.remove(dataReset);	    	  
-		    	  frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 150));
+		    	  frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 50));
 		    	
 		    	stoixeiaLabel2=new JLabel();
 		  		BufferedImage dstoixeiaLabel = null;
@@ -404,7 +404,7 @@ class ButtonListener implements ActionListener {
 					frame.remove(backbutton);
 					frame.remove(stoixeiaPanel);
 					frame.remove(stoixeiaLabel);
-					frame.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 150));
+					frame.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 50));
 					
 					
 					
@@ -519,7 +519,7 @@ class ButtonListener implements ActionListener {
 					frame.remove(backbutton2);
 					frame.remove(stoixeiaPanel2);
 					frame.remove(stoixeiaLabel2);
-					frame.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 150));
+					frame.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 50));
 					
 					
 					
