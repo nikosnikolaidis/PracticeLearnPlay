@@ -110,4 +110,11 @@ public class Admin extends User {
 		Languages.add(L);
 		Main.ser.LanguageSerializing(Languages);
 	}
+	
+	public void Create_Level(Language language,String levelName){		//dimiougria Level gia auto to Language
+		Level L=new Level(language,levelName);
+		language.getLevels().add(L);
+		Main.ser.LanguageSerializing(Languages);		//Serializing Levels
+		
+	}
 }

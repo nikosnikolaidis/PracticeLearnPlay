@@ -10,7 +10,6 @@ public class DataHolder {
 	
 	private String PasswordAdmin;	//o kodikos tou Admin
 	private ArrayList<Language> Languages;	//lista me oles tis gloses
-	private ArrayList<Level> Levels;		//lista me ola ta levels
 	private ArrayList<Teacher> Teachers;	//lista me olous tous ka8igites
 	private ArrayList<Student> Students;	//lista me olous tous ma8ites
 	
@@ -36,12 +35,6 @@ public class DataHolder {
 	}
 	public void setLanguages(ArrayList<Language> languages) {
 		Languages = languages;
-	}
-	public ArrayList<Level> getLevels() {
-		return Levels;
-	}
-	public void setLevels(ArrayList<Level> levels) {
-		Levels = levels;
 	}
 	public ArrayList<Teacher> getTeachers() {
 		return Teachers;

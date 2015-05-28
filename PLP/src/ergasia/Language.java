@@ -14,7 +14,6 @@ public class Language {
 	private String Name;
 	private ArrayList<String> Dictionary = new ArrayList<String>();
 	private ArrayList<Level> Levels = new ArrayList<Level>();
-																		
 	
 	public Language(String name, ArrayList<String> dictionary, ArrayList<Level> levels) {
 		super();
@@ -33,13 +32,6 @@ public class Language {
 
 	public ArrayList<Level> getLevels() {
 		return Levels;
-	}
-	
-	public void Create_Level(String levelName){			//dimiougria Level gia auto to Language
-		Level L=new Level(this,levelName);
-		Levels.add(L);
-		Main.ser.LevelSerializing(Levels);		//Serializing Levels
-		
 	}
 
 	public void Create_Dictionary(File arxeio){					//dimiougia tou le3ikou apo arxeio kimenou

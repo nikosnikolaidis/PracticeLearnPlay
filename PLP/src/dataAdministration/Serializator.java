@@ -18,7 +18,6 @@ public class Serializator {
 		DH =new DataHolder();
 		DH.setPasswordAdmin(this.AdminDeserializing());
 		DH.setLanguages(this.LanguageDeserializing());
-		DH.setLevels(this.LevelDeserializing());
 		DH.setTeachers(this.TeachersDeserializing());
 		DH.setStudents(this.StudentDeserializing());
 		DH.setListOfAllGrammarQuestions(this.GrammarQuestionsDeserializing());
@@ -163,39 +162,6 @@ public class Serializator {
 		}
 	}
 	
-	public ArrayList<Level> LevelDeserializing() {						//Level Deserializing
-		ArrayList<Level> emp=DH.getLevels();
-		try {
-			FileInputStream fileIn = new FileInputStream("level.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (ArrayList<Level>) in.readObject();
-			in.close();
-			fileIn.close();
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-		catch(ClassNotFoundException c) {
-			c.printStackTrace();
-		}
-		finally {
-			return emp;
-		}
-	}
-	public void LevelSerializing(ArrayList<Level> Levels) {			//Level Serializing
-		try {
-			DH.setLevels(Levels);
-			FileOutputStream fileOut = new FileOutputStream("level.ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(Levels);
-			out.close();
-			fileOut.close();
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-	}
-	
 	public HashMap<Question,Level> GrammarQuestionsDeserializing() {			//GrammarQuestions Deserializing
 		HashMap<Question,Level> emp=DH.getListOfAllGrammarQuestions();
 		try {
@@ -327,4 +293,5 @@ public class Serializator {
 			i.printStackTrace();
 		}
 	}
+	
 }
