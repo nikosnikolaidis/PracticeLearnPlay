@@ -22,6 +22,8 @@ public class Admin extends User {
 	public Admin(String username, String password) {
 		super(username, password);
 		Main.ser.AdminSerializing(Admin_password);		//Admin Serializing
+		Languages=Main.ser.LanguageDeserializing();
+		Teachers=Main.ser.TeachersDeserializing();
 	}
 
 	public void setAdmin_password(String admin_password) {
@@ -29,7 +31,6 @@ public class Admin extends User {
 	}
 
 	public void Create_Teacher(String username, String password, String Onomateponimo, Language teacherLanguage){
-		Teachers=Main.ser.getDataHolder().getTeachers();			//anaktisi teachers
 		Teacher Teach= new Teacher(Onomateponimo,username,password, teacherLanguage);		//dimiourgia ka8igiti
 		Teachers.add(Teach);								//apo8ikeusi sti lista
 		Main.ser.TeachersSerializing(Teachers);				//serialazation										

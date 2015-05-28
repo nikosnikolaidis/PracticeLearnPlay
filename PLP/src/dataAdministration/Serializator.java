@@ -15,7 +15,7 @@ public class Serializator {
 	private DataHolder DH;
 	
 	public Serializator() {
-		DH =new DataHolder();	
+		DH =new DataHolder();
 		DH.setPasswordAdmin(this.AdminDeserializing());
 		DH.setLanguages(this.LanguageDeserializing());
 		DH.setTeachers(this.TeachersDeserializing());
@@ -78,101 +78,6 @@ public class Serializator {
 		
 	}
 	
-	public ArrayList<Teacher> TeachersDeserializing(){			//Teachers Deserializing
-		ArrayList<Teacher> emp=DH.getTeachers();
-		try {
-			FileInputStream fileIn = new FileInputStream("teachers.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (ArrayList<Teacher>) in.readObject();
-			in.close();
-			fileIn.close();
-		}
-		catch(IOException i) {
-			
-			TeachersSerializing(emp);
-			
-		}
-		catch(ClassNotFoundException c) {
-			TeachersSerializing(emp);
-		}
-		try {
-			FileInputStream fileIn = new FileInputStream("teachers.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (ArrayList<Teacher>) in.readObject();
-			in.close();
-			fileIn.close();
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-			
-			
-		}
-		catch(ClassNotFoundException c) {
-			c.printStackTrace();
-		}
-			return emp;
-		
-	}
-	public void TeachersSerializing(ArrayList<Teacher> Teachers){			//Teachers Serializing
-		try {
-			DH.setTeachers(Teachers);
-			FileOutputStream fileOut = new FileOutputStream("teachers.ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(Teachers);
-			out.close();
-			fileOut.close();
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-	}
-	
-	public ArrayList<Student> StudentDeserializing() {						//Student Deserializing
-		ArrayList<Student> emp=DH.getStudents();
-		try {
-			FileInputStream fileIn = new FileInputStream("students.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (ArrayList<Student>) in.readObject();
-			in.close();
-			fileIn.close();
-		}
-		catch(IOException i) {
-			StudentSerializing(emp);
-		}
-		catch(ClassNotFoundException c) {
-			StudentSerializing(emp);
-		}
-		try {
-			FileInputStream fileIn = new FileInputStream("students.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (ArrayList<Student>) in.readObject();
-			in.close();
-			fileIn.close();
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-		catch(ClassNotFoundException c) {
-			c.printStackTrace();
-		}
-		
-			return emp;
-		
-	}
-	public void StudentSerializing(ArrayList<Student> Students) {				//Student Serializing
-		try {
-			DH.setStudents(Students);
-			FileOutputStream fileOut = new FileOutputStream("students.ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(Students);
-			out.close();
-			fileOut.close();
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}
-	}
-	
 	public ArrayList<Language> LanguageDeserializing() {						//Language Deserializing
 		ArrayList<Language> emp=DH.getLanguages();
 		try {
@@ -219,6 +124,103 @@ public class Serializator {
 		}
 	}
 	
+	public ArrayList<Teacher> TeachersDeserializing(){			//Teachers Deserializing
+		ArrayList<Teacher> emp= DH.getTeachers();
+		try {
+			FileInputStream fileIn = new FileInputStream("teachers.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (ArrayList<Teacher>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
+			TeachersSerializing(emp);
+		}
+		catch(ClassNotFoundException c) {
+			TeachersSerializing(emp);
+		}
+		try {
+			FileInputStream fileIn = new FileInputStream("teachers.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (ArrayList<Teacher>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+		catch(ClassNotFoundException c) {
+			c.printStackTrace();
+		}
+		if(emp==null){
+			emp=new ArrayList<Teacher>();
+		}
+			return emp;
+		
+	}
+	public void TeachersSerializing(ArrayList<Teacher> Teachers){			//Teachers Serializing
+		try {
+			DH.setTeachers(Teachers);
+			FileOutputStream fileOut = new FileOutputStream("teachers.ser");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(Teachers);
+			out.close();
+			fileOut.close();
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+	}
+	
+	public ArrayList<Student> StudentDeserializing() {						//Student Deserializing
+		ArrayList<Student> emp=DH.getStudents();
+		try {
+			FileInputStream fileIn = new FileInputStream("students.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (ArrayList<Student>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
+			StudentSerializing(emp);
+		}
+		catch(ClassNotFoundException c) {
+			StudentSerializing(emp);
+		}
+		try {
+			FileInputStream fileIn = new FileInputStream("students.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			emp = (ArrayList<Student>) in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+		catch(ClassNotFoundException c) {
+			c.printStackTrace();
+		}
+		if(emp==null){
+			emp=new ArrayList<Student>();
+		}
+		
+			return emp;
+		
+	}
+	public void StudentSerializing(ArrayList<Student> Students) {				//Student Serializing
+		try {
+			DH.setStudents(Students);
+			FileOutputStream fileOut = new FileOutputStream("students.ser");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(Students);
+			out.close();
+			fileOut.close();
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+	}
+	
 	public HashMap<Question,Level> GrammarQuestionsDeserializing() {			//GrammarQuestions Deserializing
 		HashMap<Question,Level> emp=DH.getListOfAllGrammarQuestions();
 		try {
@@ -246,6 +248,9 @@ public class Serializator {
 		}
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
+		}
+		if(emp==null){
+			emp=new HashMap<Question,Level>();
 		}
 		
 			return emp;
@@ -293,6 +298,10 @@ public class Serializator {
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
+		if(emp==null){
+			emp=new HashMap<Question,Level>();
+		}
+		
 		
 			return emp;
 		
@@ -339,6 +348,10 @@ public class Serializator {
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
+		if(emp==null){
+			emp=new HashMap<Question,Level>();
+		}
+		
 		
 			return emp;
 		
@@ -385,6 +398,10 @@ public class Serializator {
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
+		if(emp==null){
+			emp=new HashMap<Question,Level>();
+		}
+		
 			return emp;
 		
 	}
