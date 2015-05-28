@@ -19,9 +19,8 @@ public class Admin extends User {
 	private ArrayList<Teacher> Teachers=new ArrayList<Teacher>();
 	private ArrayList<Language> Languages=new ArrayList<Language>();
 	
-	public Admin(String username, String password, ArrayList<Teacher> teachers) {
+	public Admin(String username, String password) {
 		super(username, password);
-		Teachers=teachers;
 		Main.ser.AdminSerializing(Admin_password);		//Admin Serializing
 	}
 

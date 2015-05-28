@@ -1,13 +1,16 @@
 package ergasia;
 
+import java.util.ArrayList;
+
 import dataAdministration.Serializator;
 import frames.Sign_in;
 
 
 public class Main {
 
+	
 	public static Serializator ser=null;
-	public static Admin admin=null;
+	
 	
 	public static void main(String[] args) {
 		Serializator S=new Serializator();

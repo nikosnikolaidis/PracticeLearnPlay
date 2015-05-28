@@ -15,8 +15,7 @@ public class Serializator {
 	private DataHolder DH;
 	
 	public Serializator() {
-		DH =new DataHolder();
-		
+		DH =new DataHolder();	
 		DH.setPasswordAdmin(this.AdminDeserializing());
 		DH.setLanguages(this.LanguageDeserializing());
 		DH.setTeachers(this.TeachersDeserializing());
