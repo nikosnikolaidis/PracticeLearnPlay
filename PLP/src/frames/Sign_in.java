@@ -21,8 +21,8 @@ public class Sign_in extends JFrame{
 		
 		passwordLabel=new JLabel("Password");
 		usernameLabel=new JLabel("Username");
-		username=new JTextField("                                    ");
-		password=new JTextField("                                    ");
+		username=new JTextField("");
+		password=new JTextField("");
 		buttonOk =new JButton("Log In");
 		enxiridio=new JButton("Help");
 		

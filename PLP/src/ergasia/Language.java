@@ -22,6 +22,10 @@ public class Language {
 		Levels = levels;
 	}
 	
+	public String getName() {
+		return Name;
+	}
+	
 	public ArrayList<String> getDictionary() {
 		return Dictionary;
 	}

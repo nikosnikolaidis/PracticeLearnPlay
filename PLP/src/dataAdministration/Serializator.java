@@ -16,14 +16,14 @@ public class Serializator {
 	
 	public Serializator() {
 		DH =new DataHolder();
-		DH.setPasswordAdmin(this.AdminDeserializing());
-		DH.setLanguages(this.LanguageDeserializing());
-		DH.setLevels(this.LevelDeserializing());
-		DH.setTeachers(this.TeachersDeserializing());
-		DH.setStudents(this.StudentDeserializing());
+	//	DH.setPasswordAdmin(this.AdminDeserializing());
+	//	DH.setLanguages(this.LanguageDeserializing());
+	//	DH.setLevels(this.LevelDeserializing());
+	//	DH.setTeachers(this.TeachersDeserializing());
+	//	DH.setStudents(this.StudentDeserializing());
 	}
 
-	public DataHolder getDataHolder() {		//arki mono ston constructor i arxikopiiseis :/
+	public  DataHolder getDataHolder() {		//arki mono ston constructor i arxikopiiseis :/
 		return DH;
 	}
 	

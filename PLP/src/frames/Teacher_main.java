@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import frames.Student_gameLeaderboard.ButtonListener;
+
 
 public class Teacher_main extends JFrame {
 
@@ -47,15 +47,15 @@ class ButtonListener implements ActionListener {
 			}else if(e.getSource()==buttonElegxosEpidosis){
 				setVisible(false);
 				dispose();
-				new Teacher_check();
+				
 			}else if(e.getSource()==buttonEisagogiAskisis){
 				setVisible(false);
 				dispose();
-				new Teacher_addQuestion();
+				
 			}else if(e.getSource()==buttonAddStudents){
 				setVisible(false);
 				dispose();
-				new Teacher_addStudents();
+				
 			}
 		}
 	}
