@@ -392,7 +392,19 @@ class ButtonListener implements ActionListener {
 					String name=(String) nametext.getText();
 					String user=(String) usertext.getText();
 					String pass=(String) passtext.getText();
-					/////////////////////////////////////////////////////////////////////
+					String templang=(String) cbox.getSelectedItem();
+					
+					Language teacherLanguage=null;
+					for(Language aLanguage: Main.ser.getDataHolder().getLanguages()){
+						if(templang.equals(aLanguage.getName())){
+							teacherLanguage=aLanguage;
+						break;
+						}
+					}
+					admin.Create_Teacher(name, user, pass, teacherLanguage);
+					nametext.setText("");
+					usertext.setText("");
+					passtext.setText("");
 				}
 				if(e.getSource()==savebutton2){
 					String lvlnum=(String) lvltext.getText();
