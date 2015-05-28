@@ -1,6 +1,7 @@
 package ergasia;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -37,15 +38,15 @@ public class Language {
 	public void Create_Level(String levelName){			//dimiougria Level gia auto to Language
 		Level L=new Level(this,levelName);
 		Levels.add(L);
-		//serializing
+		Main.ser.LevelSerializing(Levels);		//Serializing Levels
 		
 	}
 
-	public void Create_Dictionary(){					//dimiougia tou le3ikou apo arxeio kimenou
+	public void Create_Dictionary(File arxeio){					//dimiougia tou le3ikou apo arxeio kimenou
 		HashSet<String> le3eis=new HashSet<String>();
 		Scanner s = null;
 		try {
-			s = new Scanner(new BufferedReader(new FileReader("le3iko.txt")));
+			s = new Scanner(new BufferedReader(new FileReader(arxeio)));
 			while(s.hasNextLine()){
 				String line = s.nextLine();
 				StringTokenizer st = new StringTokenizer(line," ");

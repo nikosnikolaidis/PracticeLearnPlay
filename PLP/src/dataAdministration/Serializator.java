@@ -21,6 +21,10 @@ public class Serializator {
 		DH.setLevels(this.LevelDeserializing());
 		DH.setTeachers(this.TeachersDeserializing());
 		DH.setStudents(this.StudentDeserializing());
+		DH.setListOfAllGrammarQuestions(this.GrammarQuestionsDeserializing());
+		DH.setListOfAllListeningQuestions(this.ListeningQuestionsDeserializing());
+		DH.setListOfAllReadingQuestions(this.ReadingQuestionsDeserializing());
+		DH.setListOfAllVocabularyQuestions(this.VocabularyQuestionsDeserializing());
 	}
 
 	public  DataHolder getDataHolder() {		//arki mono ston constructor i arxikopiiseis :/
