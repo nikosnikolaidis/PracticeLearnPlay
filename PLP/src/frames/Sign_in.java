@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -54,6 +55,7 @@ public class Sign_in extends JFrame{
 		
 		ButtonListener listener=new ButtonListener();
 		buttonOk.addActionListener(listener);
+		enxiridio.addActionListener(listener);
 		
 		this.pack();
 		this.setVisible(true);
@@ -73,11 +75,14 @@ public class Sign_in extends JFrame{
 class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			if(e.getSource()==buttonOk){						//xriazete elegxos gia tin isodo
+			if(e.getSource()==buttonOk){						
 				
 				setVisible(false);
 				dispose();
 				new Admin_main();
+			}
+			if(e.getSource()==enxiridio){				
+				
 			}
 		}
 	}

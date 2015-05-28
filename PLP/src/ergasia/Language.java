@@ -65,5 +65,6 @@ public class Language {
 		}catch (FileNotFoundException e) {
 			System.out.println("File not found !");
 		}s.close();
+		//anathesi kai siriophhsh
 	}
 }
