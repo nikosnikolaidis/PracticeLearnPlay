@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -20,7 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import dataAdministration.DataHolder;
 
-public class Teacher extends User{
+public class Teacher extends User implements Serializable{
 
 	private ArrayList<Student> Students =new ArrayList<Student>();
 	private Admin admin;

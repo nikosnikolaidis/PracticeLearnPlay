@@ -4,12 +4,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class Language {
+public class Language implements Serializable {
 
 	private String Name;
 	private ArrayList<String> Dictionary = new ArrayList<String>();
