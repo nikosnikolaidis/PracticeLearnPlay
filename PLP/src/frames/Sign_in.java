@@ -94,7 +94,7 @@ class ButtonListener implements ActionListener {
 				if(name.equals("Admin") && pass.equals(Main.ser.getDataHolder().getPasswordAdmin())){
 				setVisible(false);
 				dispose();
-				new Admin_main();
+				new Student_main();
 				}
 				else{
 					boolean found=false;
