@@ -222,11 +222,8 @@ class ButtonListener implements ActionListener {
 			    		cbox.addItem(templvl.getNameOfLevel());
 			    	}
 			        }
-			        else{
-			        	cbox.addItem("Error");
-			        }
 				    lvlPanel.add(cbox);
-				    cbox.setSelectedIndex(0);
+				    
 				    
 				    
 				    savebutton=new JButton("Save");
