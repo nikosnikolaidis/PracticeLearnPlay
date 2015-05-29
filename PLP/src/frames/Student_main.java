@@ -3,6 +3,7 @@ package frames;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,9 +16,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import ergasia.Admin;
-import ergasia.Main;
 
 
 public class Student_main extends JFrame {
@@ -128,7 +126,8 @@ public class Student_main extends JFrame {
 		
 		ButtonListener listener=new ButtonListener();
 		buttonExit.addActionListener(listener);
-		buttonGame.addActionListener(listener);
+		gameListener listener2 = new gameListener();
+		buttonGame.addActionListener(listener2);
 		buttonTest.addActionListener(listener);
 		
 		this.setVisible(true);
@@ -138,16 +137,65 @@ public class Student_main extends JFrame {
 		
 		
 	}
+	class gameListener implements ActionListener {
+		private JButton hanging, wording;
+		private JFrame games;
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource()==buttonGame){
+				games=new JFrame();
+				games.setLayout(new GridLayout(2,0,0,0));
+				hanging = new JButton();
+				BufferedImage dGameButton = null;
+				try {
+					dGameButton = ImageIO.read(new File("hanging.jpg"));
+				} 
+				catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				Image GameButtonImage = dGameButton.getScaledInstance(350, 230, Image.SCALE_SMOOTH);
+				hanging.setIcon(new javax.swing.ImageIcon(GameButtonImage));
+				hanging.setPreferredSize(new Dimension(3350, 230));
+				
+				wording = new JButton();
+				dGameButton = null;
+				try {
+					dGameButton = ImageIO.read(new File("wording.png"));
+				} 
+				catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				GameButtonImage = dGameButton.getScaledInstance(350, 230, Image.SCALE_SMOOTH);
+				wording.setIcon(new javax.swing.ImageIcon(GameButtonImage));
+				wording.setPreferredSize(new Dimension(350, 230));
+				
+				games.add(hanging);
+				games.add(wording);
+				games.setVisible(true);
+				games.setTitle("Choose Game");
+				games.setSize(360, 460);
+				games.setLocationRelativeTo(null);
+			}
+		}
+		
+		
+	class gamesListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource()==buttonGame){
+				
+			}
+		}
+	}
+	}
 class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonExit){
 				dispose();
-			}else if(e.getSource()==buttonTest){
-				
-			}else if(e.getSource()==buttonGame){
+			}
+			else if(e.getSource()==buttonTest){
 				
 			}
+			
 		}
 	}
 }
