@@ -262,7 +262,7 @@ class ButtonListener implements ActionListener {
 		class questListener implements ActionListener{ 
 			private int i;
 			private JButton saveQuestion=new JButton("Save");
-			private JTextArea ekfwnisi= new JTextArea(5, 30);
+			private JTextArea ekfwnisi= new JTextArea(3, 40);
 			private JLabel lekfwnisi=new JLabel("Ekfwnisi"), lap=new JLabel("swsti apantisi"), lap1=new JLabel("apantisi 1"), lap3=new JLabel("apantisi 3"), lap4=new JLabel("apantisi 4"), lap2=new JLabel("apantisi 2");
 			private JTextField ap1=new JTextField(""), ap2=new JTextField(""), ap3=new JTextField(""), ap4=new JTextField("");
 			private JComboBox<String> cbox3=new JComboBox<String>();
@@ -277,7 +277,7 @@ class ButtonListener implements ActionListener {
 		    	  frame.remove(buttonExit);
 				
 		    	  if(i==0){
-		    		  frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 200));
+		    		  frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 70));
 		    		  questPanel.setLayout(new GridLayout(7,2,0,0));
 		    		  questPanel.add(lekfwnisi);
 		    		  questPanel.add(ekfwnisi);
@@ -293,10 +293,23 @@ class ButtonListener implements ActionListener {
 					  cbox3.setSelectedIndex(0);
 					  questPanel.add(saveQuestion);
 					  frame.add(questPanel);
+					  backbutton=new JButton();
+				    	BufferedImage dbackbutton = null;
+						try {
+							dbackbutton = ImageIO.read(new File("backbutton.jpg"));
+						} 
+						catch (IOException e1) {
+							e1.printStackTrace();
+						}
+						Image backbuttonImage = dbackbutton.getScaledInstance(250, 200, Image.SCALE_SMOOTH);
+						backbutton.setIcon(new javax.swing.ImageIcon(backbuttonImage));
+						backbutton.setPreferredSize(new Dimension(190, 150));
+				    	
+						frame.add(backbutton);
 					  frame.paintAll(getGraphics());
 		    	  }
 					  if(i==2){
-			    		  frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 200));
+						  frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 70));
 			    		  questPanel.setLayout(new GridLayout(7,2,0,0));
 			    		  questPanel.add(lekfwnisi);
 			    		  questPanel.add(ekfwnisi);
@@ -312,8 +325,22 @@ class ButtonListener implements ActionListener {
 						  cbox3.setSelectedIndex(0);
 						  questPanel.add(saveQuestion);
 						  frame.add(questPanel);
+						  backbutton=new JButton();
+					    	BufferedImage dbackbutton = null;
+							try {
+								dbackbutton = ImageIO.read(new File("backbutton.jpg"));
+							} 
+							catch (IOException e1) {
+								e1.printStackTrace();
+							}
+							Image backbuttonImage = dbackbutton.getScaledInstance(250, 200, Image.SCALE_SMOOTH);
+							backbutton.setIcon(new javax.swing.ImageIcon(backbuttonImage));
+							backbutton.setPreferredSize(new Dimension(190, 150));
+					    	
+							frame.add(backbutton);
 						  frame.paintAll(getGraphics());
-					  
+					      
+						  
 		    		  
 				}
 					
