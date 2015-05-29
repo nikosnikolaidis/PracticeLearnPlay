@@ -15,6 +15,10 @@ public class Main {
 	public static void main(String[] args) {
 		Serializator S=new Serializator();
 		ser=S;
+		for(Teacher t:ser.TeachersDeserializing()){
+			System.out.println(t.getUsername());
+			System.out.println(t.getPassword());
+		}
 		new Sign_in();
 	}
 

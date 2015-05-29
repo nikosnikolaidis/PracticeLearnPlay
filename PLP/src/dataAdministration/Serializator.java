@@ -106,6 +106,9 @@ public class Serializator {//implements Serializable{
 		catch(ClassNotFoundException c) {
 			c.printStackTrace();
 		}
+		if(emp==null){
+			emp=new ArrayList<Language>();
+		}
 		
 			return emp;
 		

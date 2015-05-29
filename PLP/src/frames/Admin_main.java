@@ -396,7 +396,7 @@ class ButtonListener implements ActionListener {
 						break;
 						}
 					}
-					admin.Create_Teacher(user, pass, name, teacherLanguage);
+					admin.Create_Teacher(name, user, pass, teacherLanguage);
 					nametext.setText("");
 					usertext.setText("");
 					passtext.setText("");
