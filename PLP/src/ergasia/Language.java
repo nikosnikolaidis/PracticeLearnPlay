@@ -50,10 +50,9 @@ public class Language implements Serializable {
 					while(st.hasMoreTokens()){
 						k=st.nextToken();
 						if(k.contains("."))			//vgazei tous xaraktires pou mporei na iparxoun
-							k.replace(".", "");
+							k=k.replace(".", "");
 						if(k.contains(","))
-							k.replace(",", "");
-						
+							k=k.replace(",", "");
 						
 						le3eis.add(k);
 					}
@@ -62,6 +61,10 @@ public class Language implements Serializable {
 			System.out.println("File not found !");
 		}s.close();
 		
+
 		this.Dictionary.addAll(le3eis);
+		for(String str:Dictionary){
+			System.out.println(str);
+		}
 	}
 }

@@ -30,7 +30,7 @@ public class Admin extends User {
 		Admin_password = admin_password;
 	}
 
-	public void Create_Teacher(String username, String password, String Onomateponimo, Language teacherLanguage){
+	public void Create_Teacher(String Onomateponimo, String username, String password, Language teacherLanguage){
 		Teacher Teach= new Teacher(Onomateponimo,username,password, teacherLanguage);		//dimiourgia ka8igiti
 		Teachers.add(Teach);								//apo8ikeusi sti lista
 		Main.ser.TeachersSerializing(Teachers);				//serialazation										

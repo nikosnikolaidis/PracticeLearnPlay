@@ -34,6 +34,10 @@ public class Teacher extends User implements Serializable{
 		this.Onomateponimo=Onomateponimo;
 	}
 	
+	public Language getTeachersLanguage() {
+		return teachersLanguage;
+	}
+
 	public void Create_Exercise(Question newQuestion, DataHolder aDataHolder){
 		//Dataholder getClass kai meta taktopoihsh
 	}
@@ -106,7 +110,7 @@ public class Teacher extends User implements Serializable{
 	}
 
 	public boolean log_In(String username, String password) {
-		ArrayList<Teacher> TeacherFromFile =Main.ser.getDataHolder().getTeachers();	//anaktisi teachers		
+		ArrayList<Teacher> TeacherFromFile =Main.ser.TeachersDeserializing();	//anaktisi teachers		
 		for(Teacher teach: TeacherFromFile) {
 			if(teach.getUsername().equals(username) && teach.getPassword().equals(password)){//mporei na sinde8ei o Teacher
 				return true;

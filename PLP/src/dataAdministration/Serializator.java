@@ -5,15 +5,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import ergasia.*;
 
-public class Serializator {
+public class Serializator {//implements Serializable{
 
 	private DataHolder DH;
-	
 	public Serializator() {
 		DH =new DataHolder();
 		DH.setPasswordAdmin(this.AdminDeserializing());
@@ -125,8 +125,8 @@ public class Serializator {
 	}
 	
 	public ArrayList<Teacher> TeachersDeserializing(){			//Teachers Deserializing
-		ArrayList<Teacher> emp= DH.getTeachers();
-		try {
+		ArrayList<Teacher> emp=DH.getTeachers();
+		/*try {
 			FileInputStream fileIn = new FileInputStream("teachers.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			emp = (ArrayList<Teacher>) in.readObject();
@@ -138,7 +138,7 @@ public class Serializator {
 		}
 		catch(ClassNotFoundException c) {
 			TeachersSerializing(emp);
-		}
+		}*/
 		try {
 			FileInputStream fileIn = new FileInputStream("teachers.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -401,7 +401,7 @@ public class Serializator {
 		if(emp==null){
 			emp=new HashMap<Question,Level>();
 		}
-		
+
 			return emp;
 		
 	}

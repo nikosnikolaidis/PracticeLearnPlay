@@ -10,7 +10,7 @@ public class DataHolder {
 	
 	private String PasswordAdmin;	//o kodikos tou Admin
 	private ArrayList<Language> Languages;	//lista me oles tis gloses
-	private ArrayList<Teacher> Teachers=new ArrayList<Teacher>();	//lista me olous tous ka8igites
+	private ArrayList<Teacher> Teachers;	//lista me olous tous ka8igites
 	private ArrayList<Student> Students;	//lista me olous tous ma8ites
 	
 	private HashMap<Question,Level> listOfAllGrammarQuestions;	//ola ta Grammar Questions
