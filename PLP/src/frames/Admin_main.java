@@ -212,12 +212,7 @@ class ButtonListener implements ActionListener {
 		    	  frame.remove(createLessonPanel);
 		    	  frame.remove(createTeacherPanel);
 		    	  frame.remove(buttonsPanel);
-		    	  
-		    	
-		    	  
-		    	  
-		    	  
-		    	
+		    	  	    	
 		    	stoixeiaLabel=new JLabel();
 		  		BufferedImage dstoixeiaLabel = null;
 		  		try {
@@ -401,7 +396,7 @@ class ButtonListener implements ActionListener {
 						break;
 						}
 					}
-					admin.Create_Teacher(name, user, pass, teacherLanguage);
+					admin.Create_Teacher(user, pass, name, teacherLanguage);
 					nametext.setText("");
 					usertext.setText("");
 					passtext.setText("");

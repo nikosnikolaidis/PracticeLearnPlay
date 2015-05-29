@@ -17,13 +17,15 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import ergasia.Main;
+import ergasia.Student;
+import ergasia.Teacher;
 import ergasia.User;
 
 public class Sign_in extends JFrame{
 	private JLabel usernameLabel, passwordLabel;
 	private JTextField username, password;
 	private JButton buttonOk, enxiridio;
-	
+	private static User  currUser;
 	public Sign_in(){
 		
 		
@@ -77,7 +79,9 @@ public class Sign_in extends JFrame{
 
 
 	
-
+public static User getCurrUser(){
+	return currUser;
+}
 
 class ButtonListener implements ActionListener {
 		private int i=0;
@@ -101,7 +105,9 @@ class ButtonListener implements ActionListener {
 						if(user.log_In(name, pass)){
 							found= true;
 							dispose();
+							currUser=user;
 							new Teacher_main();
+							
 						}
 					}
 					}
@@ -113,6 +119,7 @@ class ButtonListener implements ActionListener {
 							if(user.log_In(name, pass)){
 								found= true;
 								dispose();
+								currUser=user;
 								new Student_main();
 							}
 						}
