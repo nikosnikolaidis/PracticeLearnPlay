@@ -63,8 +63,5 @@ public class Language implements Serializable {
 		
 
 		this.Dictionary.addAll(le3eis);
-		for(String str:Dictionary){
-			System.out.println(str);
-		}
 	}
 }
