@@ -25,7 +25,7 @@ public class Serializator {//implements Serializable{
 		DH.setListOfAllReadingQuestions(this.ReadingQuestionsDeserializing());
 		DH.setListOfAllVocabularyQuestions(this.VocabularyQuestionsDeserializing());
 	}
-
+ 
 	public  DataHolder getDataHolder() {		//arki mono ston constructor i arxikopiiseis :/
 		return DH;
 	}

@@ -25,7 +25,6 @@ public class Sign_in extends JFrame{
 	private JLabel usernameLabel, passwordLabel;
 	private JTextField username, password;
 	private JButton buttonOk, enxiridio;
-	private static User  currUser;
 	public Sign_in(){
 		
 		
@@ -79,9 +78,7 @@ public class Sign_in extends JFrame{
 
 
 	
-public static User getCurrUser(){
-	return currUser;
-}
+
 
 class ButtonListener implements ActionListener {
 		private int i=0;
@@ -99,13 +96,13 @@ class ButtonListener implements ActionListener {
 				else{
 					boolean found=false;
 					if(Main.ser.getDataHolder().getTeachers()!=null){
-						ArrayList<User> temp=new ArrayList(Main.ser.getDataHolder().getTeachers());
+						ArrayList<Teacher> temp=new ArrayList(Main.ser.getDataHolder().getTeachers());
 					
-					for(User user: temp){
+					for(Teacher user: temp){
 						if(user.log_In(name, pass)){
 							found= true;
 							dispose();
-							currUser=user;
+							Main.ser.getDataHolder().setTeacherNow(user);
 							new Teacher_main();
 							
 						}
@@ -113,13 +110,13 @@ class ButtonListener implements ActionListener {
 					}
 					if(found=false){
 						if(Main.ser.getDataHolder().getStudents()!=null){
-							ArrayList<User> temp2=new ArrayList(Main.ser.getDataHolder().getStudents());
+							ArrayList<Student> temp2=new ArrayList(Main.ser.getDataHolder().getStudents());
 						
-						for(User user: temp2){
+						for(Student user: temp2){
 							if(user.log_In(name, pass)){
 								found= true;
 								dispose();
-								currUser=user;
+								Main.ser.getDataHolder().setStudentNow(user);
 								new Student_main();
 							}
 						}

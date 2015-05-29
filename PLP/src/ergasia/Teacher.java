@@ -105,6 +105,10 @@ public class Teacher extends User implements Serializable{
 	        }
 	}
 	
+	public Language getLanguage(){
+		return teachersLanguage;
+	}
+	
 	public ArrayList<Student> getStudents() {
 		return Students;
 	}

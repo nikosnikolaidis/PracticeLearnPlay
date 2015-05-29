@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class ListeningQuestion extends Question{
 	private String AudioFileName;
-	private ArrayList<MultipleChoice> questions = new ArrayList<MultipleChoice>();
+	private ArrayList<Question> questions = new ArrayList<Question>();
 	
-	public ListeningQuestion(Language language, Level level, String ReadingText, ArrayList<MultipleChoice> questions){
+	public ListeningQuestion(Language language, Level level, String ReadingText, ArrayList<Question> questions){
 		super(language, level);
 		this.questions=questions;
 		this.AudioFileName=ReadingText;
@@ -20,11 +20,11 @@ public class ListeningQuestion extends Question{
 		AudioFileName = audioFileName;
 	}
 
-	public ArrayList<MultipleChoice> getQuestions() {
+	public ArrayList<Question> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(ArrayList<MultipleChoice> questions) {
+	public void setQuestions(ArrayList<Question> questions) {
 		this.questions = questions;
 	}
 

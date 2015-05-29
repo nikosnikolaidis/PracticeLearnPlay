@@ -4,9 +4,15 @@ import java.util.ArrayList;
 
 public class ReadingQuestion extends Question{
 	private String ReadingText;
-	private ArrayList<MultipleChoice> questions = new ArrayList<MultipleChoice>();
+	private ArrayList<Question> questions = new ArrayList<Question>();
 	
-	public ReadingQuestion(Language language, Level level, String ReadingText, ArrayList<MultipleChoice> questions){
+	
+	public ReadingQuestion(Language language, Level level, String ReadingText){
+		super(language, level);
+		this.ReadingText=ReadingText;
+	}
+	
+	public ReadingQuestion(Language language, Level level, String ReadingText, ArrayList<Question> questions){
 		super(language, level);
 		this.questions=questions;
 		this.ReadingText=ReadingText;
@@ -20,11 +26,11 @@ public class ReadingQuestion extends Question{
 		ReadingText = readingText;
 	}
 
-	public ArrayList<MultipleChoice> getQuestions() {
+	public ArrayList<Question> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(ArrayList<MultipleChoice> questions) {
+	public void setQuestions(ArrayList<Question> questions) {
 		this.questions = questions;
 	}
 	

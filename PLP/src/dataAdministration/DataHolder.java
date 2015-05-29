@@ -6,8 +6,8 @@ import ergasia.*;
 
 public class DataHolder {
 
-	private Language languageNow;	//i glosa pou uparxei gia auti tin isodo
-	
+	private Teacher teacherNow;	
+	private Student studentNow;
 	private String PasswordAdmin;	//o kodikos tou Admin
 	private ArrayList<Language> Languages;	//lista me oles tis gloses
 	private ArrayList<Teacher> Teachers;	//lista me olous tous ka8igites
@@ -24,11 +24,18 @@ public class DataHolder {
 	public void setPasswordAdmin(String passwordAdmin) {
 		PasswordAdmin = passwordAdmin;
 	}
-	public Language getLanguageNow() {
-		return languageNow;
+	
+	public Student getStudentNow() {
+		return studentNow;
 	}
-	public void setLanguageNow(Language languageNow) {
-		this.languageNow = languageNow;
+	public void setStudentNow(Student studentNow) {
+		this.studentNow = studentNow;
+	}
+	public Teacher getTeacherNow(){
+		return teacherNow;
+	}
+	public void setTeacherNow(Teacher teacherNow) {
+		this.teacherNow = teacherNow;
 	}
 	public ArrayList<Language> getLanguages() {
 		return Languages;
