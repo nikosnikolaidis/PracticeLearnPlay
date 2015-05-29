@@ -548,13 +548,7 @@ class ButtonListener implements ActionListener {
 					buttonsPanel.add(buttonExit);
 					
 							
-					
-					
-					
-			
-					
-				
-					
+										
 					
 					frame.add(createTeacherPanel);
 					frame.add(createLessonPanel);
