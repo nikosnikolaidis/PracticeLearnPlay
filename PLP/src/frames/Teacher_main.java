@@ -20,9 +20,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import ergasia.Language;
 import ergasia.Level;
 import ergasia.Main;
 import ergasia.User;
+import frames.Admin_main.ButtonListener;
 
 
 
@@ -143,18 +145,20 @@ public class Teacher_main extends JFrame {
 	}
 
 	class ButtonListener implements ActionListener {
-		private JButton questbutton=new JButton("Next"), savebutton, savebutton2, backbutton, backbutton2;
+		private JButton questbutton=new JButton("Next"), savebutton, backbutton;
 		private JTextField nametext = new JTextField();
 		private JTextField passtext = new JTextField();
 		private JTextField usertext = new JTextField(); 
-		private JLabel stoixeiaLabel, stoixeiaLabel2;
-		private JPanel stoixeiaPanel, stoixeiaPanel2;
+		private JLabel stoixeiaLabel;
+		private JPanel stoixeiaPanel;
 		private JComboBox<String> cbox, cbox1, cbox2, cbox3;
 		private JFrame questype;
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonExit){
 				dispose();
-			}else if(e.getSource()==buttonCreateQuestion){
+				
+			}
+			else if(e.getSource()==buttonCreateQuestion){
 				i=1;
 				questype=new JFrame();
 				questype.setLayout(new GridLayout(2, 0, 0, 0));
@@ -275,14 +279,130 @@ public class Teacher_main extends JFrame {
 
 				frame.add(backbutton);
 
-				//			saveListener listener=new saveListener();
-				//			backbutton.addActionListener(listener);
-				//			savebutton.addActionListener(listener);
+							backListener listener=new backListener();
+							backbutton.addActionListener(listener);
+							savebutton.addActionListener(listener);
 
 				frame.paintAll(getGraphics());
 			}
 		}
+class backListener implements ActionListener{
+	public void actionPerformed(ActionEvent e){
+		
+		if(e.getSource()==backbutton){
+			
+			JFrame frame = (JFrame) SwingUtilities.getRoot(getContentPane());
+			frame.remove(backbutton);
+			frame.remove(stoixeiaPanel);
+			frame.remove(stoixeiaLabel);
+			
+			
+			
+			createStudentPanel=new JPanel();
+			createStudentPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 
+			JLabel createStudentLabel=new JLabel();
+			BufferedImage dcreateStudentLabel = null;
+			try {
+				dcreateStudentLabel = ImageIO.read(new File("createstudentlabel.jpg"));
+			} 
+			catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			Image createStudentLabelImage = dcreateStudentLabel.getScaledInstance(400, 150, Image.SCALE_SMOOTH);
+			createStudentLabel.setIcon(new javax.swing.ImageIcon(createStudentLabelImage));
+
+			buttonCreateStudent = new JButton();
+			BufferedImage dcreateStudentButton = null;
+			try {
+				dcreateStudentButton = ImageIO.read(new File("createstudent.jpg"));
+			} 
+			catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			Image createStudentButtonImage = dcreateStudentButton.getScaledInstance(200, 155, Image.SCALE_SMOOTH);
+			buttonCreateStudent.setIcon(new javax.swing.ImageIcon(createStudentButtonImage));
+			buttonCreateStudent.setPreferredSize(new Dimension(190, 150));
+
+			createStudentPanel.add(createStudentLabel);
+			createStudentPanel.add(buttonCreateStudent);
+
+			frame.add(createStudentPanel);
+
+			createQuestionPanel=new JPanel();
+			createQuestionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+
+			JLabel createQuestionLabel=new JLabel();
+			BufferedImage dcreateQuestionLabel = null;
+			try {
+				dcreateQuestionLabel = ImageIO.read(new File("createquestionlabel.jpg"));
+			} 
+			catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			Image createQuestionLabelImage = dcreateQuestionLabel.getScaledInstance(400, 190, Image.SCALE_SMOOTH);
+			createQuestionLabel.setIcon(new javax.swing.ImageIcon(createQuestionLabelImage));
+
+			buttonCreateQuestion = new JButton();
+			BufferedImage dcreateQuestionButton = null;
+			try {
+				dcreateQuestionButton = ImageIO.read(new File("createQuestion.jpg"));
+			} 
+			catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			Image createQuestionButtonImage = dcreateQuestionButton.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+			buttonCreateQuestion.setIcon(new javax.swing.ImageIcon(createQuestionButtonImage));
+			buttonCreateQuestion.setPreferredSize(new Dimension(190, 190));
+
+			createQuestionPanel.add(createQuestionLabel);
+			createQuestionPanel.add(buttonCreateQuestion);
+
+			frame.add(createQuestionPanel);
+
+			buttonExit=new JButton();
+			BufferedImage dbuttonExit = null;
+			try {
+				dbuttonExit = ImageIO.read(new File("exit.jpg"));
+			} 
+			catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			Image buttonExitImage = dbuttonExit.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+			buttonExit.setIcon(new javax.swing.ImageIcon(buttonExitImage));
+			buttonExit.setPreferredSize(new Dimension(170, 170));
+
+			frame.add(buttonExit);
+			frame.paintAll(getGraphics());
+
+			ButtonListener listener=new ButtonListener();
+
+			buttonCreateQuestion.addActionListener(listener);
+			buttonCreateStudent.addActionListener(listener);
+			buttonExit.addActionListener(listener);
+
+			
+		}
+		if(e.getSource()==savebutton){
+			String name=(String) nametext.getText();
+			String user=(String) usertext.getText();
+			String pass=(String) passtext.getText();
+			String templvl=(String) cbox.getSelectedItem();
+			
+			Level studentLevel=null;
+			for(Level aLevel: Main.ser.getDataHolder().getTeacherNow().getLanguage().getLevels()){
+				if(templvl.equals(aLevel.getNameOfLevel())){
+					studentLevel=aLevel;
+				break;
+				}
+			}
+			Main.ser.getDataHolder().getTeacherNow().Create_Student(name, user, pass, studentLevel);
+			nametext.setText("");
+			usertext.setText("");
+			passtext.setText("");
+		}
+	}
+}
 		class questListener implements ActionListener{ 
 			private int antikeimeno;
 			private int typosAskhshs;

@@ -25,6 +25,7 @@ public class Sign_in extends JFrame{
 	private JLabel usernameLabel, passwordLabel;
 	private JTextField username, password;
 	private JButton buttonOk, enxiridio;
+	
 	public Sign_in(){
 		
 		
@@ -104,11 +105,12 @@ class ButtonListener implements ActionListener {
 							dispose();
 							Main.ser.getDataHolder().setTeacherNow(user);
 							new Teacher_main();
+							break;
 							
 						}
 					}
 					}
-					if(found=false){
+					if(found==false){
 						if(Main.ser.getDataHolder().getStudents()!=null){
 							ArrayList<Student> temp2=new ArrayList(Main.ser.getDataHolder().getStudents());
 						
@@ -118,6 +120,7 @@ class ButtonListener implements ActionListener {
 								dispose();
 								Main.ser.getDataHolder().setStudentNow(user);
 								new Student_main();
+								break;
 							}
 						}
 					}

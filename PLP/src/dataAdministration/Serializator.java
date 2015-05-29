@@ -177,7 +177,7 @@ public class Serializator {//implements Serializable{
 	
 	public ArrayList<Student> StudentDeserializing() {						//Student Deserializing
 		ArrayList<Student> emp=DH.getStudents();
-		try {
+		/*try {
 			FileInputStream fileIn = new FileInputStream("students.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			emp = (ArrayList<Student>) in.readObject();
@@ -189,7 +189,7 @@ public class Serializator {//implements Serializable{
 		}
 		catch(ClassNotFoundException c) {
 			StudentSerializing(emp);
-		}
+		}*/
 		try {
 			FileInputStream fileIn = new FileInputStream("students.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
