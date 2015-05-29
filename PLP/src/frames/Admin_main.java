@@ -255,11 +255,9 @@ class ButtonListener implements ActionListener {
 		    		cbox.addItem(templanguage.getName());
 		    	}
 		        }
-		        else{
-		        	cbox.addItem("Δημιουργήστε γλώσσα");
-		        }
+		        
 			    langPanel.add(cbox);
-			    cbox.setSelectedIndex(0);
+			    
 			    
 			    savebutton=new JButton("Save");
 			    
