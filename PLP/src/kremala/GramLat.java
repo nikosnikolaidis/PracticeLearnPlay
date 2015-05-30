@@ -99,7 +99,7 @@ public class GramLat extends JFrame {
 		panelmesi=new JPanel();
 		panelmesi.setLayout(katwLayout);
 		String arxikaKena="";
-		for(int i=1;i<=le3iLength;i++){
+		for(int k=1;k<=le3iLength;k++){
 			arxikaKena=arxikaKena+"_";
 		}
 		le3i=new JTextField(arxikaKena);

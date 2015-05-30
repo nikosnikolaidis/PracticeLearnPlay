@@ -28,6 +28,10 @@ public class Student extends User implements Serializable {
 		this.Onomateponimo=Onomateponimo;
 		this.studentLevel= studentLevel;
 	}
+	
+	public Level getStudentLevel(){
+		return this.studentLevel;
+	}
 
 	public String getOnomateponimo() {
 		return Onomateponimo;

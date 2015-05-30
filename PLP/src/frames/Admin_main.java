@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -21,6 +24,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import ergasia.Admin;
 import ergasia.Language;
@@ -756,6 +763,63 @@ class ButtonListener implements ActionListener {
 					Main.ser.TeachersSerializing(null);
 					Main.ser.VocabularyQuestionsSerializing(null);
 					Main.ser.GrammarQuestionsSerializing(null);
+					
+					String filename="Ma8itess.xls" ;						//apo8ikeusi se excel
+					
+						
+						
+						HSSFWorkbook workbook = new HSSFWorkbook();
+			        	HSSFSheet sheet = workbook.createSheet("Sample sheet");
+			        	
+					    HSSFRow rowhead=   sheet.createRow((short)0);
+				        rowhead.createCell(0).setCellValue("No.");
+				        rowhead.createCell(1).setCellValue("Ονοματεπώνυμο");
+				        rowhead.createCell(2).setCellValue("Username");
+
+				        FileOutputStream fileOut = null;
+						try {
+							fileOut = new FileOutputStream(filename);
+						} catch (FileNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				        try {
+							workbook.write(fileOut);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				        try {
+							fileOut.close();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				        
+				        
+				        
+				        filename="Kathigites.xls" ;	
+				        
+				        fileOut = null;
+						try {
+							fileOut = new FileOutputStream(filename);
+						} catch (FileNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				        try {
+							workbook.write(fileOut);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				        try {
+							fileOut.close();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					
 					dataframe.dispose();
 					dispose();
 				}
