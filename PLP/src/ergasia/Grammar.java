@@ -1,9 +1,11 @@
 package ergasia;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 
-public class Grammar extends Exercise {
+public class Grammar extends Exercise  implements Serializable {
 	
 	private final int numberOfQuestionsToBeExamined = 30;
 	private ArrayList<Question> listOfAllGrammarQuestionsWithTheSameLevel;
@@ -44,9 +46,17 @@ public class Grammar extends Exercise {
 		return testList;
 	}
 
-	public void addQuestion(Question newQuestion){
-		
-		listOfAllGrammarQuestionsWithTheSameLevel.add(newQuestion);
+	public void createMultipleChoice(String ekfwnisi, ArrayList<String> choices, int correctAnswer){
+		MultipleChoice question=new MultipleChoice(language, level, ekfwnisi, choices, correctAnswer);
+		HashMap<Question, Level> questions=Main.ser.getDataHolder().getListOfAllGrammarQuestions();
+		questions.put(question, question.getLevel());
+		Main.ser.GrammarQuestionsSerializing(questions);
+	}
+	public void createMatching(ArrayList<String> stiliA, ArrayList<String> stiliB, ArrayList<String> stiliC){
+		Matching question=new Matching(language, level, stiliA, stiliB, stiliC);
+		HashMap<Question, Level> questions=Main.ser.getDataHolder().getListOfAllGrammarQuestions();
+		questions.put(question, question.getLevel());
+		Main.ser.GrammarQuestionsSerializing(questions);
 	}
 	
 }

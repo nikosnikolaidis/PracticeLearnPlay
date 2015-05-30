@@ -1,8 +1,9 @@
 package ergasia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Exercise {
+public abstract class Exercise implements Serializable {
 	
 	protected Language language;//h glwssa sthn opoia einai h askhsh, px english, french etc
 	protected Level level;//the level of the examination given by the teacher

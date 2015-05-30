@@ -151,7 +151,7 @@ public class Teacher_main extends JFrame {
 		private JTextField usertext = new JTextField(); 
 		private JLabel stoixeiaLabel;
 		private JPanel stoixeiaPanel;
-		private JComboBox<String> cbox, cbox1, cbox2, cbox3;
+		private JComboBox<String> cbox, cbox1;
 		private JFrame questype;
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonExit){
@@ -164,39 +164,33 @@ public class Teacher_main extends JFrame {
 				questype.setLayout(new GridLayout(2, 0, 0, 0));
 
 				JPanel duoSelectionPanel = new JPanel();
-				duoSelectionPanel.setLayout(new GridLayout(0, 3, 0, 0));
+				duoSelectionPanel.setLayout(new GridLayout(0, 1, 0, 0));
 
 				cbox1 = new JComboBox<String>();
-				cbox1.addItem("Vocabulary");
-				cbox1.addItem("Grammar");
+				cbox1.addItem("Vocabulary, multiple choice");
+				cbox1.addItem("Vocabulary, matching");
+				cbox1.addItem("Grammar, multiple choice");
+				cbox1.addItem("Grammar, matching");
 				cbox1.addItem("Listening");
 				cbox1.addItem("Reading");
 
 
-				cbox2 = new JComboBox<String>();
-				cbox2.addItem("multiple choice");
-				cbox2.addItem("matching");
+				
 
-				cbox3 = new JComboBox<String>();
-				for(Level alvl: Main.ser.getDataHolder().getTeacherNow().getLanguage().getLevels()){
-					cbox3.addItem(alvl.getNameOfLevel());
-				}
 
 				duoSelectionPanel.add(cbox1);
-				duoSelectionPanel.add(cbox2);
-				duoSelectionPanel.add(cbox3);
+	
 
 				questype.add(duoSelectionPanel);
 				cbox1.setSelectedIndex(0);
-				cbox2.setSelectedIndex(0);
-				cbox3.setSelectedIndex(0);
+				
 
 				JPanel buttonpanel= new JPanel();
 				buttonpanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 				buttonpanel.add(questbutton);
 				questype.add(buttonpanel);
 				questype.setVisible(true);
-				questype.setSize(450, 100);
+				questype.setSize(320, 100);
 				questype.setLocationRelativeTo(null);
 				questype.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				questListener listener=new questListener();
@@ -405,40 +399,54 @@ class backListener implements ActionListener{
 }
 		class questListener implements ActionListener{ 
 			private int antikeimeno;
-			private int typosAskhshs;
-			private String lvl;
+			
             
 			public void actionPerformed(ActionEvent e){
 				if(e.getSource()==questbutton){
 
 					//antoistoixhsh
 					antikeimeno=(int) cbox1.getSelectedIndex();
-					typosAskhshs=(int) cbox2.getSelectedIndex();
-					lvl=(String) (cbox3.getSelectedItem());
+					
 
 					questype.dispose();
 			
 
-					if(typosAskhshs==0){
-                    
+					if(antikeimeno==0){
+						
 					if(i==1){
-						new MultipleChoiceFrame(antikeimeno,lvl);
+						new MultipleChoiceFrame(antikeimeno, null);
 						i++;
 					}
 					}
-					else if(typosAskhshs==1)
+					else if(antikeimeno==1)
 					{
 						
-					//	new MatchingFrame(antikeimeno,lvl);
-						i++;
-					}
-					else if(typosAskhshs==2){
-						//new ListeningQuestionFrame()
-						i++;
-					}
-					else if(typosAskhshs==3){
+						if(i==1){
+							new MatchingFrame(antikeimeno);
+							i++;
+							}
 						
+					}
+					if(antikeimeno==2){
+					
+						if(i==1){
+							new MultipleChoiceFrame(antikeimeno, null);
+							i++;
+						}
+						}
+						else if(antikeimeno==3)
+						{
+						
+							if(i==1){
+								new MatchingFrame(antikeimeno);
+								i++;
+								}
+						}
+					else if(antikeimeno==4||antikeimeno==5){
+						if(i==1){
+						new ListeningOrReadingQuestionFrame(antikeimeno);
 						i++;
+						}
 					}
 					
 

@@ -1,9 +1,11 @@
 package ergasia;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 
-public class Vocabulary extends Exercise{
+public class Vocabulary extends Exercise implements Serializable{
 
 	private final int numberOfQuestionsToBeExamined = 30;
 	private ArrayList<Question> listOfAllVocabularyQuestionsWithTheSameLevel;
@@ -46,9 +48,36 @@ public Vocabulary(Language language, Level level){
 	}
 
 
-	public void addQuestion(Question newQuestion){
-		
-		listOfAllVocabularyQuestionsWithTheSameLevel.add(newQuestion);
+	public void createMultipleChoice(String ekfwnisi, ArrayList<String> choices, int correctAnswer){
+		MultipleChoice question=new MultipleChoice(language, level, ekfwnisi, choices, correctAnswer);
+		HashMap<Question, Level> questions=Main.ser.getDataHolder().getListOfAllVocabularyQuestions();
+		questions.put(question, question.getLevel());
+		Main.ser.VocabularyQuestionsSerializing(questions);
 	}
-
+	public void createMatching(ArrayList<String> stiliA, ArrayList<String> stiliB, ArrayList<String> stiliC){
+		Matching question=new Matching(language, level, stiliA, stiliB, stiliC);
+		HashMap<Question, Level> questions=Main.ser.getDataHolder().getListOfAllVocabularyQuestions();
+		questions.put(question, question.getLevel());
+		Main.ser.VocabularyQuestionsSerializing(questions);
+	}
+	
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

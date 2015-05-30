@@ -1,9 +1,11 @@
 package ergasia;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 
-public class Listening extends Exercise {
+public class Listening extends Exercise implements Serializable {
 	
 
 	private ArrayList<ListeningQuestion> listeningQuestionsList = new ArrayList<ListeningQuestion>();
@@ -15,27 +17,23 @@ public class Listening extends Exercise {
 
 
 	
-	//epistrefetai mia ArrayList<Question> pou periexei monon ena stoixeio. Afto einai ena (tyxaia epilegmeno) antikeimeno ListeningQuestion.
+
 	public ArrayList<Question> createTest() {
 		
-		Random rnd = new Random();//ena antikeimeno typou Random pou 8a mas voh8hsei na eksagoume enan tyxaio ari8mo apo afto
-		
+		Random rnd = new Random();		
 		int mynum = 0;
-		
-		//8a epilegetai enas tyxaios ari8mos me evros apo 0 mexri x, opou x einai to plh8os twn diaforetikwn audio files ths kathgorias Listening me to sygkekrimeno lvl kai glwssa
-		mynum = rnd.nextInt(listeningQuestionsList.size());
-
-		
+		mynum = rnd.nextInt(listeningQuestionsList.size());		
 		ArrayList<Question> temp = new ArrayList<>();
 		temp.add(listeningQuestionsList.get(mynum));
 		
 		return temp;
 }
 	
-	public void addAListeningQuestion(ListeningQuestion newListeningQuestion){
-		
-		listeningQuestionsList.add(newListeningQuestion);
-		
+	public void createListening(String AudioFileName, ArrayList<Question> questions){
+		ListeningQuestion question=new ListeningQuestion(language, level, AudioFileName, questions);
+		HashMap<Question, Level> tmpquestions=Main.ser.getDataHolder().getListOfAllListeningQuestions();
+		tmpquestions.put(question, question.getLevel());
+		Main.ser.ListeningQuestionsSerializing(tmpquestions);
 	}
 
 

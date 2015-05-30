@@ -1,8 +1,9 @@
 package ergasia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Matching extends Question {
+public class Matching extends Question  implements Serializable {
 	
 	private ArrayList<String> stiliA = new ArrayList<String>();
 	private ArrayList<String> stiliB = new ArrayList<String>();

@@ -1,8 +1,9 @@
 package ergasia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ListeningQuestion extends Question{
+public class ListeningQuestion extends Question  implements Serializable{
 	private String AudioFileName;
 	private ArrayList<Question> questions = new ArrayList<Question>();
 	

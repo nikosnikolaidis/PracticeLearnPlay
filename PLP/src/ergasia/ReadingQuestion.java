@@ -1,17 +1,13 @@
 package ergasia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ReadingQuestion extends Question{
+public class ReadingQuestion extends Question  implements Serializable{
 	private String ReadingText;
 	private ArrayList<Question> questions = new ArrayList<Question>();
 	
-	
-	public ReadingQuestion(Language language, Level level, String ReadingText){
-		super(language, level);
-		this.ReadingText=ReadingText;
-	}
-	
+
 	public ReadingQuestion(Language language, Level level, String ReadingText, ArrayList<Question> questions){
 		super(language, level);
 		this.questions=questions;

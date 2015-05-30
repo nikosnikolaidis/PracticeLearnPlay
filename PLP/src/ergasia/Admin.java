@@ -7,13 +7,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-public class Admin extends User {
+public class Admin extends User  implements Serializable {
 	private String Admin_password="Admin";
 	private String Admin_username="Admin";
 	private ArrayList<Teacher> Teachers=new ArrayList<Teacher>();
