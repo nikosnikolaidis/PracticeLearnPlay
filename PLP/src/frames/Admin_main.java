@@ -737,8 +737,8 @@ class ButtonListener implements ActionListener {
 							admin.Create_Level(templang, text1);admin.Create_Level(templang, text2);admin.Create_Level(templang, text3);admin.Create_Level(templang, text4);admin.Create_Level(templang, text5);admin.Create_Level(templang, text6);admin.Create_Level(templang, text7);admin.Create_Level(templang, text8);admin.Create_Level(templang, text9);admin.Create_Level(templang, text10);
 						}
 						lvlframe.dispose();
-						
-					
+						lvltext1.setText("");lvltext2.setText("");lvltext3.setText("");lvltext4.setText("");lvltext5.setText("");lvltext6.setText("");lvltext7.setText("");lvltext8.setText("");lvltext9.setText("");lvltext10.setText("");
+					    lvltext.setText("");nametext.setText("");
 					}
 				}
 				

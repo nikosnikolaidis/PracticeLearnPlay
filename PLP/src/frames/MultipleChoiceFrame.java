@@ -67,10 +67,12 @@ public class MultipleChoiceFrame extends JFrame{
 			cbox2.addItem(alvl.getNameOfLevel());
 		}
 		questPanel.add(llvl);questPanel.add(cbox2);
+		JPanel buttonspanel= new JPanel();
+		buttonspanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 10));
 		this.add(questPanel);
-		this.add(saveQuestion);
-		this.add(exitButton);
-		
+		buttonspanel.add(saveQuestion);
+		buttonspanel.add(exitButton);
+		this.add(buttonspanel);
 
 		saveQuestion.addActionListener(new saveButtonListener());
         exitButton.addActionListener(new saveButtonListener());
@@ -157,11 +159,11 @@ public class MultipleChoiceFrame extends JFrame{
 						break;
 					}
 				}
-				if(antikeimeno==4){
+				if(antikeimeno==4 && questions.size()>1){
 					Listening listening= new Listening(Main.ser.getDataHolder().getTeacherNow().getLanguage(), lvl);
 					listening.createListening(AudioFileOrReadingText, questions);
 				}
-				if(antikeimeno==5){
+				if(antikeimeno==5 && questions.size()>1){
 					Reading reading= new Reading(Main.ser.getDataHolder().getTeacherNow().getLanguage(), lvl);
 					reading.createReading(AudioFileOrReadingText, questions);
 				}
