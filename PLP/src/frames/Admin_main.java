@@ -757,6 +757,7 @@ class ButtonListener implements ActionListener {
 					Main.ser.VocabularyQuestionsSerializing(null);
 					Main.ser.GrammarQuestionsSerializing(null);
 					dataframe.dispose();
+					dispose();
 				}
 			}
 			

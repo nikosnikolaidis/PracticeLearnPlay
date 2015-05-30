@@ -1,8 +1,9 @@
 package ergasia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MultipleChoice extends Question{
+public class MultipleChoice extends Question  implements Serializable{
 	private String ekfwnisi;
 	private ArrayList<String> choices = new ArrayList<String>();
 	private int correctAnswer;

@@ -1,8 +1,9 @@
 package ergasia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Question {
+public abstract class Question  implements Serializable {
 
 	private Language language;
 	private Level level;
