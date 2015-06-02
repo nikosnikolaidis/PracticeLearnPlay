@@ -235,7 +235,7 @@ class ButtonListener implements ActionListener {
 		    	stoixeiaPanel= new JPanel(new GridLayout(5,0,0,0));
 		    	
 		    	JPanel namePanel=new JPanel(new GridLayout());
-		    	JLabel namelabel=new JLabel("Ονοματεπόνυμο");
+		    	JLabel namelabel=new JLabel("Ονοματεπώνυμο");
 		    	namePanel.add(namelabel);
 			    namePanel.add(nametext);
 			    
@@ -764,7 +764,7 @@ class ButtonListener implements ActionListener {
 					Main.ser.VocabularyQuestionsSerializing(null);
 					Main.ser.GrammarQuestionsSerializing(null);
 					
-					String filename="Ma8itess.xls" ;						//apo8ikeusi se excel
+					String filename="Ma8itess.xls";						//apo8ikeusi se excel
 					
 						
 						
