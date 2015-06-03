@@ -16,12 +16,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+
+import kremala.Kremala;
+import ergasia.Main;
 
 
 public class Student_main extends JFrame {
 
 	private JButton buttonExit, buttonTest, buttonGame, buttonStatistics;
-	private JPanel TestPanel, GamePanel;
+	private JPanel TestPanel, GamePanel, StatisticsPanel;
 	private JLabel backgroundLabel;
 	
 	
@@ -53,7 +58,7 @@ public class Student_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image GameLabelImage = dGameLabel.getScaledInstance(400, 150, Image.SCALE_SMOOTH);
+		Image GameLabelImage = dGameLabel.getScaledInstance(400, 130, Image.SCALE_SMOOTH);
 		GameLabel.setIcon(new javax.swing.ImageIcon(GameLabelImage));
 		
 		buttonGame = new JButton();
@@ -64,9 +69,9 @@ public class Student_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image GameButtonImage = dGameButton.getScaledInstance(200, 155, Image.SCALE_SMOOTH);
+		Image GameButtonImage = dGameButton.getScaledInstance(200, 135, Image.SCALE_SMOOTH);
 		buttonGame.setIcon(new javax.swing.ImageIcon(GameButtonImage));
-		buttonGame.setPreferredSize(new Dimension(190, 150));
+		buttonGame.setPreferredSize(new Dimension(190, 130));
 	    
 		GamePanel.add(GameLabel);
 		GamePanel.add(buttonGame);
@@ -85,7 +90,7 @@ public class Student_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image TestLabelImage = dTestLabel.getScaledInstance(400, 190, Image.SCALE_SMOOTH);
+		Image TestLabelImage = dTestLabel.getScaledInstance(400, 130, Image.SCALE_SMOOTH);
 		TestLabel.setIcon(new javax.swing.ImageIcon(TestLabelImage));
 		
 		buttonTest = new JButton();
@@ -96,14 +101,47 @@ public class Student_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image TestButtonImage = dTestButton.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		Image TestButtonImage = dTestButton.getScaledInstance(200, 135, Image.SCALE_SMOOTH);
 		buttonTest.setIcon(new javax.swing.ImageIcon(TestButtonImage));
-		buttonTest.setPreferredSize(new Dimension(190, 190));
+		buttonTest.setPreferredSize(new Dimension(190, 130));
 	    
 		TestPanel.add(TestLabel);
 		TestPanel.add(buttonTest);
 		
 		this.add(TestPanel);
+		
+		
+		StatisticsPanel=new JPanel();
+		StatisticsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+		
+		JLabel StatisticsLabel=new JLabel();
+		BufferedImage dStatisticsLabel = null;
+		try {
+			dStatisticsLabel = ImageIO.read(new File("statisticlabel.jpg"));
+		} 
+		catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Image StatisticsLabelImage = dStatisticsLabel.getScaledInstance(400, 130, Image.SCALE_SMOOTH);
+		StatisticsLabel.setIcon(new javax.swing.ImageIcon(StatisticsLabelImage));
+		
+		buttonStatistics = new JButton();
+		BufferedImage dStatisticsButton = null;
+		try {
+			dStatisticsButton = ImageIO.read(new File("statistic.jpg"));
+		} 
+		catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Image StatisticsButtonImage = dStatisticsButton.getScaledInstance(200, 135, Image.SCALE_SMOOTH);
+		buttonStatistics.setIcon(new javax.swing.ImageIcon(StatisticsButtonImage));
+		buttonStatistics.setPreferredSize(new Dimension(190, 130));
+	    
+		StatisticsPanel.add(StatisticsLabel);
+		StatisticsPanel.add(buttonStatistics);
+		
+		this.add(StatisticsPanel);
+		
 		
 		buttonExit=new JButton();
 		BufferedImage dbuttonExit = null;
@@ -113,20 +151,19 @@ public class Student_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image buttonExitImage = dbuttonExit.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		Image buttonExitImage = dbuttonExit.getScaledInstance(170, 110, Image.SCALE_SMOOTH);
 		buttonExit.setIcon(new javax.swing.ImageIcon(buttonExitImage));
-		buttonExit.setPreferredSize(new Dimension(170, 170));
+		buttonExit.setPreferredSize(new Dimension(120, 110));
 		
-		
-		this.add(buttonExit);		
-		
-		
+		this.add(buttonExit);
 		
 		ButtonListener listener=new ButtonListener();
 		buttonExit.addActionListener(listener);
+		buttonTest.addActionListener(listener);
+		buttonStatistics.addActionListener(listener);
+		
 		GameListener listener2 = new GameListener();
 		buttonGame.addActionListener(listener2);
-		buttonTest.addActionListener(listener);
 		
 		this.setVisible(true);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -153,6 +190,8 @@ public class Student_main extends JFrame {
 				Image GameButtonImage = dGameButton.getScaledInstance(350, 230, Image.SCALE_SMOOTH);
 				hanging.setIcon(new javax.swing.ImageIcon(GameButtonImage));
 				hanging.setPreferredSize(new Dimension(3350, 230));
+				GamesButtonChoiceListener listener =new GamesButtonChoiceListener();
+				hanging.addActionListener(listener);
 				
 				wording = new JButton();
 				dGameButton = null;
@@ -165,6 +204,7 @@ public class Student_main extends JFrame {
 				GameButtonImage = dGameButton.getScaledInstance(350, 230, Image.SCALE_SMOOTH);
 				wording.setIcon(new javax.swing.ImageIcon(GameButtonImage));
 				wording.setPreferredSize(new Dimension(350, 230));
+				wording.addActionListener(listener);
 				
 				games.add(hanging);
 				games.add(wording);
@@ -178,13 +218,17 @@ public class Student_main extends JFrame {
 		
 	class GamesButtonChoiceListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-			if(e.getSource()==buttonGame){
+			if(e.getSource()==hanging){
+				games.dispose();
+				new Kremala(0);
+			}
+			else if(e.getSource()==wording){
 				
 			}
 		}
 	}
 	}
-class ButtonListener implements ActionListener {
+	class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonExit){
@@ -192,6 +236,63 @@ class ButtonListener implements ActionListener {
 			}
 			else if(e.getSource()==buttonTest){
 				
+			}else if(e.getSource()==buttonStatistics){					//an epilex8oun ta statistika
+				JFrame frame = (JFrame) SwingUtilities.getRoot(getContentPane());
+				frame.remove(GamePanel);
+				frame.remove(TestPanel);
+				frame.remove(StatisticsPanel);
+				frame.remove(buttonExit);
+				
+				JLabel StatisticsLabel=new JLabel();
+				BufferedImage dStatisticsLabel = null;
+				try {
+					dStatisticsLabel = ImageIO.read(new File("statisticlabelWithIcon.jpg"));
+				} 
+				catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				Image StatisticsLabelImage = dStatisticsLabel.getScaledInstance(400, 130, Image.SCALE_SMOOTH);
+				StatisticsLabel.setIcon(new javax.swing.ImageIcon(StatisticsLabelImage));
+				frame.add(StatisticsLabel);
+				
+				
+				JPanel textsPanel = new JPanel();
+				
+				JTextArea GrammartextArea = new JTextArea();
+				GrammartextArea.setText("Grammar Statistic                          ");
+				for(String s: Main.ser.getDataHolder().getStudentNow().getGrammarStatistics()){
+					GrammartextArea.setText(GrammartextArea.getText()+"\n"+ s);
+				}
+				GrammartextArea.setEditable(false);
+				textsPanel.add(GrammartextArea);
+				
+				JTextArea VocabularytextArea = new JTextArea();
+				VocabularytextArea.setText("Vocabulary Statistic                    ");
+				for(String s: Main.ser.getDataHolder().getStudentNow().getVocabularyStatistics()){
+					VocabularytextArea.setText(VocabularytextArea.getText()+"\n"+ s);
+				}
+				VocabularytextArea.setEditable(false);
+				textsPanel.add(VocabularytextArea);
+				
+				JTextArea ReadingtextArea = new JTextArea();
+				ReadingtextArea.setText("Reading Statistic                          ");
+				for(String s: Main.ser.getDataHolder().getStudentNow().getReadingStatistics()){
+					ReadingtextArea.setText(ReadingtextArea.getText()+"\n"+ s);
+				}
+				ReadingtextArea.setEditable(false);
+				textsPanel.add(ReadingtextArea);
+				
+				JTextArea ListeningtextArea = new JTextArea();
+				ListeningtextArea.setText("Listening Statistic                      ");
+				for(String s: Main.ser.getDataHolder().getStudentNow().getListeningStatistics()){
+					ListeningtextArea.setText(ListeningtextArea.getText()+"\n"+ s);
+				}
+				ListeningtextArea.setEditable(false);
+				textsPanel.add(ListeningtextArea);
+				
+				frame.add(textsPanel);
+				frame.add(buttonExit);
+				frame.paintAll(getGraphics());
 			}
 			
 		}

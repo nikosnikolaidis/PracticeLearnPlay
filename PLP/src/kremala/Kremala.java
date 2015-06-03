@@ -18,7 +18,7 @@ import javax.swing.*;
 import ergasia.Language;
 import ergasia.Main;
 
-public class GramLat extends JFrame {
+public class Kremala extends JFrame {
 	private JPanel panelkatw;
 	private JPanel panel;
 	private JPanel panelaristera;
@@ -72,12 +72,12 @@ public class GramLat extends JFrame {
 
 	GridLayout katwLayout= new GridLayout(2,1);
 	
-	public GramLat(int skor){
+	public Kremala(int skor){
 		this.skor=skor;
 		ArrayList<Language> languages=Main.ser.LanguageDeserializing();   	//dimiourgia le3ikou gia xrisimopoiish
 		ArrayList<String> le3iko =new ArrayList<String>();
 		for(Language l:languages){
-			if(l==Main.ser.getDataHolder().getStudentNow().getStudentLevel().getLanguage()){
+			if(l.getName().equals(Main.ser.getDataHolder().getStudentNow().getTeacher().getLanguage().getName())){
 				le3iko=l.getDictionary();
 			}
 		}
@@ -214,6 +214,7 @@ public class GramLat extends JFrame {
 		this.setSize(800, 300);
 		this.setTitle("Kremala");
 		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
@@ -222,7 +223,7 @@ public class GramLat extends JFrame {
 			if(e.getSource()==Neo){
 				setVisible(false);
 				dispose();
-				new GramLat(0);
+				new Kremala(0);
 			}
 			if(e.getSource()==A){
 				if(le3iTixea.contains("a") ){
@@ -775,7 +776,7 @@ public class GramLat extends JFrame {
 			int temp=skor;
 			setVisible(false);
 			dispose();
-			GramLat E2 =new GramLat(temp);
+			Kremala E2 =new Kremala(temp);
 			E2.setSkor(skor);
 		}
 		if(zwes==0){
@@ -783,7 +784,7 @@ public class GramLat extends JFrame {
 			int temp=skor;
 			setVisible(false);
 			dispose();
-			GramLat E2 =new GramLat(temp);
+			Kremala E2 =new Kremala(temp);
 			E2.setSkor(skor);
 		}
 		}

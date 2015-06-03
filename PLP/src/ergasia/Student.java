@@ -1,21 +1,10 @@
 package ergasia;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.util.LinkedList;
 	
 
 public class Student extends User implements Serializable {
@@ -24,10 +13,10 @@ public class Student extends User implements Serializable {
 	private Teacher teacher;
 	private Level studentLevel;
 	
-	private ArrayList<String> grammarStatistics =new ArrayList<String>();
-	private ArrayList<String> vocabularyStatistics =new ArrayList<String>();;
-	private ArrayList<String> readingStatistics =new ArrayList<String>();;
-	private ArrayList<String> listeningStatistics =new ArrayList<String>();;
+	private LinkedList<String> grammarStatistics =new LinkedList<String>();
+	private LinkedList<String> vocabularyStatistics =new LinkedList<String>();;
+	private LinkedList<String> readingStatistics =new LinkedList<String>();;
+	private LinkedList<String> listeningStatistics =new LinkedList<String>();;
 	
 	public Student(String Onomateponimo, String username, String password, Teacher teacher1, Level studentLevel) {
 		super(username, password);
@@ -45,56 +34,68 @@ public class Student extends User implements Serializable {
 		}
 	}
 	
-	public ArrayList<String> addNewGrammarStatistic(String vathmos){ 		//me8odoi gia add newn sttistics
+	public LinkedList<String> addNewGrammarStatistic(String vathmos){ 		//me8odoi gia add newn sttistics
 		for(Student s: Main.ser.StudentDeserializing()){		//Deserializing
 			if(s.getUsername()==this.getUsername()){
-				grammarStatistics.add(getCurrentTimeStamp()+", "+vathmos);
+				if(grammarStatistics.size()>15){
+					grammarStatistics.removeFirst();
+				}
+				grammarStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
 			}
 		}
 		Main.ser.StudentSerializing(this.getTeacher().getStudents());	//Serializing
 		return grammarStatistics;
 	}
-	public ArrayList<String> addNewVocabularyStatistic(String vathmos){
+	public LinkedList<String> addNewVocabularyStatistic(String vathmos){
 		for(Student s: Main.ser.StudentDeserializing()){
 			if(s.getUsername()==this.getUsername()){
-				vocabularyStatistics.add(getCurrentTimeStamp()+", "+vathmos);
+				if(vocabularyStatistics.size()>15){
+					vocabularyStatistics.removeFirst();
+				}
+				vocabularyStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
 			}
 		}
 		Main.ser.StudentSerializing(this.getTeacher().getStudents());
 		return vocabularyStatistics;
 	}
-	public ArrayList<String> addNewReadingStatistic(String vathmos){
+	public LinkedList<String> addNewReadingStatistic(String vathmos){
 		for(Student s: Main.ser.StudentDeserializing()){
 			if(s.getUsername()==this.getUsername()){
-				readingStatistics.add(getCurrentTimeStamp()+", "+vathmos);
+				if(readingStatistics.size()>15){
+					readingStatistics.removeFirst();
+				}
+				readingStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
 			}
 		}
 		Main.ser.StudentSerializing(this.getTeacher().getStudents());
 		return readingStatistics;
 	}
-	public ArrayList<String> addNewListeningStatistic(String vathmos){
+	public LinkedList<String> addNewListeningStatistic(String vathmos){
 		for(Student s: Main.ser.StudentDeserializing()){
 			if(s.getUsername()==this.getUsername()){
-				listeningStatistics.add(getCurrentTimeStamp()+", "+vathmos);
+				if(listeningStatistics.size()>15){
+					listeningStatistics.removeFirst();
+				}
+				listeningStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
 			}
 		}
 		Main.ser.StudentSerializing(this.getTeacher().getStudents());
 		return listeningStatistics;
 	}																		//TimeStamp kai va8mos 
 	
-	public ArrayList<String> getGrammarStatistics() {
+	public LinkedList<String> getGrammarStatistics() {
 		return grammarStatistics;
 	}
 
-	public ArrayList<String> getVocabularyStatistics() {
+	public LinkedList<String> getVocabularyStatistics() {
 		return vocabularyStatistics;
 	}
 
-	public ArrayList<String> getReadingStatistics() {
+	public LinkedList<String> getReadingStatistics() {
 		return readingStatistics;
 	}
 
-	public ArrayList<String> getListeningStatistics() {
+	public LinkedList<String> getListeningStatistics() {
 		return listeningStatistics;
 	}
 
