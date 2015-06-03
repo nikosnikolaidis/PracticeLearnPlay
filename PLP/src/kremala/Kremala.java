@@ -215,7 +215,7 @@ public class Kremala extends JFrame {
 		this.setTitle("Kremala");
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	
 	class ButtonListener implements ActionListener{
