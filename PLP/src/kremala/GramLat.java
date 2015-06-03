@@ -74,14 +74,14 @@ public class GramLat extends JFrame {
 	
 	public GramLat(int skor){
 		this.skor=skor;
-		ArrayList<Language> languages=Main.ser.LanguageDeserializing();
+		ArrayList<Language> languages=Main.ser.LanguageDeserializing();   	//dimiourgia le3ikou gia xrisimopoiish
 		ArrayList<String> le3iko =new ArrayList<String>();
 		for(Language l:languages){
 			if(l==Main.ser.getDataHolder().getStudentNow().getStudentLevel().getLanguage()){
 				le3iko=l.getDictionary();
 			}
 		}
-		int ran=new Random().nextInt(le3iko.size());
+		int ran=new Random().nextInt(le3iko.size());						//kai pernei tixea le3i
 		String randomLe3="";
 		int i=0;
 		for(String str: le3iko){

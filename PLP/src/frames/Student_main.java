@@ -20,14 +20,12 @@ import javax.swing.JPanel;
 
 public class Student_main extends JFrame {
 
-	private JButton buttonExit, buttonTest, buttonGame;
+	private JButton buttonExit, buttonTest, buttonGame, buttonStatistics;
 	private JPanel TestPanel, GamePanel;
 	private JLabel backgroundLabel;
 	
 	
 	public Student_main(){
-		
-		
 		buttonTest=new JButton();
 		
 		 BufferedImage background = null;
@@ -126,7 +124,7 @@ public class Student_main extends JFrame {
 		
 		ButtonListener listener=new ButtonListener();
 		buttonExit.addActionListener(listener);
-		gameListener listener2 = new gameListener();
+		GameListener listener2 = new GameListener();
 		buttonGame.addActionListener(listener2);
 		buttonTest.addActionListener(listener);
 		
@@ -137,7 +135,7 @@ public class Student_main extends JFrame {
 		
 		
 	}
-	class gameListener implements ActionListener {
+	class GameListener implements ActionListener {
 		private JButton hanging, wording;
 		private JFrame games;
 		public void actionPerformed(ActionEvent e){
@@ -178,7 +176,7 @@ public class Student_main extends JFrame {
 		}
 		
 		
-	class gamesListener implements ActionListener{
+	class GamesButtonChoiceListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			if(e.getSource()==buttonGame){
 				

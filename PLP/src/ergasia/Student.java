@@ -22,13 +22,41 @@ public class Student extends User implements Serializable {
 	private Teacher teacher;
 	private Level studentLevel;
 	
+	private ArrayList<String> grammarStatistics;
+	private ArrayList<String> vocabularyStatistics;
+	private ArrayList<String> readingStatistics;
+	private ArrayList<String> listeningStatistics;
+	
 	public Student(String Onomateponimo, String username, String password, Teacher teacher1, Level studentLevel) {
 		super(username, password);
 		teacher=teacher1;
 		this.Onomateponimo=Onomateponimo;
 		this.studentLevel= studentLevel;
+		
+		grammarStatistics= new ArrayList<String>();
+		vocabularyStatistics= new ArrayList<String>();
+		readingStatistics= new ArrayList<String>();
+		listeningStatistics= new ArrayList<String>();
 	}
 	
+	//me8os pws prokiptoun ta statistics
+	
+	public ArrayList<String> getGrammarStatistics() {
+		return grammarStatistics;
+	}
+
+	public ArrayList<String> getVocabularyStatistics() {
+		return vocabularyStatistics;
+	}
+
+	public ArrayList<String> getReadingStatistics() {
+		return readingStatistics;
+	}
+
+	public ArrayList<String> getListeningStatistics() {
+		return listeningStatistics;
+	}
+
 	public Level getStudentLevel(){
 		return this.studentLevel;
 	}
