@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -20,18 +21,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import ergasia.Language;
 import ergasia.Level;
 import ergasia.Main;
+import ergasia.Student;
 import ergasia.User;
-import frames.Admin_main.ButtonListener;
 
 
 
 public class Teacher_main extends JFrame {
 	private JLabel backgroundLabel;
-	private JButton buttonExit, buttonCreateQuestion, buttonCreateStudent;
-	private JPanel createStudentPanel, createQuestionPanel;
+	private JButton buttonExit, buttonCreateQuestion, buttonCreateStudent, stats;
+	private JPanel createStudentPanel, createQuestionPanel, statsPanel;
 	private User teacher;
 	private int i=0;
 
@@ -84,6 +84,37 @@ public class Teacher_main extends JFrame {
 		createStudentPanel.add(buttonCreateStudent);
 
 		this.add(createStudentPanel);
+		
+		statsPanel=new JPanel();
+		statsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+
+		JLabel statsLabel=new JLabel();
+		BufferedImage dstatsLabel = null;
+		try {
+			dstatsLabel = ImageIO.read(new File("statisticlabel.jpg"));
+		} 
+		catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Image statsLabelImage = dstatsLabel.getScaledInstance(400, 150, Image.SCALE_SMOOTH);
+		statsLabel.setIcon(new javax.swing.ImageIcon(statsLabelImage));
+
+		stats = new JButton();
+		BufferedImage dstatsButton = null;
+		try {
+			dstatsButton = ImageIO.read(new File("statistic.jpg"));
+		} 
+		catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Image statsButtonImage = dstatsButton.getScaledInstance(200, 155, Image.SCALE_SMOOTH);
+		stats.setIcon(new javax.swing.ImageIcon(statsButtonImage));
+		stats.setPreferredSize(new Dimension(190, 150));
+
+		statsPanel.add(statsLabel);
+		statsPanel.add(stats);
+
+		this.add(statsPanel);
 
 		createQuestionPanel=new JPanel();
 		createQuestionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
@@ -132,7 +163,8 @@ public class Teacher_main extends JFrame {
 
 
 		ButtonListener listener=new ButtonListener();
-
+		
+		stats.addActionListener(listener);
 		buttonCreateQuestion.addActionListener(listener);
 		buttonCreateStudent.addActionListener(listener);
 		buttonExit.addActionListener(listener);
@@ -145,17 +177,54 @@ public class Teacher_main extends JFrame {
 	}
 
 	class ButtonListener implements ActionListener {
-		private JButton questbutton=new JButton("Next"), savebutton, backbutton;
+		private JButton questbutton=new JButton("Next"), chooseStudentButton=new JButton("Next"), savebutton, backbutton;
 		private JTextField nametext = new JTextField();
 		private JTextField passtext = new JTextField();
 		private JTextField usertext = new JTextField(); 
 		private JLabel stoixeiaLabel;
 		private JPanel stoixeiaPanel;
 		private JComboBox<String> cbox, cbox1;
-		private JFrame questype;
+		private JFrame questype, chooseStudent;
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonExit){
 				dispose();
+				
+			}
+			else if(e.getSource()==stats){
+				
+				chooseStudent=new JFrame();
+				chooseStudent.setLayout(new GridLayout(2, 0, 0, 0));
+
+				JPanel chooseStudentPanel = new JPanel();
+				chooseStudentPanel.setLayout(new GridLayout(0, 1, 0, 0));
+
+				cbox1 = new JComboBox<String>();
+
+				for(Student s : Main.ser.getDataHolder().getTeacherNow().getStudents()){
+					cbox1.addItem(s.getOnomateponimo());
+				}
+				
+
+
+				chooseStudentPanel.add(cbox1);
+	
+
+				chooseStudent.add(chooseStudentPanel);
+				
+				
+
+				JPanel buttonpanel= new JPanel();
+				buttonpanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+				buttonpanel.add(chooseStudentButton);
+				chooseStudent.add(buttonpanel);
+				chooseStudent.setVisible(true);
+				chooseStudent.setSize(320, 100);
+				chooseStudent.setLocationRelativeTo(null);
+				chooseStudent.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				questListener listener=new questListener();
+				chooseStudentButton.addActionListener(listener);
+				
+				
 				
 			}
 			else if(e.getSource()==buttonCreateQuestion){
@@ -201,7 +270,8 @@ public class Teacher_main extends JFrame {
 				frame.remove(createQuestionPanel);
 				frame.remove(createStudentPanel);
 				frame.remove(buttonExit);
-
+				frame.remove(statsPanel);
+				
 				stoixeiaLabel=new JLabel();
 				BufferedImage dstoixeiaLabel = null;
 				try {
@@ -322,6 +392,37 @@ class backListener implements ActionListener{
 			createStudentPanel.add(buttonCreateStudent);
 
 			frame.add(createStudentPanel);
+			
+			statsPanel=new JPanel();
+			statsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+
+			JLabel statsLabel=new JLabel();
+			BufferedImage dstatsLabel = null;
+			try {
+				dstatsLabel = ImageIO.read(new File("statisticlabel.jpg"));
+			} 
+			catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			Image statsLabelImage = dstatsLabel.getScaledInstance(400, 150, Image.SCALE_SMOOTH);
+			statsLabel.setIcon(new javax.swing.ImageIcon(statsLabelImage));
+
+			stats = new JButton();
+			BufferedImage dstatsButton = null;
+			try {
+				dstatsButton = ImageIO.read(new File("statistic.jpg"));
+			} 
+			catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			Image statsButtonImage = dstatsButton.getScaledInstance(200, 155, Image.SCALE_SMOOTH);
+			stats.setIcon(new javax.swing.ImageIcon(statsButtonImage));
+			stats.setPreferredSize(new Dimension(190, 150));
+
+			statsPanel.add(statsLabel);
+			statsPanel.add(stats);
+
+			frame.add(statsPanel);
 
 			createQuestionPanel=new JPanel();
 			createQuestionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
@@ -370,7 +471,8 @@ class backListener implements ActionListener{
 			frame.paintAll(getGraphics());
 
 			ButtonListener listener=new ButtonListener();
-
+			
+			stats.addActionListener(listener);
 			buttonCreateQuestion.addActionListener(listener);
 			buttonCreateStudent.addActionListener(listener);
 			buttonExit.addActionListener(listener);
@@ -399,12 +501,13 @@ class backListener implements ActionListener{
 }
 		class questListener implements ActionListener{ 
 			private int antikeimeno;
-			
+			private JButton ok=new JButton("OK");
+			private JFrame statsFrame;
             
 			public void actionPerformed(ActionEvent e){
 				if(e.getSource()==questbutton){
 
-					//antoistoixhsh
+					
 					antikeimeno=(int) cbox1.getSelectedIndex();
 					
 
@@ -451,10 +554,93 @@ class backListener implements ActionListener{
 					
 
 				}
+				if(e.getSource()==chooseStudentButton){
+					String stud=(String) cbox1.getSelectedItem();
+					
+					Student student=null;
+					for(Student s : Main.ser.getDataHolder().getTeacherNow().getStudents()){
+						if(s.getOnomateponimo().equals(stud)) student=s;
+						break;
+					}
+					chooseStudent.dispose();
+					
+					statsFrame=new JFrame();
+					statsFrame.setLayout(new FlowLayout(FlowLayout.CENTER, 5000, 100));
+
+					JPanel statsPanel = new JPanel();
+					statsPanel.setLayout(new GridLayout(2, 2, 50, 50));
+					
+					
+					
+					
+					JPanel GrammarPanel = new JPanel();
+					GrammarPanel.setLayout(new GridLayout(student.getGrammarStatistics().size()+1, 0, 0, 0));
+					JLabel grammar= new JLabel("Grammar");
+					GrammarPanel.add(grammar);
+					for(String g: student.getGrammarStatistics()){						
+						JLabel grade=new JLabel(g);
+						GrammarPanel.add(grade);
+					}
+					statsPanel.add(GrammarPanel);
+					
+					JPanel VocPanel = new JPanel();
+					VocPanel.setLayout(new GridLayout(student.getVocabularyStatistics().size()+1, 0, 0, 0));
+					JLabel voc= new JLabel("Vocabulary");
+					VocPanel.add(voc);
+					for(String g: student.getVocabularyStatistics()){
+						JLabel grade=new JLabel(g);
+				
+						VocPanel.add(grade);
+					}
+					statsPanel.add(VocPanel);
+					
+					JPanel ReadingPanel = new JPanel();
+					ReadingPanel.setLayout(new GridLayout(student.getReadingStatistics().size()+1, 0, 0, 0));
+					JLabel reading= new JLabel("Reading");
+					ReadingPanel.add(reading);
+					for(String g: student.getReadingStatistics()){
+						JLabel grade=new JLabel(g);
+						
+						ReadingPanel.add(grade);
+					}
+					statsPanel.add(ReadingPanel);
+					
+					JPanel ListeningPanel = new JPanel();
+					ListeningPanel.setLayout(new GridLayout(student.getListeningStatistics().size()+1, 0, 0, 0));
+					JLabel listening= new JLabel("Listening");
+					ListeningPanel.add(listening);
+					for(String g: student.getListeningStatistics()){
+						JLabel grade=new JLabel(g);
+						ListeningPanel.add(grade);
+					}
+					statsPanel.add(ListeningPanel);
+					
+					ok.addActionListener(new okListener());
+					
+					statsFrame.add(statsPanel);
+					statsFrame.add(ok);
+					statsFrame.setVisible(true);
+					statsFrame.setSize(500, 700);
+					statsFrame.setLocationRelativeTo(null);
+					statsFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					
+				}
 
 
 
 
+			}
+			
+			class okListener implements ActionListener{
+				
+				public void actionPerformed(ActionEvent e){
+					
+					if(e.getSource()==ok){
+					statsFrame.dispose();	
+					}
+					
+					
+				}
 			}
 		}
 	}

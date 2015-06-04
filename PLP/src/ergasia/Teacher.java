@@ -43,10 +43,12 @@ public class Teacher extends User implements Serializable{
 	}
 	
 	public void Create_Student(String Onomateponimo, String user,String password, Level studentLevel){
+		
 		Students=Main.ser.getDataHolder().getStudents();		//anaktisi Students
 		Student Stu = new Student(Onomateponimo,user,password,this, studentLevel);		//dimiourgia ma8iti
-		Students.add(Stu);										//apo8ikeusi sti lista
+		Students.add(Stu);									//apo8ikeusi sti lista
 		Main.ser.StudentSerializing(Students);					//serializing
+		Main.ser.TeachersSerializing(Main.ser.getDataHolder().getTeachers());
 		
 		String filename="Ma8itess.xls" ;						//apo8ikeusi se excel
 		try{
