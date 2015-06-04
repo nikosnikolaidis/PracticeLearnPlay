@@ -21,13 +21,14 @@ import javax.swing.SwingUtilities;
 
 import kremala.Kremala;
 import ergasia.Main;
+import frames.Teacher_main.ButtonListener.backListener;
 
 
 public class Student_main extends JFrame {
 
-	private JButton buttonExit, buttonTest, buttonGame, buttonStatistics;
-	private JPanel TestPanel, GamePanel, StatisticsPanel;
-	private JLabel backgroundLabel;
+	private JButton buttonExit, buttonTest, buttonGame, buttonStatistics, buttonBack;
+	private JPanel TestPanel, GamePanel, StatisticsPanel, buttomButtons, textsPanel;
+	private JLabel backgroundLabel, StatisticsLabel;
 	
 	
 	public Student_main(){
@@ -151,7 +152,7 @@ public class Student_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image buttonExitImage = dbuttonExit.getScaledInstance(170, 110, Image.SCALE_SMOOTH);
+		Image buttonExitImage = dbuttonExit.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
 		buttonExit.setIcon(new javax.swing.ImageIcon(buttonExitImage));
 		buttonExit.setPreferredSize(new Dimension(120, 110));
 		
@@ -243,7 +244,7 @@ public class Student_main extends JFrame {
 				frame.remove(StatisticsPanel);
 				frame.remove(buttonExit);
 				
-				JLabel StatisticsLabel=new JLabel();
+				StatisticsLabel=new JLabel();
 				BufferedImage dStatisticsLabel = null;
 				try {
 					dStatisticsLabel = ImageIO.read(new File("statisticlabelWithIcon.jpg"));
@@ -256,7 +257,7 @@ public class Student_main extends JFrame {
 				frame.add(StatisticsLabel);
 				
 				
-				JPanel textsPanel = new JPanel();
+				textsPanel = new JPanel();
 				
 				JTextArea GrammartextArea = new JTextArea();
 				GrammartextArea.setText("Grammar Statistic                          ");
@@ -290,11 +291,47 @@ public class Student_main extends JFrame {
 				ListeningtextArea.setEditable(false);
 				textsPanel.add(ListeningtextArea);
 				
+				buttomButtons = new JPanel();
+				buttonBack=new JButton();
+				BufferedImage dbackbutton = null;
+				try {
+					dbackbutton = ImageIO.read(new File("backbutton.jpg"));
+				} 
+				catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				Image backbuttonImage = dbackbutton.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
+				buttonBack.setIcon(new javax.swing.ImageIcon(backbuttonImage));
+				buttonBack.setPreferredSize(new Dimension(120, 110));
+				buttomButtons.add(buttonBack);
+				backListener listener=new backListener();
+				buttonBack.addActionListener(listener);
+				buttomButtons.add(buttonExit);
+				
 				frame.add(textsPanel);
-				frame.add(buttonExit);
+				frame.add(buttomButtons);
 				frame.paintAll(getGraphics());
 			}
 			
+		}
+	}
+	
+	class backListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			
+			if(e.getSource()==buttonBack){
+				
+				JFrame frame = (JFrame) SwingUtilities.getRoot(getContentPane());
+				frame.remove(textsPanel);
+				frame.remove(buttomButtons);
+				frame.remove(StatisticsLabel);
+				
+				frame.add(GamePanel);
+				frame.add(TestPanel);
+				frame.add(StatisticsPanel);
+				frame.add(buttonExit);
+				frame.paintAll(getGraphics());
+			}
 		}
 	}
 }
