@@ -223,7 +223,7 @@ public class Student_main extends JFrame {
 				games.dispose();
 				new Kremala(0);
 			}
-			else if(e.getSource()==wording){
+			else if(e.getSource()==wording){//an o xrhsths epileksei ton anagrammatismo!!!!!!!!!!!!!!!!!!!!
 				
 			}
 		}
@@ -235,7 +235,7 @@ public class Student_main extends JFrame {
 			if(e.getSource()==buttonExit){
 				dispose();
 			}
-			else if(e.getSource()==buttonTest){
+			else if(e.getSource()==buttonTest){//an o xrhsths epileksei to test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				
 			}else if(e.getSource()==buttonStatistics){					//an epilex8oun ta statistika
 				JFrame frame = (JFrame) SwingUtilities.getRoot(getContentPane());
