@@ -191,7 +191,7 @@ public class Teacher_main extends JFrame {
 				
 			}
 			else if(e.getSource()==stats){
-				
+				i=1;
 				chooseStudent=new JFrame();
 				chooseStudent.setLayout(new GridLayout(2, 0, 0, 0));
 
@@ -554,7 +554,7 @@ class backListener implements ActionListener{
 					
 
 				}
-				if(e.getSource()==chooseStudentButton){
+				if(e.getSource()==chooseStudentButton && i==1){
 					String stud=(String) cbox1.getSelectedItem();
 					
 					Student student=null;
@@ -619,11 +619,12 @@ class backListener implements ActionListener{
 					
 					statsFrame.add(statsPanel);
 					statsFrame.add(ok);
+					
 					statsFrame.setVisible(true);
-					statsFrame.setSize(500, 700);
+					statsFrame.setSize(400, 700);
 					statsFrame.setLocationRelativeTo(null);
 					statsFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-					
+					i++;
 				}
 
 
