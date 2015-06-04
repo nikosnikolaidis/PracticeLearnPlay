@@ -570,46 +570,48 @@ class backListener implements ActionListener{
 					JPanel statsPanel = new JPanel();
 					statsPanel.setLayout(new GridLayout(2, 2, 50, 50));
 					
-					JLabel grades=new JLabel();
+					
 					
 					
 					JPanel GrammarPanel = new JPanel();
 					GrammarPanel.setLayout(new GridLayout(student.getGrammarStatistics().size()+1, 0, 0, 0));
-					grades.setText("Grammar");
-					GrammarPanel.add(grades);
-					for(String g: student.getGrammarStatistics()){
-						grades.setText(g);
-						GrammarPanel.add(grades);
+					JLabel grammar= new JLabel("Grammar");
+					GrammarPanel.add(grammar);
+					for(String g: student.getGrammarStatistics()){						
+						JLabel grade=new JLabel(g);
+						GrammarPanel.add(grade);
 					}
 					statsPanel.add(GrammarPanel);
 					
 					JPanel VocPanel = new JPanel();
 					VocPanel.setLayout(new GridLayout(student.getVocabularyStatistics().size()+1, 0, 0, 0));
-					grades.setText("Vocabulary");
-					VocPanel.add(grades);
+					JLabel voc= new JLabel("Vocabulary");
+					VocPanel.add(voc);
 					for(String g: student.getVocabularyStatistics()){
-						grades.setText(g);
-						VocPanel.add(grades);
+						JLabel grade=new JLabel(g);
+				
+						VocPanel.add(grade);
 					}
 					statsPanel.add(VocPanel);
 					
 					JPanel ReadingPanel = new JPanel();
 					ReadingPanel.setLayout(new GridLayout(student.getReadingStatistics().size()+1, 0, 0, 0));
-					grades.setText("Reading");
-					ReadingPanel.add(grades);
+					JLabel reading= new JLabel("Reading");
+					ReadingPanel.add(reading);
 					for(String g: student.getReadingStatistics()){
-						grades.setText(g);
-						ReadingPanel.add(grades);
+						JLabel grade=new JLabel(g);
+						
+						ReadingPanel.add(grade);
 					}
 					statsPanel.add(ReadingPanel);
 					
 					JPanel ListeningPanel = new JPanel();
 					ListeningPanel.setLayout(new GridLayout(student.getListeningStatistics().size()+1, 0, 0, 0));
-					grades.setText("Listening");
-					ListeningPanel.add(grades);
+					JLabel listening= new JLabel("Listening");
+					ListeningPanel.add(listening);
 					for(String g: student.getListeningStatistics()){
-						grades.setText(g);
-						ListeningPanel.add(grades);
+						JLabel grade=new JLabel(g);
+						ListeningPanel.add(grade);
 					}
 					statsPanel.add(ListeningPanel);
 					
