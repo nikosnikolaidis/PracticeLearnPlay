@@ -20,8 +20,8 @@ import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
 import kremala.Kremala;
+import Anagrammatismos.GUI;
 import ergasia.Main;
-import frames.Teacher_main.ButtonListener.backListener;
 
 
 public class Student_main extends JFrame {
@@ -224,7 +224,7 @@ public class Student_main extends JFrame {
 				new Kremala(0);
 			}
 			else if(e.getSource()==wording){//an o xrhsths epileksei ton anagrammatismo!!!!!!!!!!!!!!!!!!!!
-				
+				new GUI();
 			}
 		}
 	}
