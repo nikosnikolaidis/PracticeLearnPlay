@@ -219,11 +219,11 @@ public class Student_main extends JFrame {
 		
 	class GamesButtonChoiceListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-			if(e.getSource()==hanging){
+			if(e.getSource()==hanging){//O xrhsths epilegei na peksei to paixnidi ths kremalas
 				games.dispose();
 				new Kremala(0);
 			}
-			else if(e.getSource()==wording){//an o xrhsths epileksei ton anagrammatismo!!!!!!!!!!!!!!!!!!!!
+			else if(e.getSource()==wording){//O xrhsths epilegei na peksei to paixnidi tou anagrammatismou
 				new GUI();
 			}
 		}
