@@ -71,7 +71,7 @@ public class WordRepositoryPanel extends JPanel implements ActionListener{
 
 	private void shuffleTheLetters(){
 
-		//randomness
+		//τυχαιότητα
 		long seed = System.nanoTime();
 		Collections.shuffle(availableLetters, new Random(seed));
 	}
@@ -86,7 +86,7 @@ public class WordRepositoryPanel extends JPanel implements ActionListener{
 
 			System.out.println(myWordPanel.getShapedWord());
 			System.out.println(this.myWordPanel.theWordShapedIsCorrect());
-			if(this.myWordPanel.theWordShapedIsCorrect())
+			if(this.myWordPanel.theWordShapedIsCorrect())//βρέθηκε η ζητούμενη λέξη
 			{
 				extractAllLettersFromRepositoryPanel();
 				this.myWordPanel.extractAllLettersFromWordPanel();

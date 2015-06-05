@@ -201,7 +201,7 @@ class ButtonListener implements ActionListener {
 			else if(e.getSource()==dataReset){
 				dataframe=new JFrame();
 				dataframe.setLayout(new GridLayout(2,0,0,0));
-				dataframe.add(new JLabel("Διαγραφή όλων των αποθυκευμένων δεδομένων. Είσται σίγουρος;"));
+				dataframe.add(new JLabel("Διαγραφή όλων των αποθηκευμένων δεδομένων. Είστε σίγουρος;"));
 				yesbutton=new JButton("Ναι");
 				
 				dataframe.add(yesbutton);

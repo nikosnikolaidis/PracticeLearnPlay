@@ -1,12 +1,8 @@
 package Anagrammatismos;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 
 public class GUI extends JFrame implements ActionListener{
@@ -28,9 +24,79 @@ public class GUI extends JFrame implements ActionListener{
 	
 	private String myWord = "";
 	
+	private JLabel totalPointsAcquiredLabel = new JLabel("Total Points Acquired: ");
+	private JLabel currentPointsAcquiredLabel = new JLabel("0");
+	
+	private int totalPointsAcquired = 0;
+	private int currentPointsAcquired = 0;
+	
+	
+	//2 diaforetikoi kataskevastes
+	//
 	public GUI(){
 		
 		setContentPane(masterPanel);
+		
+		Anagrammatismos anagram = new Anagrammatismos();
+		
+		myWord = anagram.getRandomWord();
+		myWord = myWord.toUpperCase();
+		
+		System.out.println(myWord);
+		
+		masterPanel.setLayout(new BorderLayout(5,5));
+		
+		wordPanel = new WordPanel(myWord);
+		wordRepositoryPanel = new WordRepositoryPanel(myWord,wordPanel);
+		
+		masterPanel.add(southPanel, BorderLayout.SOUTH);
+		masterPanel.add(northPanel, BorderLayout.NORTH);
+		masterPanel.add(eastPanel, BorderLayout.EAST);
+		masterPanel.add(westPanel, BorderLayout.WEST);
+		masterPanel.add(centerPanel, BorderLayout.CENTER);
+		
+		
+		centerPanel.setLayout(new FlowLayout());
+		centerPanel.add(wordPanel);
+		
+		northPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 30));
+		
+		
+		clearAndShuffleButton.addActionListener(this);
+		northPanel.add(clearAndShuffleButton);
+		
+		exitButton.addActionListener(this);
+		northPanel.add(exitButton);
+
+		nextWordButton.addActionListener(this);
+		northPanel.add(nextWordButton);
+		
+		
+		JPanel statsPanel = new JPanel();
+		statsPanel.setLayout(new GridLayout(2, 1));
+		statsPanel.add(totalPointsAcquiredLabel);
+		statsPanel.add(currentPointsAcquiredLabel);
+
+				
+		southPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		southPanel.add(wordRepositoryPanel);
+		
+		
+		
+		this.pack();
+		this.setVisible(true);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setTitle("Find The Word");
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	}
+	
+	
+public GUI(int totalPointsAcquired, int currentPointsAcquired){
+		
+		setContentPane(masterPanel);
+		
+		this.totalPointsAcquired = totalPointsAcquired;
+		this.currentPointsAcquired = currentPointsAcquired;
 		
 		Anagrammatismos anagram = new Anagrammatismos();
 		
@@ -71,12 +137,11 @@ public class GUI extends JFrame implements ActionListener{
 		southPanel.add(wordRepositoryPanel);
 		
 		
-		
 		this.pack();
 		this.setVisible(true);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setTitle("Find The Word");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	
@@ -95,9 +160,6 @@ public class GUI extends JFrame implements ActionListener{
 			new GUI();
 			dispose();
 		}
-		
 	}
-	
-
 }
 
