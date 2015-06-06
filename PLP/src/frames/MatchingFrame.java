@@ -194,6 +194,21 @@ public class saveButtonListener implements ActionListener{
 					grammar.createMatching(stiliA, stiliB, stiliC);
 					
 				}		
+				ap1.setText("");
+				ap2.setText("");
+				ap3.setText("");
+				ap4.setText("");
+				ap5.setText("");
+				apA.setText("");
+				apB.setText("");
+				apC.setText("");
+				apD.setText("");
+				apE.setText("");
+				sap1.setText("");
+				sap2.setText("");
+				sap3.setText("");
+				sap4.setText("");
+				sap5.setText("");
 			}
 			
 			if(e.getSource()==exitButton){
