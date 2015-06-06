@@ -98,6 +98,15 @@ public GUI(int totalPointsAcquired, int currentPointsAcquired){
 		this.totalPointsAcquired = totalPointsAcquired;
 		this.currentPointsAcquired = currentPointsAcquired;
 		
+		totalPointsAcquiredLabel.setText(String.valueOf(Integer.parseInt(totalPointsAcquiredLabel.getText())+currentPointsAcquired));
+		
+		
+		JPanel statsPanel = new JPanel();
+		statsPanel.setLayout(new GridLayout(2, 1));
+		statsPanel.add(totalPointsAcquiredLabel);
+		statsPanel.add(currentPointsAcquiredLabel);
+		
+		
 		Anagrammatismos anagram = new Anagrammatismos();
 		
 		myWord = anagram.getRandomWord();

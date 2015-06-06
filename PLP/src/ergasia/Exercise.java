@@ -50,10 +50,7 @@ public abstract class Exercise implements Serializable {
 		this.correctAnswer = correctAnswer;
 	}
 
-	//dhmiourgia askhseologiou
-	//dhmiourgeitai ena plh8os diadoxikwn erwthsewn stis opoies 8a e3etastei o student
-	public abstract ArrayList<Question> createTest();
-	
+
 	
 }
 

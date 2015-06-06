@@ -31,7 +31,7 @@ public class Listening extends Exercise implements Serializable {
 	
 	public void createListening(String AudioFileName, ArrayList<Question> questions){
 		ListeningQuestion question=new ListeningQuestion(language, level, AudioFileName, questions);
-		HashMap<Question, Level> tmpquestions=Main.ser.getDataHolder().getListOfAllListeningQuestions();
+		HashMap<ListeningQuestion, Level> tmpquestions=Main.ser.getDataHolder().getListOfAllListeningQuestions();
 		tmpquestions.put(question, question.getLevel());
 		Main.ser.ListeningQuestionsSerializing(tmpquestions);
 	}

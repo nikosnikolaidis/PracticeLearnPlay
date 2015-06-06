@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Reading extends Exercise  implements Serializable{
 
-	private final int numberOfQuestionsToBeExamined = 30;
+
 	private ArrayList<ReadingQuestion> readingQuestionsList = new ArrayList<ReadingQuestion>();;
 	
 	
@@ -28,7 +28,7 @@ public class Reading extends Exercise  implements Serializable{
 
 	public void createReading(String ReadingText, ArrayList<Question> questions){
 		ReadingQuestion question=new ReadingQuestion(language, level, ReadingText, questions);
-		HashMap<Question, Level> tmpquestions=Main.ser.getDataHolder().getListOfAllReadingQuestions();
+		HashMap<ReadingQuestion, Level> tmpquestions=Main.ser.getDataHolder().getListOfAllReadingQuestions();
 		tmpquestions.put(question, question.getLevel());
 		Main.ser.ReadingQuestionsSerializing(tmpquestions);
 	}

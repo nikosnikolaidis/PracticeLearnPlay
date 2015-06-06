@@ -26,7 +26,7 @@ public class Serializator {//implements Serializable{
 		DH.setListOfAllVocabularyQuestions(this.VocabularyQuestionsDeserializing());
 	}
  
-	public  DataHolder getDataHolder() {		//arki mono ston constructor i arxikopiiseis :/
+	public  DataHolder getDataHolder() {		//arkei mono ston constructor h arxikopoihsh :/
 		return DH;
 	}
 	
@@ -263,13 +263,13 @@ public class Serializator {//implements Serializable{
 		}
 	}
 	
-	public HashMap<Question,Level> ListeningQuestionsDeserializing() {			//ListeningQuestions Deserializing
-		HashMap<Question,Level> emp=DH.getListOfAllListeningQuestions();
+	public HashMap<ListeningQuestion,Level> ListeningQuestionsDeserializing() {			//ListeningQuestions Deserializing
+		HashMap<ListeningQuestion,Level> emp=DH.getListOfAllListeningQuestions();
 		
 		try {
 			FileInputStream fileIn = new FileInputStream("listeningQuestions.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (HashMap<Question,Level>) in.readObject();
+			emp = (HashMap<ListeningQuestion,Level>) in.readObject();
 			in.close();
 			fileIn.close();
 		}
@@ -280,14 +280,14 @@ public class Serializator {//implements Serializable{
 			c.printStackTrace();
 		}
 		if(emp==null){
-			emp=new HashMap<Question,Level>();
+			emp=new HashMap<ListeningQuestion,Level>();
 		}
 		
 		
 			return emp;
 		
 	}
-	public void ListeningQuestionsSerializing(HashMap<Question,Level> ListeningQuestions) {	//ListeningQuestions Serializing
+	public void ListeningQuestionsSerializing(HashMap<ListeningQuestion,Level> ListeningQuestions) {	//ListeningQuestions Serializing
 		try {
 			DH.setListOfAllListeningQuestions(ListeningQuestions);
 			FileOutputStream fileOut = new FileOutputStream("listeningQuestions.ser");
@@ -301,13 +301,13 @@ public class Serializator {//implements Serializable{
 		}
 	}
 	
-	public HashMap<Question,Level> ReadingQuestionsDeserializing() {			//ReadingQuestions Deserializing
-		HashMap<Question,Level> emp=DH.getListOfAllReadingQuestions();
+	public HashMap<ReadingQuestion, Level> ReadingQuestionsDeserializing() {			//ReadingQuestions Deserializing
+		HashMap<ReadingQuestion,Level> emp=DH.getListOfAllReadingQuestions();
 		
 		try {
 			FileInputStream fileIn = new FileInputStream("readingQuestions.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (HashMap<Question,Level>) in.readObject();
+			emp = (HashMap<ReadingQuestion,Level>) in.readObject();
 			in.close();
 			fileIn.close();
 		}
@@ -318,13 +318,13 @@ public class Serializator {//implements Serializable{
 			c.printStackTrace();
 		}
 		if(emp==null){
-			emp=new HashMap<Question,Level>();
+			emp=new HashMap<ReadingQuestion,Level>();
 		}
 
 			return emp;
 		
 	}
-	public void ReadingQuestionsSerializing(HashMap<Question,Level> ReadingQuestions) {	//ReadingQuestions Serializing
+	public void ReadingQuestionsSerializing(HashMap<ReadingQuestion,Level> ReadingQuestions) {	//ReadingQuestions Serializing
 		try {
 			DH.setListOfAllReadingQuestions(ReadingQuestions);
 			FileOutputStream fileOut = new FileOutputStream("readingQuestions.ser");

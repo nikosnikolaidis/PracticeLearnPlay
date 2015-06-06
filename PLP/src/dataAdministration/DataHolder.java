@@ -8,15 +8,15 @@ public class DataHolder {
 
 	private Teacher teacherNow;	
 	private Student studentNow;
-	private String PasswordAdmin;	//o kodikos tou Admin
-	private ArrayList<Language> Languages;	//lista me oles tis gloses
-	private ArrayList<Teacher> Teachers;	//lista me olous tous ka8igites
-	private ArrayList<Student> Students;	//lista me olous tous ma8ites
+	private String PasswordAdmin;	//o kwdikos tou Admin
+	private ArrayList<Language> Languages;	//lista me oles tis glwsses
+	private ArrayList<Teacher> Teachers;	//lista me olous tous ka8hghtes
+	private ArrayList<Student> Students;	//lista me olous tous ma8htes
 	
 	private HashMap<Question,Level> listOfAllGrammarQuestions;	//ola ta Grammar Questions
 	private HashMap<Question,Level> listOfAllVocabularyQuestions;	//ola ta Vocabulary Questions
-	private HashMap<Question,Level> listOfAllListeningQuestions;	//ola ta Listening Questions
-	private HashMap<Question,Level> listOfAllReadingQuestions;		//ola ta Reading Questions
+	private HashMap<ListeningQuestion,Level> listOfAllListeningQuestions;	//ola ta Listening Questions
+	private HashMap<ReadingQuestion,Level> listOfAllReadingQuestions;		//ola ta Reading Questions
 	
 	public String getPasswordAdmin() {
 		return PasswordAdmin;
@@ -69,18 +69,18 @@ public class DataHolder {
 			HashMap<Question, Level> listOfAllVocabularyQuestions) {
 		this.listOfAllVocabularyQuestions = listOfAllVocabularyQuestions;
 	}
-	public HashMap<Question, Level> getListOfAllListeningQuestions() {
+	public HashMap<ListeningQuestion, Level> getListOfAllListeningQuestions() {
 		return listOfAllListeningQuestions;
 	}
 	public void setListOfAllListeningQuestions(
-			HashMap<Question, Level> listOfAllListeningQuestions) {
+			HashMap<ListeningQuestion, Level> listOfAllListeningQuestions) {
 		this.listOfAllListeningQuestions = listOfAllListeningQuestions;
 	}
-	public HashMap<Question, Level> getListOfAllReadingQuestions() {
+	public HashMap<ReadingQuestion, Level> getListOfAllReadingQuestions() {
 		return listOfAllReadingQuestions;
 	}
 	public void setListOfAllReadingQuestions(
-			HashMap<Question, Level> listOfAllReadingQuestions) {
+			HashMap<ReadingQuestion, Level> listOfAllReadingQuestions) {
 		this.listOfAllReadingQuestions = listOfAllReadingQuestions;
 	}
 	

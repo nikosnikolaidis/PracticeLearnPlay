@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,7 +31,7 @@ public class Student_main extends JFrame {
 	private JPanel TestPanel, GamePanel, StatisticsPanel, buttomButtons, textsPanel;
 	private JLabel backgroundLabel, StatisticsLabel;
 
-
+	private JComboBox<String> testCategorySelectionCombobox;
 	public Student_main(){
 		buttonTest=new JButton();
 
@@ -231,13 +232,62 @@ public class Student_main extends JFrame {
 	}
 	class ButtonListener implements ActionListener {
 
+		
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonExit){
 				dispose();
 			}
 			else if(e.getSource()==buttonTest){//an o xrhsths epileksei to test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				
+				JFrame frame = (JFrame) SwingUtilities.getRoot(getContentPane());
+				
+				frame.remove(GamePanel);
+				frame.remove(TestPanel);
+				frame.remove(StatisticsPanel);
+				frame.remove(buttonExit);
+				
+				
+				JPanel testCategorySelectionComboboxPanel = new JPanel();
+				testCategorySelectionComboboxPanel.setLayout(new GridLayout(3,0,10,10));
+				
+				testCategorySelectionCombobox = new JComboBox<String>();
+				testCategorySelectionCombobox.addItem("Vocabulary");
+				testCategorySelectionCombobox.addItem("Grammar");
+				testCategorySelectionCombobox.addItem("Listening");
+				testCategorySelectionCombobox.addItem("Reading");
+				((JLabel)testCategorySelectionCombobox.getRenderer()).setHorizontalAlignment(JLabel.CENTER);//stoixish twn stoixeiwn pou vriskontai mesa sto combobox
+				
+				testCategorySelectionComboboxPanel.add(new JLabel("Please pick category you want to be examined to."));//prompt label
+				testCategorySelectionComboboxPanel.add(testCategorySelectionCombobox);//selection combobox
+				
+				JButton okBtn = new JButton("OK");
+				okBtn.addActionListener(new ActionListener(){
 
-			}else if(e.getSource()==buttonStatistics){					//an epilex8oun ta statistika
+					public void actionPerformed(ActionEvent e) {
+						
+						if(e.getSource()==okBtn)
+							new Askhseologio_Frame(testCategorySelectionCombobox.getActionCommand());
+						
+					}
+					
+				});
+				testCategorySelectionComboboxPanel.add(okBtn);
+				
+				frame.add(testCategorySelectionComboboxPanel);
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				frame.paintAll(getGraphics());
+
+			}
+			else if(e.getSource()==buttonStatistics){//an epilex8oun ta statistika
 				JFrame frame = (JFrame) SwingUtilities.getRoot(getContentPane());
 				frame.remove(GamePanel);
 				frame.remove(TestPanel);
@@ -334,4 +384,9 @@ public class Student_main extends JFrame {
 			}
 		}
 	}
+	
+	
+	
+	
+	
 }
