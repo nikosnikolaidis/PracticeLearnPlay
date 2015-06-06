@@ -65,7 +65,7 @@ public class Teacher_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image createStudentLabelImage = dcreateStudentLabel.getScaledInstance(400, 150, Image.SCALE_SMOOTH);
+		Image createStudentLabelImage = dcreateStudentLabel.getScaledInstance(400, 100, Image.SCALE_SMOOTH);
 		createStudentLabel.setIcon(new javax.swing.ImageIcon(createStudentLabelImage));
 
 		buttonCreateStudent = new JButton();
@@ -76,9 +76,9 @@ public class Teacher_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image createStudentButtonImage = dcreateStudentButton.getScaledInstance(200, 155, Image.SCALE_SMOOTH);
+		Image createStudentButtonImage = dcreateStudentButton.getScaledInstance(150, 100, Image.SCALE_SMOOTH);
 		buttonCreateStudent.setIcon(new javax.swing.ImageIcon(createStudentButtonImage));
-		buttonCreateStudent.setPreferredSize(new Dimension(190, 150));
+		buttonCreateStudent.setPreferredSize(new Dimension(150, 100));
 
 		createStudentPanel.add(createStudentLabel);
 		createStudentPanel.add(buttonCreateStudent);
@@ -96,7 +96,7 @@ public class Teacher_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image statsLabelImage = dstatsLabel.getScaledInstance(400, 150, Image.SCALE_SMOOTH);
+		Image statsLabelImage = dstatsLabel.getScaledInstance(400, 100, Image.SCALE_SMOOTH);
 		statsLabel.setIcon(new javax.swing.ImageIcon(statsLabelImage));
 
 		stats = new JButton();
@@ -107,9 +107,9 @@ public class Teacher_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image statsButtonImage = dstatsButton.getScaledInstance(200, 155, Image.SCALE_SMOOTH);
+		Image statsButtonImage = dstatsButton.getScaledInstance(150, 100, Image.SCALE_SMOOTH);
 		stats.setIcon(new javax.swing.ImageIcon(statsButtonImage));
-		stats.setPreferredSize(new Dimension(190, 150));
+		stats.setPreferredSize(new Dimension(150, 100));
 
 		statsPanel.add(statsLabel);
 		statsPanel.add(stats);
@@ -127,7 +127,7 @@ public class Teacher_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image createQuestionLabelImage = dcreateQuestionLabel.getScaledInstance(400, 190, Image.SCALE_SMOOTH);
+		Image createQuestionLabelImage = dcreateQuestionLabel.getScaledInstance(400, 100, Image.SCALE_SMOOTH);
 		createQuestionLabel.setIcon(new javax.swing.ImageIcon(createQuestionLabelImage));
 
 		buttonCreateQuestion = new JButton();
@@ -138,9 +138,9 @@ public class Teacher_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image createQuestionButtonImage = dcreateQuestionButton.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		Image createQuestionButtonImage = dcreateQuestionButton.getScaledInstance(150, 100, Image.SCALE_SMOOTH);
 		buttonCreateQuestion.setIcon(new javax.swing.ImageIcon(createQuestionButtonImage));
-		buttonCreateQuestion.setPreferredSize(new Dimension(190, 190));
+		buttonCreateQuestion.setPreferredSize(new Dimension(150, 100));
 
 		createQuestionPanel.add(createQuestionLabel);
 		createQuestionPanel.add(buttonCreateQuestion);
@@ -155,9 +155,9 @@ public class Teacher_main extends JFrame {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Image buttonExitImage = dbuttonExit.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		Image buttonExitImage = dbuttonExit.getScaledInstance(120, 120, Image.SCALE_SMOOTH);
 		buttonExit.setIcon(new javax.swing.ImageIcon(buttonExitImage));
-		buttonExit.setPreferredSize(new Dimension(170, 170));
+		buttonExit.setPreferredSize(new Dimension(100, 100));
 
 		this.add(buttonExit);
 
@@ -373,7 +373,7 @@ class backListener implements ActionListener{
 			catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			Image createStudentLabelImage = dcreateStudentLabel.getScaledInstance(400, 150, Image.SCALE_SMOOTH);
+			Image createStudentLabelImage = dcreateStudentLabel.getScaledInstance(400, 100, Image.SCALE_SMOOTH);
 			createStudentLabel.setIcon(new javax.swing.ImageIcon(createStudentLabelImage));
 
 			buttonCreateStudent = new JButton();
@@ -384,9 +384,9 @@ class backListener implements ActionListener{
 			catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			Image createStudentButtonImage = dcreateStudentButton.getScaledInstance(200, 155, Image.SCALE_SMOOTH);
+			Image createStudentButtonImage = dcreateStudentButton.getScaledInstance(150, 100, Image.SCALE_SMOOTH);
 			buttonCreateStudent.setIcon(new javax.swing.ImageIcon(createStudentButtonImage));
-			buttonCreateStudent.setPreferredSize(new Dimension(190, 150));
+			buttonCreateStudent.setPreferredSize(new Dimension(150,100));
 
 			createStudentPanel.add(createStudentLabel);
 			createStudentPanel.add(buttonCreateStudent);
@@ -404,7 +404,7 @@ class backListener implements ActionListener{
 			catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			Image statsLabelImage = dstatsLabel.getScaledInstance(400, 150, Image.SCALE_SMOOTH);
+			Image statsLabelImage = dstatsLabel.getScaledInstance(400, 100, Image.SCALE_SMOOTH);
 			statsLabel.setIcon(new javax.swing.ImageIcon(statsLabelImage));
 
 			stats = new JButton();
@@ -415,9 +415,9 @@ class backListener implements ActionListener{
 			catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			Image statsButtonImage = dstatsButton.getScaledInstance(200, 155, Image.SCALE_SMOOTH);
+			Image statsButtonImage = dstatsButton.getScaledInstance(150, 100, Image.SCALE_SMOOTH);
 			stats.setIcon(new javax.swing.ImageIcon(statsButtonImage));
-			stats.setPreferredSize(new Dimension(190, 150));
+			stats.setPreferredSize(new Dimension(150, 100));
 
 			statsPanel.add(statsLabel);
 			statsPanel.add(stats);
@@ -435,7 +435,7 @@ class backListener implements ActionListener{
 			catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			Image createQuestionLabelImage = dcreateQuestionLabel.getScaledInstance(400, 190, Image.SCALE_SMOOTH);
+			Image createQuestionLabelImage = dcreateQuestionLabel.getScaledInstance(400, 100, Image.SCALE_SMOOTH);
 			createQuestionLabel.setIcon(new javax.swing.ImageIcon(createQuestionLabelImage));
 
 			buttonCreateQuestion = new JButton();
@@ -446,9 +446,9 @@ class backListener implements ActionListener{
 			catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			Image createQuestionButtonImage = dcreateQuestionButton.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+			Image createQuestionButtonImage = dcreateQuestionButton.getScaledInstance(150, 100, Image.SCALE_SMOOTH);
 			buttonCreateQuestion.setIcon(new javax.swing.ImageIcon(createQuestionButtonImage));
-			buttonCreateQuestion.setPreferredSize(new Dimension(190, 190));
+			buttonCreateQuestion.setPreferredSize(new Dimension(150, 100));
 
 			createQuestionPanel.add(createQuestionLabel);
 			createQuestionPanel.add(buttonCreateQuestion);
@@ -463,9 +463,9 @@ class backListener implements ActionListener{
 			catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			Image buttonExitImage = dbuttonExit.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+			Image buttonExitImage = dbuttonExit.getScaledInstance(120,120, Image.SCALE_SMOOTH);
 			buttonExit.setIcon(new javax.swing.ImageIcon(buttonExitImage));
-			buttonExit.setPreferredSize(new Dimension(170, 170));
+			buttonExit.setPreferredSize(new Dimension(100, 100));
 
 			frame.add(buttonExit);
 			frame.paintAll(getGraphics());
