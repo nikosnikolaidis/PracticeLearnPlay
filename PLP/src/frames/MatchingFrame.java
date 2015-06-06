@@ -153,11 +153,11 @@ public class saveButtonListener implements ActionListener{
 				String aD=(String) apD.getText();
 				String aE=(String) apE.getText();
 				ArrayList<String> stiliB=new ArrayList<String>();
-				stiliB.add(a1);
-				stiliB.add(a2);
-				stiliB.add(a3);
-				stiliB.add(a4);
-				stiliB.add(a5);
+				stiliB.add(aA);
+				stiliB.add(aB);
+				stiliB.add(aC);
+				stiliB.add(aD);
+				stiliB.add(aE);
 				
 				String sa1=(String) sap1.getText();
 				String sa2=(String) sap2.getText();
@@ -165,11 +165,11 @@ public class saveButtonListener implements ActionListener{
 				String sa4=(String) sap4.getText();
 				String sa5=(String) sap4.getText();
 				ArrayList<String> stiliC=new ArrayList<String>();
-				stiliC.add(a1);
-				stiliC.add(a2);
-				stiliC.add(a3);
-				stiliC.add(a4);
-				stiliC.add(a5);
+				stiliC.add(sa1);
+				stiliC.add(sa2);
+				stiliC.add(sa3);
+				stiliC.add(sa4);
+				stiliC.add(sa5);
 				
 				String l=(String) cbox2.getSelectedItem();
 				Level lvl=null;
