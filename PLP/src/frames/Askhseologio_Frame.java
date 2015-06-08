@@ -1,5 +1,7 @@
 package frames;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,23 +29,29 @@ import ergasia.ReadingQuestion;
 
 public class Askhseologio_Frame extends JFrame implements ActionListener{
 
+	private int testSize, initialTestSize;
 	private String antikeimeno;
 	private HashMap<ReadingQuestion, Level> map1 = new HashMap<ReadingQuestion, Level>();
 	private HashMap<ListeningQuestion, Level> map2 = new HashMap<ListeningQuestion, Level>();
 	private HashMap<Question,Level> map = new HashMap<Question, Level>();
 
+	//utility
+	//************************************************
 	private JPanel utilityPanel = new JPanel();
-	private JPanel outerPanel = new JPanel();;
 	private JButton saveAndNextButton = new JButton("Save and next");
-	private JLabel readingTextLabel = new JLabel();
+	private ArrayList<Question> reviewableQuestions = new ArrayList<Question>();
+	//************************************************
 
+	private JLabel readingTextLabel = new JLabel();
+	
 	private JLabel left1, left2, left3, left4, left5, right1, right2, right3, right4, right5,leftCount1, leftCount2, leftCount3, leftCount4, leftCount5;
 	private JComboBox<String> cbox1, cbox2, cbox3, cbox4, cbox5;
 	private JPanel leftColumnPanel, rightColumnPanel, answerColumnPanel; 
 
 	private JRadioButton answer1, answer2, answer3, answer4;
 	private ButtonGroup radio;
-	private JPanel innerPanel;
+	private JPanel innerPanel, innerPanelHolderPanel,multipleChoiceTextPanel;
+	private JPanel outerPanel = new JPanel();
 	private JLabel multipleChoiceTextLabel;
 
 	private Language myLanguage;
@@ -54,9 +62,9 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 
 	public Askhseologio_Frame(String antikeimeno){
 
-		setContentPane(this);
+		this.getContentPane();
 		this.antikeimeno = antikeimeno;
-		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));//8a doume gia BorderLayout
+		this.setLayout(new BorderLayout(10,10));//8a doume gia BorderLayout
 
 
 		myLanguage = Main.ser.getDataHolder().getStudentNow().getTeacher().getLanguage();
@@ -100,7 +108,7 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 		{
 			readQuest = createReadingTest(myList1);
 			this.readingTextLabel.setText(readQuest.getReadingText());//pros8etoume prin apo th dhmiourgia tou test, to keimeno pou 8a fainetai diarkws san epikefalida
-			this.add(this.readingTextLabel);
+			this.add(this.readingTextLabel,BorderLayout.NORTH);
 			runtest();
 		}
 		else if(antikeimeno.equals("Listening"))
@@ -112,13 +120,15 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 		saveAndNextButton.addActionListener(this);
 
 		utilityPanel.add(saveAndNextButton);
-		this.add(utilityPanel);
+		this.add(utilityPanel,BorderLayout.SOUTH);
 
 
+		this.pack();
 		this.setVisible(true);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setLocationRelativeTo(null);
+		
 		this.setTitle(antikeimeno);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}
 
@@ -132,12 +142,16 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 
 		if(q instanceof MultipleChoice)
 		{
-			outerPanel.setLayout(new BoxLayout(outerPanel, BoxLayout.Y_AXIS));
-			multipleChoiceTextLabel = new JLabel();
+			outerPanel.setLayout(new GridLayout(2,1,0,5));
+			multipleChoiceTextPanel = new JPanel();
+			multipleChoiceTextPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+			multipleChoiceTextLabel = new JLabel(""+((MultipleChoice) q).getEkfwnisi());
+			multipleChoiceTextPanel.add(multipleChoiceTextLabel);
+			
 
 
 			innerPanel = new JPanel();
-			innerPanel.setLayout(new GridLayout(2,2,15,10));
+			innerPanel.setLayout(new GridLayout(2,2,5,5));
 
 
 			radio = new ButtonGroup();
@@ -156,10 +170,14 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 			innerPanel.add(answer4);
 
 
+			innerPanelHolderPanel = new JPanel();
+			innerPanelHolderPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+			innerPanelHolderPanel.add(innerPanel);
 			//pros8esh twn 2 panel sto kentriko
-			outerPanel.add(multipleChoiceTextLabel);
-			outerPanel.add(innerPanel);
-
+			outerPanel.add(multipleChoiceTextPanel);
+			outerPanel.add(innerPanelHolderPanel);
+			
+			this.setSize(300, 300);
 
 		}
 		else if(q instanceof Matching)
@@ -177,11 +195,11 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 			right4 = new JLabel("D. "+((Matching) q).getStiliB().get(3));
 			right5 = new JLabel("E. "+((Matching) q).getStiliB().get(4));
 
-			leftCount1 = new JLabel("1 to ");
-			leftCount2 = new JLabel("2 to ");
-			leftCount3 = new JLabel("3 to ");
-			leftCount4 = new JLabel("4 to ");
-			leftCount5 = new JLabel("5 to ");
+			leftCount1 = new JLabel("1 to");
+			leftCount2 = new JLabel("2 to");
+			leftCount3 = new JLabel("3 to");
+			leftCount4 = new JLabel("4 to");
+			leftCount5 = new JLabel("5 to");
 
 			cbox1 = new JComboBox<String>();cbox1.addItem("A");cbox1.addItem("B");cbox1.addItem("C");cbox1.addItem("D");cbox1.addItem("E");
 			cbox2 = new JComboBox<String>();cbox2.addItem("A");cbox2.addItem("B");cbox2.addItem("C");cbox2.addItem("D");cbox2.addItem("E");
@@ -210,16 +228,16 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 			answerColumnPanel.add(leftCount4);answerColumnPanel.add(cbox4);
 			answerColumnPanel.add(leftCount5);answerColumnPanel.add(cbox5);
 
-			outerPanel.setLayout(new GridLayout (1,3,30,0));
+			outerPanel.setLayout(new GridLayout (1,3,0,0));
 			outerPanel.add(leftColumnPanel);
 			outerPanel.add(rightColumnPanel);
 			outerPanel.add(answerColumnPanel);
-
+			this.setSize(400, 400); 
 		}
 		//afairoume thn 1h erwthsh dioti pleon eksetasthke kai etsi thn epomenh fora pou 8a ksanaparoume thn 1h erwthsh 8a einai diaforetikh apo afthn
 		this.myTest.remove(0);
 
-		this.add(outerPanel);
+		this.add(outerPanel,BorderLayout.CENTER);
 		this.paintAll(getGraphics());
 		this.currentInstanceOfQuestion = q;
 
@@ -231,7 +249,7 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 
 		for(ReadingQuestion q : myArray)
 		{
-			if(q.getLevel().equals(myLevel)&&q.getLanguage().equals(myLanguage))
+			if(q.getLevel().getNameOfLevel().equals(myLevel.getNameOfLevel())&&q.getLanguage().getName().equals(myLanguage.getName()))
 				temp.add(q);
 		}
 
@@ -244,7 +262,7 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 
 		for(ListeningQuestion q : myArray)
 		{
-			if(q.getLevel().equals(myLevel)&&q.getLanguage().equals(myLanguage))
+			if(q.getLevel().getNameOfLevel().equals(myLevel.getNameOfLevel())&&q.getLanguage().getName().equals(myLanguage.getName()))
 				temp.add(q);
 		}
 
@@ -258,7 +276,7 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 
 		for(Question q : myArray)
 		{
-			if(q.getLevel().equals(myLevel)&&q.getLanguage().equals(myLanguage))
+			if(q.getLevel().getNameOfLevel().equals(myLevel.getNameOfLevel())&&q.getLanguage().getName().equals(myLanguage.getName()))
 				temp.add(q);
 		}
 
@@ -280,8 +298,6 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 	//ready??????????????????????????????????????????????????????????????????????????
 	public void createListeningTest(ArrayList<ListeningQuestion> myArray){
 
-		ArrayList<ListeningQuestion> temp = new ArrayList<ListeningQuestion>();
-
 		Random rnd = new Random();
 		int mynum = 0;
 		mynum = rnd.nextInt(myArray.size());//epilegetai tyxaia mia erwthsh apo th lista me tis ListeningQuestion erwthseis
@@ -296,8 +312,18 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 		Random rnd = new Random();
 		int mynum = 0;
 		ArrayList<Question> temp = new ArrayList<>();
-		for(int i=0;i<30;i++)
+		
+		//kalyptoume antistoixws tis periptwseis pou oi synolikes erwthseis einai ligoteres apo 30 h perissoteres apo 30
+		
+		if(myArray.size()>30)
+			testSize = 30;
+		else
+			testSize = myArray.size();
+		
+		initialTestSize = testSize+1;
+		for(int i = 0;i<testSize;i++)
 		{
+			
 			mynum = rnd.nextInt(myArray.size());
 
 			temp.add(myArray.get(mynum));
@@ -330,39 +356,57 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 				{
 					this.outerPanel.removeAll();
 					this.remove(outerPanel);
-					this.score += 5;
+					this.score = score + 5;
 				}
-				else //o xrhsths apanthse la8os.........................8a doume an 8eloume na kratietai h la8os apanthsh
+				else //o xrhsths apanthse la8os
 				{
 					this.outerPanel.removeAll();
 					this.remove(outerPanel);
+					this.reviewableQuestions.add(currentInstanceOfQuestion);
 				}
 			}
 			else if(currentInstanceOfQuestion instanceof Matching)//h erwthsh einai typou Matching
 			{
+				boolean temp = false;
 				ArrayList<String> correctAnswers = ((Matching) currentInstanceOfQuestion).getAntistixisi();
 
 				if(cbox1.getSelectedItem().equals(correctAnswers.get(0)))
-					score += 1;
+					score = score + 1;
+				else 
+					temp = true;
+				
 				if(cbox2.getSelectedItem().equals(correctAnswers.get(1)))
-					score += 1;
+					score = score + 1;
+				else 
+					temp = true;	
+				
 				if(cbox3.getSelectedItem().equals(correctAnswers.get(2)))
-					score += 1;
+					score = score + 1;
+				else 
+					temp = true;	
+				
 				if(cbox4.getSelectedItem().equals(correctAnswers.get(3)))
-					score += 1;
+					score = score + 1;
+				else 
+					temp = true;	
+				
 				if(cbox5.getSelectedItem().equals(correctAnswers.get(4)))
-					score += 1;
-
+					score = score + 1;
+				else temp = true;
+				
 				this.outerPanel.removeAll();
 				this.remove(outerPanel);
 			}
 
-			if(myTest.size()>0)//to test synexizetai
-				this.runtest();//Ksanatrexei to test
-			else//to test teleiwse...........................na kanw veltiwsh
+			if(testSize>1)//to test synexizetai
 			{
-				this.removeAll();
-				this.add(new JLabel("You just finished your test. Your score is: " + this.score));
+				testSize--;
+				this.runtest();//Ksanatrexei to test
+			}
+			else//to test teleiwse
+			{
+				new TestEndingFrame(score,initialTestSize*5,this.reviewableQuestions,this.antikeimeno);
+				dispose();
 
 			}
 		}

@@ -287,7 +287,7 @@ public class Teacher_main extends JFrame {
 				stoixeiaPanel= new JPanel(new GridLayout(5,0,0,0));
 
 				JPanel namePanel=new JPanel(new GridLayout());
-				JLabel namelabel=new JLabel("Ονοματεπόνυμο");
+				JLabel namelabel=new JLabel("Ονοματεπώνυμο");
 				namePanel.add(namelabel);
 				namePanel.add(nametext);
 

@@ -266,7 +266,7 @@ public class Student_main extends JFrame {
 					public void actionPerformed(ActionEvent e) {
 						
 						if(e.getSource()==okBtn)
-							new Askhseologio_Frame(testCategorySelectionCombobox.getActionCommand());
+							new Askhseologio_Frame(testCategorySelectionCombobox.getItemAt(testCategorySelectionCombobox.getSelectedIndex()));
 						
 					}
 					
