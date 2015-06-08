@@ -25,7 +25,7 @@ public class Student extends User implements Serializable {
 		this.studentLevel= studentLevel;
 		
 		for(Student s: Main.ser.StudentDeserializing()){
-			if(s.getUsername()==this.getUsername()){
+			if(s.getUsername().equals(this.getUsername())){
 				grammarStatistics=s.getGrammarStatistics();
 				vocabularyStatistics=s.getVocabularyStatistics();
 				readingStatistics=s.getReadingStatistics();
@@ -36,7 +36,7 @@ public class Student extends User implements Serializable {
 	
 	public LinkedList<String> addNewGrammarStatistic(String vathmos){ 		//me8odoi gia add newn sttistics
 		for(Student s: Main.ser.StudentDeserializing()){		//Deserializing
-			if(s.getUsername()==this.getUsername()){
+			if(s.getUsername().equals(this.getUsername())){
 				if(grammarStatistics.size()>15){
 					grammarStatistics.removeFirst();
 				}
@@ -48,7 +48,7 @@ public class Student extends User implements Serializable {
 	}
 	public LinkedList<String> addNewVocabularyStatistic(String vathmos){
 		for(Student s: Main.ser.StudentDeserializing()){
-			if(s.getUsername()==this.getUsername()){
+			if(s.getUsername().equals(this.getUsername())){
 				if(vocabularyStatistics.size()>15){
 					vocabularyStatistics.removeFirst();
 				}
@@ -60,7 +60,7 @@ public class Student extends User implements Serializable {
 	}
 	public LinkedList<String> addNewReadingStatistic(String vathmos){
 		for(Student s: Main.ser.StudentDeserializing()){
-			if(s.getUsername()==this.getUsername()){
+			if(s.getUsername().equals(this.getUsername())){
 				if(readingStatistics.size()>15){
 					readingStatistics.removeFirst();
 				}
@@ -72,7 +72,7 @@ public class Student extends User implements Serializable {
 	}
 	public LinkedList<String> addNewListeningStatistic(String vathmos){
 		for(Student s: Main.ser.StudentDeserializing()){
-			if(s.getUsername()==this.getUsername()){
+			if(s.getUsername().equals(this.getUsername())){
 				if(listeningStatistics.size()>15){
 					listeningStatistics.removeFirst();
 				}

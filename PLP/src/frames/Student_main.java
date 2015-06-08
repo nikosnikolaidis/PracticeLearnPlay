@@ -30,8 +30,9 @@ public class Student_main extends JFrame {
 	private JButton buttonExit, buttonTest, buttonGame, buttonStatistics, buttonBack;
 	private JPanel TestPanel, GamePanel, StatisticsPanel, buttomButtons, textsPanel;
 	private JLabel backgroundLabel, StatisticsLabel;
-
+	private JPanel testCategorySelectionComboboxPanel;
 	private JComboBox<String> testCategorySelectionCombobox;
+	
 	public Student_main(){
 		buttonTest=new JButton();
 
@@ -247,7 +248,7 @@ public class Student_main extends JFrame {
 				frame.remove(buttonExit);
 				
 				
-				JPanel testCategorySelectionComboboxPanel = new JPanel();
+				testCategorySelectionComboboxPanel = new JPanel();
 				testCategorySelectionComboboxPanel.setLayout(new GridLayout(3,0,10,10));
 				
 				testCategorySelectionCombobox = new JComboBox<String>();
@@ -277,8 +278,20 @@ public class Student_main extends JFrame {
 				
 				
 				
-				
-				
+				buttonBack=new JButton();
+				BufferedImage dbackbutton = null;
+				try {
+					dbackbutton = ImageIO.read(new File("backbutton.jpg"));
+				} 
+				catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				Image backbuttonImage = dbackbutton.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
+				buttonBack.setIcon(new javax.swing.ImageIcon(backbuttonImage));
+				buttonBack.setPreferredSize(new Dimension(120, 110));
+				backListenerFromStatistics listener=new backListenerFromStatistics();
+				buttonBack.addActionListener(listener);
+				frame.add(buttonBack);
 				
 				
 				
@@ -363,6 +376,22 @@ public class Student_main extends JFrame {
 				frame.paintAll(getGraphics());
 			}
 
+		}
+	}
+	
+	class backListenerFromStatistics implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource()==buttonBack){
+				JFrame frame = (JFrame) SwingUtilities.getRoot(getContentPane());
+				frame.remove(testCategorySelectionComboboxPanel);
+				frame.remove(buttonBack);
+
+				frame.add(GamePanel);
+				frame.add(TestPanel);
+				frame.add(StatisticsPanel);
+				frame.add(buttonExit);
+				frame.paintAll(getGraphics());
+			}
 		}
 	}
 

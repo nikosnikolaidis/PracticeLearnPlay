@@ -249,7 +249,8 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 
 		for(ReadingQuestion q : myArray)
 		{
-			if(q.getLevel().getNameOfLevel().equals(myLevel.getNameOfLevel())&&q.getLanguage().getName().equals(myLanguage.getName()))
+			//if(q.getLevel().getNameOfLevel().equals(myLevel.getNameOfLevel())&&q.getLanguage().getName().equals(myLanguage.getName()))
+			if(q.getLanguage().getName().equals(myLanguage.getName()))
 				temp.add(q);
 		}
 

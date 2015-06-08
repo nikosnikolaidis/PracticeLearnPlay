@@ -9,9 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ergasia.ListeningQuestion;
+import ergasia.Main;
 import ergasia.Matching;
 import ergasia.MultipleChoice;
 import ergasia.Question;
+import ergasia.ReadingQuestion;
+import ergasia.Student;
 
 public class TestEndingFrame extends JFrame{
 
@@ -31,10 +35,34 @@ public class TestEndingFrame extends JFrame{
 		this.antikeimeno = antikeimeno;
 		scoreAchievedLabel = new JLabel("You scored "+ scoreAchieved+ " out of "+maximumScore+".");
 
-
-
+////////////////////////////***statistika
+		if(antikeimeno.equals("Vocabulary"))
+		{
+			Main.ser.getDataHolder().getStudentNow().addNewVocabularyStatistic(scoreAchieved+"/"+maximumScore);
+		}
+		else if(antikeimeno.equals("Grammar"))
+		{
+			Main.ser.getDataHolder().getStudentNow().addNewGrammarStatistic(scoreAchieved+"/"+maximumScore);
+		}
+		else if(antikeimeno.equals("Reading"))
+		{
+			Main.ser.getDataHolder().getStudentNow().addNewReadingStatistic(scoreAchieved+"/"+maximumScore);
+		}
+		else if(antikeimeno.equals("Listening"))
+		{
+			Main.ser.getDataHolder().getStudentNow().addNewListeningStatistic(scoreAchieved+"/"+maximumScore);
+		}
+		
+		ArrayList<Student> temp= Main.ser.StudentDeserializing();
+		for(Student st: temp){
+			if(st.getUsername().equals(Main.ser.getDataHolder().getStudentNow().getUsername())){
+				temp.remove(st);
+			}
+		}
+		temp.add(Main.ser.getDataHolder().getStudentNow());
+////////////////////////////***statistika
+		
 		this.setLayout(new BorderLayout(30,0));
-
 
 		lvl1Panel = new JPanel();
 		lvl1Panel.setLayout(new FlowLayout());
