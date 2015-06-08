@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -51,13 +52,17 @@ public class TestEndingFrame extends JFrame{
 			Main.ser.getDataHolder().getStudentNow().addNewListeningStatistic(scoreAchieved+"/"+maximumScore);
 		}
 		
-		ArrayList<Student> temp= Main.ser.StudentDeserializing();
+		CopyOnWriteArrayList<Student> temp= new CopyOnWriteArrayList<Student>();
+		temp.addAll(Main.ser.StudentDeserializing());
 		for(Student st: temp){
 			if(st.getUsername().equals(Main.ser.getDataHolder().getStudentNow().getUsername())){
 				temp.remove(st);
 			}
 		}
 		temp.add(Main.ser.getDataHolder().getStudentNow());
+		ArrayList<Student> array=new ArrayList<Student>();
+		array.addAll(temp);
+		Main.ser.StudentSerializing(array);
 ////////////////////////////***statistika
 		
 		this.setLayout(new BorderLayout(30,0));
