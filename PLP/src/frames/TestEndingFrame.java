@@ -9,12 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ergasia.ListeningQuestion;
 import ergasia.Main;
 import ergasia.Matching;
 import ergasia.MultipleChoice;
 import ergasia.Question;
-import ergasia.ReadingQuestion;
 import ergasia.Student;
 
 public class TestEndingFrame extends JFrame{
