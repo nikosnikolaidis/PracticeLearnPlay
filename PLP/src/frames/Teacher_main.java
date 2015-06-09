@@ -572,6 +572,11 @@ class backListener implements ActionListener{
 					
 					
 					
+						
+						
+				
+					
+					
 					
 					JPanel GrammarPanel = new JPanel();
 					GrammarPanel.setLayout(new GridLayout(student.getGrammarStatistics().size()+1, 0, 0, 0));
@@ -588,6 +593,7 @@ class backListener implements ActionListener{
 					JLabel voc= new JLabel("Vocabulary");
 					VocPanel.add(voc);
 					for(String g: student.getVocabularyStatistics()){
+				
 						JLabel grade=new JLabel(g);
 				
 						VocPanel.add(grade);

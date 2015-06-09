@@ -35,51 +35,91 @@ public class Student extends User implements Serializable {
 	}
 	
 	public LinkedList<String> addNewGrammarStatistic(String vathmos){ 		//me8odoi gia add newn sttistics
-		for(Student s: Main.ser.StudentDeserializing()){		//Deserializing
-			if(s.getUsername().equals(this.getUsername())){
-				if(grammarStatistics.size()>15){
-					grammarStatistics.removeFirst();
+		
+		
+		ArrayList<Student> tmp=new ArrayList<Student>();
+		tmp=teacher.getStudents();
+		int i=0;
+		for(Student st: tmp){		//Deserializing
+			if(st.getUsername().equals(this.getUsername())){				
+				st.grammarStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
+				int j=0;
+			for(Teacher t:	Main.ser.getDataHolder().getTeachers()){
+				if(t.getUsername().equals(teacher.getUsername())){
+					Main.ser.getDataHolder().getTeachers().get(j).getStudents().set(i, st);
 				}
-				grammarStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
+				j++;
 			}
+				break;
+			}
+			i++;
 		}
-		Main.ser.StudentSerializing(this.getTeacher().getStudents());	//Serializing
+		Main.ser.TeachersSerializing(Main.ser.getDataHolder().getTeachers());
 		return grammarStatistics;
 	}
 	public LinkedList<String> addNewVocabularyStatistic(String vathmos){
-		for(Student s: Main.ser.StudentDeserializing()){
-			if(s.getUsername().equals(this.getUsername())){
-				if(vocabularyStatistics.size()>15){
-					vocabularyStatistics.removeFirst();
+		
+		
+		ArrayList<Student> tmp=new ArrayList<Student>();
+		tmp=teacher.getStudents();
+		int i=0;
+		for(Student st: tmp){		//Deserializing
+			if(st.getUsername().equals(this.getUsername())){				
+				st.vocabularyStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
+				int j=0;
+			for(Teacher t:	Main.ser.getDataHolder().getTeachers()){
+				if(t.getUsername().equals(teacher.getUsername())){
+					Main.ser.getDataHolder().getTeachers().get(j).getStudents().set(i, st);
 				}
-				vocabularyStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
+				j++;
 			}
+				break;
+			}
+			i++;
 		}
-		Main.ser.StudentSerializing(this.getTeacher().getStudents());
+		Main.ser.TeachersSerializing(Main.ser.getDataHolder().getTeachers());
 		return vocabularyStatistics;
 	}
 	public LinkedList<String> addNewReadingStatistic(String vathmos){
-		for(Student s: Main.ser.StudentDeserializing()){
-			if(s.getUsername().equals(this.getUsername())){
-				if(readingStatistics.size()>15){
-					readingStatistics.removeFirst();
+		ArrayList<Student> tmp=new ArrayList<Student>();
+		tmp=teacher.getStudents();
+		int i=0;
+		for(Student st: tmp){		//Deserializing
+			if(st.getUsername().equals(this.getUsername())){				
+				st.readingStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
+				int j=0;
+			for(Teacher t:	Main.ser.getDataHolder().getTeachers()){
+				if(t.getUsername().equals(teacher.getUsername())){
+					Main.ser.getDataHolder().getTeachers().get(j).getStudents().set(i, st);
 				}
-				readingStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
+				j++;
 			}
+				break;
+			}
+			i++;
 		}
-		Main.ser.StudentSerializing(this.getTeacher().getStudents());
+		Main.ser.TeachersSerializing(Main.ser.getDataHolder().getTeachers());
 		return readingStatistics;
 	}
 	public LinkedList<String> addNewListeningStatistic(String vathmos){
-		for(Student s: Main.ser.StudentDeserializing()){
-			if(s.getUsername().equals(this.getUsername())){
-				if(listeningStatistics.size()>15){
-					listeningStatistics.removeFirst();
+		ArrayList<Student> tmp=new ArrayList<Student>();
+		tmp=teacher.getStudents();
+		int i=0;
+		for(Student st: tmp){		//Deserializing
+			if(st.getUsername().equals(this.getUsername())){				
+				st.listeningStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
+				int j=0;
+			for(Teacher t:	Main.ser.getDataHolder().getTeachers()){
+				if(t.getUsername().equals(teacher.getUsername())){
+					Main.ser.getDataHolder().getTeachers().get(j).getStudents().set(i, st);
 				}
-				listeningStatistics.addLast(getCurrentTimeStamp()+", "+vathmos);
+				j++;
 			}
+				break;
+			}
+			i++;
 		}
-		Main.ser.StudentSerializing(this.getTeacher().getStudents());
+		Main.ser.TeachersSerializing(Main.ser.getDataHolder().getTeachers());
 		return listeningStatistics;
 	}																		//TimeStamp kai va8mos 
 	

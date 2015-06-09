@@ -159,11 +159,11 @@ public class MultipleChoiceFrame extends JFrame{
 						break;
 					}
 				}
-				if(antikeimeno==4 && questions.size()>1){
+				if(antikeimeno==4 && questions.size()>0){
 					Listening listening= new Listening(Main.ser.getDataHolder().getTeacherNow().getLanguage(), lvl);
 					listening.createListening(AudioFileOrReadingText, questions);
 				}
-				if(antikeimeno==5 && questions.size()>1){
+				if(antikeimeno==5 && questions.size()>0){
 					Reading reading= new Reading(Main.ser.getDataHolder().getTeacherNow().getLanguage(), lvl);
 					reading.createReading(AudioFileOrReadingText, questions);
 				}
