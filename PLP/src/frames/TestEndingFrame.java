@@ -80,6 +80,8 @@ public class TestEndingFrame extends JFrame{
 
 
 		lvl2Panel.add(scoreAchievedLabel);
+		this.add(lvl1Panel,BorderLayout.CENTER);
+		lvl1Panel.add(lvl2Panel);
 		if(this.reviewableQuestions.size()>0)
 		{
 			lvl3Panel = new JPanel();
@@ -96,8 +98,7 @@ public class TestEndingFrame extends JFrame{
 				}
 
 
-			this.add(lvl1Panel,BorderLayout.CENTER);
-			lvl1Panel.add(lvl2Panel);
+			
 			lvl2Panel.add(lvl3Panel);
 			lvl3Panel.add(lvl4Panel);
 		}

@@ -1,15 +1,18 @@
 package frames;
 
+
 import java.awt.BorderLayout;
+import java.awt.Desktop;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -27,7 +30,15 @@ import ergasia.MultipleChoice;
 import ergasia.Question;
 import ergasia.ReadingQuestion;
 
+
+
+
+
+
+
 public class Askhseologio_Frame extends JFrame implements ActionListener{
+	
+	
 
 	private int testSize, initialTestSize;
 	private String antikeimeno;
@@ -135,7 +146,7 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 
 	//ready
 	public void runtest(){
-
+		
 
 		//pairnoume thn prwth erwthsh apo th lista
 		Question q = myTest.get(0);
@@ -249,9 +260,9 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 
 		for(ReadingQuestion q : myArray)
 		{
-			//if(q.getLevel().getNameOfLevel().equals(myLevel.getNameOfLevel())&&q.getLanguage().getName().equals(myLanguage.getName()))
-			if(q.getLanguage().getName().equals(myLanguage.getName()))
-				temp.add(q);
+			if(q.getLevel().getNameOfLevel().equals(myLevel.getNameOfLevel())&&q.getLanguage().getName().equals(myLanguage.getName())) temp.add(q);
+			//if(q.getLanguage().getName().equals(myLanguage.getName())) temp.add(q);
+				
 		}
 
 		return temp;
@@ -291,8 +302,10 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 		int mynum = 0;
 		mynum = rnd.nextInt(myArray.size());//epilegetai tyxaia mia erwthsh apo th lista me tis ReadingQuestion erwthseis
 		ReadingQuestion myReadingQuestion = myArray.get(mynum);
-
+		
 		myTest = myReadingQuestion.getQuestions();
+		testSize=myTest.size();
+		initialTestSize = testSize;
 		return myReadingQuestion;
 	}
 
@@ -305,6 +318,21 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 		ListeningQuestion myListeningQuestion = myArray.get(mynum);
 
 		myTest = myListeningQuestion.getQuestions();
+		testSize=myTest.size();
+		initialTestSize = testSize;
+		
+		String AudioFile = myListeningQuestion.getAudioFileName();
+		try {
+		     if (Desktop.isDesktopSupported()) {
+		       Desktop.getDesktop().open(new File(AudioFile));
+		     }
+		   } catch (IOException ioe) {
+		     ioe.printStackTrace();
+		  }
+		
+		
+		
+			
 	}
 
 	//ready
@@ -321,7 +349,7 @@ public class Askhseologio_Frame extends JFrame implements ActionListener{
 		else
 			testSize = myArray.size();
 		
-		initialTestSize = testSize+1;
+		initialTestSize = testSize;
 		for(int i = 0;i<testSize;i++)
 		{
 			

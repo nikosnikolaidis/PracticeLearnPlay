@@ -103,7 +103,7 @@ public class MultipleChoiceFrame extends JFrame{
 				choices.add(a3);
 				choices.add(a4);
 				
-				int swsto=cbox.getSelectedIndex();
+				int swsto=cbox.getSelectedIndex() +1;
 				
 				String l=(String) cbox2.getSelectedItem();
 				Level lvl=null;
