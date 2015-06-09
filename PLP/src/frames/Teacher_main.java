@@ -187,7 +187,7 @@ public class Teacher_main extends JFrame {
 		private JFrame questype, chooseStudent;
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonExit){
-				dispose();
+				System.exit(0);
 				
 			}
 			else if(e.getSource()==stats){

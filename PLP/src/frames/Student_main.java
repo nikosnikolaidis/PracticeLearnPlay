@@ -236,7 +236,7 @@ public class Student_main extends JFrame {
 		
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonExit){
-				dispose();
+				System.exit(0);
 			}
 			else if(e.getSource()==buttonTest){//an o xrhsths epileksei to test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				

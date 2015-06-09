@@ -196,7 +196,7 @@ class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==buttonExit){
 				setVisible(false);
-				dispose();
+				System.exit(0);
 			}
 			else if(e.getSource()==dataReset){
 				dataframe=new JFrame();
@@ -820,8 +820,7 @@ class ButtonListener implements ActionListener {
 							e1.printStackTrace();
 						}
 					
-					dataframe.dispose();
-					dispose();
+				        System.exit(0);
 				}
 			}
 			
