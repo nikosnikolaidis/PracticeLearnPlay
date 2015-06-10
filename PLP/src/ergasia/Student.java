@@ -157,6 +157,18 @@ public class Student extends User implements Serializable {
 		return false;
 	}
 	
+	public String getCurrentTimeStamp() {
+	    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    Date now = new Date();
+	    String strDate = sdfDate.format(now);
+	    return strDate;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+	
+	///////////////////////////**************nekros kodikas
 	public void ChangeNamePassword(String newUName, String newPassword){	//Changes the UName/Pass
 		ArrayList<Student> StudentsFromFile = Main.ser.getDataHolder().getStudents();	//anaktisi students
 		for(Student st: StudentsFromFile){
@@ -179,16 +191,4 @@ public class Student extends User implements Serializable {
 		}
 		Main.ser.StudentSerializing(StudentsFromFile);		//serializing students
 	}
-	
-	public String getCurrentTimeStamp() {
-	    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	    Date now = new Date();
-	    String strDate = sdfDate.format(now);
-	    return strDate;
-	}
-
-	public Teacher getTeacher() {
-		return teacher;
-	}
-	
 }

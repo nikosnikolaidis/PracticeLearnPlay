@@ -143,6 +143,7 @@ public class Kremala extends JFrame {
 		panelkatw.add(G);
 		panelkatw.add(H);
 		panelkatw.add(I);
+		panelkatw.add(J);
 		panelkatw.add(G);
 		panelkatw.add(K);
 		panelkatw.add(L);

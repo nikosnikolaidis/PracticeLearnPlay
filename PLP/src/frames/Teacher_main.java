@@ -558,10 +558,14 @@ class backListener implements ActionListener{
 					String stud=(String) cbox1.getSelectedItem();
 					
 					Student student=null;
-					for(Student s : Main.ser.getDataHolder().getTeacherNow().getStudents()){
-						if(s.getOnomateponimo().equals(stud)) student=s;
-						break;
+					for(Student s: Main.ser.getDataHolder().getTeacherNow().getStudents()){
+						if(s.getOnomateponimo().equals(stud)){
+							student=s;
+							break;
+						}
+						
 					}
+					
 					chooseStudent.dispose();
 					
 					statsFrame=new JFrame();

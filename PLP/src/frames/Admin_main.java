@@ -286,9 +286,9 @@ class ButtonListener implements ActionListener {
 				catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				Image backbuttonImage = dbackbutton.getScaledInstance(250, 200, Image.SCALE_SMOOTH);
+				Image backbuttonImage = dbackbutton.getScaledInstance(100, 90, Image.SCALE_SMOOTH);
 				backbutton.setIcon(new javax.swing.ImageIcon(backbuttonImage));
-				backbutton.setPreferredSize(new Dimension(190, 150));
+				backbutton.setPreferredSize(new Dimension(100, 90));
 		    	
 				frame.add(backbutton);
 				
@@ -361,9 +361,9 @@ class ButtonListener implements ActionListener {
 				catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				Image backbuttonImage = dbackbutton.getScaledInstance(250, 200, Image.SCALE_SMOOTH);
+				Image backbuttonImage = dbackbutton.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 				backbutton2.setIcon(new javax.swing.ImageIcon(backbuttonImage));
-				backbutton2.setPreferredSize(new Dimension(190, 150));
+				backbutton2.setPreferredSize(new Dimension(100, 90));
 				
 				frame.add(stoixeiaLabel2);
 				frame.add(stoixeiaPanel2);				
